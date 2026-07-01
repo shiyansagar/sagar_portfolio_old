@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TX-6 — teenage engineering</title>
+    <meta name="description"
+        content="TX-6 ultra-portable pro-mixer and audio interface by teenage engineering. 6 channel stereo mixer with a configurable knob layout." />
+
+    <!-- Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://api.fontshare.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+
+    <!-- Critical CSS (Page Loader) -->
+    <style>
+        .page-loader {
+            position: fixed;
+            inset: 0;
+            background: #000000;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .page-loader__inner {
+            width: 200px;
+            height: 1px;
+            background: rgba(0, 0, 0, 0.12);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-loader__bar {
+            position: absolute;
+            left: -100%;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: #b5b5b5;
+            animation: loaderSlide 1.1s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+        }
+
+        @keyframes loaderSlide {
+            0% {
+                left: -100%;
+            }
+
+            60% {
+                left: 0%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+    </style>
+
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&display=swap" as="style"
+        onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&display=swap" />
+    </noscript>
+    <link rel="preload" href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,300,400&display=swap" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,300,400&display=swap">
+    </noscript>
+    <link rel="icon" type="image/svg+xml" href="../fevicon.svg?v=2">
+    <link rel="stylesheet" href="tx6.css" fetchpriority="high" />
+    <!-- Speculation Rules for Instant Page Loads -->
+    <script type="speculationrules">
+        {
+            "prefetch": [
+                {
+                    "source": "document",
+                    "where": {
+                        "and": [
+                            { "href_matches": "/*" }
+                        ]
+                    },
+                    "eagerness": "moderate"
+                }
+            ],
+            "prerender": [
+                {
+                    "source": "document",
+                    "where": {
+                        "and": [
+                            { "href_matches": "/*" }
+                        ]
+                    },
+                    "eagerness": "moderate"
+                }
+            ]
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="page-loader__inner">
+            <div class="page-loader__bar"></div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+       NAVBAR  — 100px tall, 3-layer structure
+  ═══════════════════════════════════════════ -->
+    <nav class="navbar">
+
+        <!-- Layer 1 (absolute center): teenage engineering -->
+        <span class="nav-brand">teenage engineering</span>
+
+        <!-- Layer 2 (left): work.svg + tx-6.svg -->
+        <div class="nav-left">
+            <div class="nav-logo-wrap">
+                <a href="../index.html"><img src="work.svg" alt="Work" class="nav-work-svg" id="nav-work" /></a>
+            </div>
+            <div class="nav-logo-wrap">
+                <img src="tx-6.svg" alt="TX-6" class="nav-tx6-svg" />
+            </div>
+        </div>
+
+        <!-- Layer 3 (right): blender-rhino.svg -->
+        <div class="nav-right">
+            <img src="blender-rhino.svg" alt="Made in Blender & Rhino" class="nav-blender-rhino" />
+        </div>
+
+    </nav>
+
+    <main role="main">
+        <!-- ═══════════════════════════════════════════
+       HERO  — 100vh, overflow visible, image absolute
+  ═══════════════════════════════════════════ -->
+        <section class="hero">
+
+            <!-- H1 behind the hero image, 50px from top -->
+            <h1 class="hero-title"><span class="title-tx" id="title-tx">Tx</span><span class="title-dash6"
+                    id="title-dash6">-6</span></h1>
+
+            <!-- Hero background image — absolute, 100% width, covers full -->
+            <img src="hero-image.webp" alt="TX-6 hero" class="hero-image" fetchpriority="high" width="2997"
+                height="2399" />
+
+            <!-- Content row — 700px / 70vh height, baseline items, two text blocks -->
+            <div class="hero-content" id="hero-content">
+                <div class="hero-text-left" id="hero-text-left">
+                    <div class="wrapall">
+                        <div class="rectangle"></div>
+                        ultra-portable pro-mixer<br />and audio interface
+                    </div>
+                </div>
+                <div class="hero-text-right" id="hero-text-right">
+                    <div class="wrapall">
+                        <div class="rectangle"></div>
+                        6 channel stereo mixer with a<br />configurable knob layout.
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ═══════════════════════════════════════════
+       INFO SECTION — TX-6 label + description
+  ═══════════════════════════════════════════ -->
+        <section class="info-section">
+
+            <div class="info-text-block">
+                <h2 class="info-label">TX-6</h2>
+                <p class="info-desc">
+                    Modeled the TX-6 in Rhino with precise surface detailing and geometry control,
+                    and developed animations in Blender, to get the teenage engineering design aesthetics
+                </p>
+                <div class="boxbtn">
+                    <img src="logo.png" alt="">
+                </div>
+
+            </div>
+
+            <!-- TX6-FRONT big row: image left + text right -->
+            <div class="front-row">
+
+                <!-- Left: tx6-front.webp at 701×1249 -->
+                <div class="front-image-wrap">
+                    <img src="front1.webp" alt="TX-6 front view" class="front-image" loading="lazy" decoding="async"
+                        width="2006" height="2880" />
+                </div>
+
+                <!-- Right: description text, centered, padding-bottom 180px -->
+                <div class="front-text-wrap">
+                    <p class="front-text">
+                        TX–6 is our ultra-portable, battery-powered mixer and multi-channel audio interface.
+                        comparable to larger units, but with even more tech packed into one sturdy little machine.
+                        mix 6 stereo input channels, use tempo sync, discover the internal synthesizer and sequencer
+                        or use the built-in tuner. MFi compatibility even lets you connect to your iOS devices.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="video-section">
+            <h2 class="video-title">Animation</h2>
+            <video data-src="Sequence-01.webm" loop playsinline preload="none" class="main-video"></video>
+        </section>
+
+        <script>
+            (function () {
+                const vid = document.querySelector('.main-video');
+                if (!vid) return;
+
+                // Allow user to click the video to toggle sound on/off without changing layout
+                vid.style.cursor = 'pointer';
+                vid.addEventListener('click', () => {
+                    vid.muted = !vid.muted;
+                });
+
+                const obs = new IntersectionObserver((entries) => {
+                    entries.forEach(e => {
+                        if (e.isIntersecting) {
+                            if (vid.dataset.src) {
+                                vid.src = vid.dataset.src;
+                                vid.load();
+
+                                // Attempt to play with sound first
+                                let playPromise = vid.play();
+                                if (playPromise !== undefined) {
+                                    playPromise.catch(error => {
+                                        // If browser blocks unmuted autoplay, fallback to muted so animation still plays
+                                        vid.muted = true;
+                                        vid.play();
+                                    });
+                                }
+                            }
+                            obs.unobserve(vid);
+                        }
+                    });
+                }, { threshold: 0.2 });
+                obs.observe(vid);
+            })();
+        </script>
+
+        <!-- ═══════════════════════════════════════════
+       IMAGE SEQUENCE — scroll-driven canvas animation
+  ═══════════════════════════════════════════ -->
+        <section id="seq-section" class="seq-section">
+            <canvas id="seq-canvas" class="seq-canvas"></canvas>
+        </section>
+        <section class="render-section">
+            <h2 class="render-title">Render</h2>
+            <div class="renderwrapper">
+                <img src="render2.webp" alt="TX-6 Render 1" loading="lazy" decoding="async" width="800" height="600">
+                <img src="render3.webp" alt="TX-6 Render 2" loading="lazy" decoding="async" width="800" height="600">
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <h2>projects</h2>
+        <div class="project-navigator">
+            <div class="nav-inner">
+                <a href="../casestudy/ui-ux/casestudy.html" class="project-box">
+                    <span>UI UX<br>Case Study</span>
+                    <img src="arrow_forward.svg" alt="arrow_forward.svg" class="project-arrow">
+                </a>
+                <a href="../crd/crd.html" class="project-box">
+                    <span>Craft<br>Cluster</span>
+                    <img src="arrow_forward.svg" alt="arrow_forward.svg" class="project-arrow">
+                </a>
+                <a href="../branding/brand.html" class="project-box">
+                    <span>Branding</span>
+                    <img src="arrow_forward.svg" alt="arrow_forward.svg" class="project-arrow">
+                </a>
+                <a href="../idm/idm.html" class="project-box">
+                    <span>Idm</span>
+                    <img src="arrow_forward.svg" alt="arrow_forward.svg" class="project-arrow">
+                </a>
+                <a href="#" class="project-box active">
+                    <span>Teenage<br>Engineering</span>
+                </a>
+                <a href="../misc/grid.html" class="project-box">
+                    <span>Misc</span>
+                    <img src="arrow_forward.svg" alt="arrow_forward.svg" class="project-arrow">
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-new">
+            <div class="footer-new-content">
+                <div class="footer-new-left">
+                    <div class="footer-new-connect">
+                        <div class="footer-new-connect-title">Connect With Me</div>
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            style="flex-shrink: 0">
+                            <rect x="12" y="1" width="2" height="13" fill="#000000" />
+                            <rect x="1" y="14" width="2" height="13" transform="rotate(-90 1 14)" fill="#000000" />
+                            <rect y="1.414" width="2" height="17.457" transform="rotate(-45 0 1.414)" fill="#000000" />
+                        </svg>
+                    </div>
+                    <a href="mailto:shiyansagar@gmail.com" class="footer-new-link">shiyansagar@gmail.com</a>
+                    <a href="../../index.html" class="footer-new-link">Home</a>
+                    <a href="https://drive.google.com/drive/folders/15f_C51tl_OvEgSRvTeEGdLZC9Kuj1lyG?usp=drive_link"
+                        class="footer-new-link">CV</a>
+                </div>
+                <div class="footer-new-right">
+                    <div class="footer-new-col">
+                        <a href="#" class="footer-new-title">Go Back</a>
+                        <div class="footer-new-list">
+                            <span>Sagar shiyan©</span>
+                            <span>Malappuram, Kerala</span>
+                            <span>NIFT Jodhpur</span>
+                        </div>
+                    </div>
+                    <div class="footer-new-col">
+                        <div class="footer-new-title">Contact</div>
+                        <div class="footer-new-list">
+                            <span>+91 9526470325</span>
+                            <span><a href="https://www.linkedin.com/in/sagar-shiyan-577423300/">Linkedin</a></span>
+                            <span><a href="https://www.are.na/sagar-shiyan/channels">Are. na</a></span>
+                            <span><a href="https://github.com/shiyansagar">Github</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="tx6.js" defer></script>
+
+</body>
+
+</html>

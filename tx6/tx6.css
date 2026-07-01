@@ -1,0 +1,1035 @@
+/* ============================================================
+   TX-6 — CSS
+   Fonts: Satoshi (local / system fallback) + IBM Plex Mono
+   ============================================================ */
+
+/* ─── Reset ─────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-synthesis: none;
+}
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* ─── Typography helpers ─────────────────────────────────── */
+.font-satoshi {
+    font-family: "Satoshi", system-ui, sans-serif;
+}
+
+.font-mono {
+    font-family: "IBM Plex Mono", "IBMPlexMono-Light", system-ui, monospace;
+    font-weight: 300;
+    letter-spacing: -0.04em;
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.navbar {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    height: 100px;
+    padding: 16px;
+    padding-top: 32px;
+    z-index: 100;
+}
+
+/* ── Center label (layer 1) ── */
+.nav-brand {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-family: "Satoshi", system-ui, sans-serif;
+    font-weight: 300;
+    font-variation-settings: "wght" 300;
+    font-size: 24px;
+    line-height: 30px;
+    color: #ffffff;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ── Left group (layer 2) — flex-1, items left ── */
+.nav-left {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 42px;
+    padding: 16px;
+    position: relative;
+    z-index: 10;
+}
+
+.nav-logo-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.nav-work-svg {
+    height: 6vh;
+    width: auto;
+    display: block;
+    cursor: pointer;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.nav-work-svg:hover {
+    filter: invert(0.5);
+    transform: scale(0.99);
+}
+
+.nav-tx6-svg {
+    height: 10vh;
+    width: auto;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* ── Right group (layer 3) — flex-1, items right ── */
+.nav-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 16px;
+}
+
+.nav-blender-rhino {
+    height: 5vh;
+    width: auto;
+    display: block;
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: visible;
+    align-content: flex-end;
+    padding: 16px;
+    /* let image overflow below if taller than viewport */
+}
+
+/* H1 — behind the image, 50px from top */
+.hero-title {
+    position: absolute;
+    top: 100px;
+    left: 49%;
+    transform: translateX(-50%);
+    z-index: 0;
+    /* behind the image */
+
+    font-family: "Satoshi", system-ui, sans-serif;
+    font-weight: 500;
+    font-variation-settings: "wght" 500;
+    font-size: clamp(120px, 20.83vw, 250px);
+    line-height: 1.2;
+    white-space: nowrap;
+
+    /* gradient text */
+    background-image: linear-gradient(124.11deg in oklab,
+            oklab(100% 0 0) 16.77%,
+            oklab(65.2% 0 0) 51.25%,
+            oklab(100% 0 0) 85.73%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+/* Hero image — fills full width, positioned absolute */
+.hero-image {
+    position: absolute;
+    top: -10%;
+    left: 0;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    z-index: 1;
+    /* in front of h1 */
+    display: block;
+}
+
+/* Hero content row — 700px or 70vh, baseline, split left/right */
+.hero-content {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    z-index: 2;
+    /* above image */
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 16px 16px 32px;
+    overflow: hidden;
+    padding-bottom: 10%;
+}
+
+.wrapall {
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.rectangle {
+    width: 6px;
+    height: 12px;
+    background-color: #ff9f0f;
+}
+
+.hero-text-left,
+.hero-text-right {
+    font-family: "IBM Plex Mono", "IBMPlexMono-Light", system-ui, monospace;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: -0.04em;
+    color: #ffffff;
+    width: 282px;
+    flex-shrink: 0;
+}
+
+.hero-text-right {
+    text-align: right;
+}
+
+/* ============================================================
+   INFO SECTION
+   ============================================================ */
+.info-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 0;
+    overflow: hidden;
+    padding-top: 20%;
+}
+
+/* ── Text block (label + description) ── */
+.info-text-block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px 32px;
+}
+
+.info-label {
+    font-family: "IBM Plex Mono", "IBMPlexMono-Light", system-ui, monospace;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 30px;
+    letter-spacing: -0.04em;
+    color: #989898;
+    width: 282px;
+}
+
+.info-desc {
+    font-family: "IBM Plex Mono", "IBMPlexMono-Light", system-ui, monospace;
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 28px;
+    letter-spacing: -0.04em;
+    color: #ffffff;
+    width: 600px;
+    padding-bottom: 1%;
+}
+
+.boxbtn {
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border-radius: 8px;
+    width: 180px;
+    height: 50px;
+    gap: 10px;
+}
+
+
+.boxbtn img {
+    width: 43px;
+    height: auto;
+}
+
+/* ── Front row (image + text side-by-side) ── */
+.front-row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding-top: 5%;
+    height: fit-content;
+}
+
+/* Left image — fixed 701×1249 px */
+.front-image-wrap {
+    flex-shrink: 0;
+    width: 45vw;
+    height: fit-content;
+    overflow: visible;
+}
+
+.front-image {
+    width: 70vw;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* Right text panel */
+.front-text-wrap {
+    flex: 1;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding-bottom: 25%;
+}
+
+.front-text {
+    font-family: "IBM Plex Mono", "IBMPlexMono-Light", system-ui, monospace;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 30px;
+    color: #ffffff;
+    text-align: center;
+    width: 300px;
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   VIDEO SECTION
+   ============================================================ */
+.video-section {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 32px 16px;
+    background-color: #000;
+}
+
+.video-title {
+    font-family: "IBM Plex Mono", "IBMPlexMono-Light", system-ui, monospace;
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 30px;
+    letter-spacing: -0.04em;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.main-video {
+    width: 100%;
+    flex: 1;
+    object-fit: cover;
+    pointer-events: none;
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+/* ============================================================
+   IMAGE SEQUENCE SECTION
+   ============================================================ */
+.seq-section {
+    width: 100%;
+    height: 100vh;
+    background-color: #000;
+}
+
+.seq-canvas {
+    /* The canvas stays centered & fills the viewport while pinned */
+    display: block;
+    width: 100%;
+    height: 100vh;
+    object-fit: contain;
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+.render-section {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0 16px;
+    background-color: #000;
+}
+
+.render-title {
+    font-family: "IBM Plex Mono", "IBMPlexMono-Light", system-ui, monospace;
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 30px;
+    letter-spacing: -0.04em;
+    color: #ffffff;
+    margin-bottom: 20px;
+    margin-top: 0;
+    /* text-transform: lowercase; */
+}
+
+.renderwrapper {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 0;
+    /* touching */
+    padding: 16px 0;
+}
+
+.renderwrapper img {
+    flex: 1;
+    min-width: 0;
+    aspect-ratio: 1 / 1;
+    /* Force square aspect ratio */
+    height: auto;
+    object-fit: cover;
+    border-top: 1px solid #ffffff8d;
+    border-bottom: 1px solid #ffffff8d;
+    border-left: 1px solid #ffffff8d;
+}
+
+.renderwrapper img:last-child {
+    border-right: 1px solid #ffffff8d;
+}
+
+/* ============================================================
+   FOOTER — Project Navigator & Credits
+   ============================================================ */
+.site-footer {
+    width: 100%;
+    /* padding: 80px 32px 40px; */
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    padding-top: 100px;
+    /* Reduced from 120px to bring the heading closer */
+}
+
+.site-footer h2 {
+    font-family: "IBM Plex Mono", "IBMPlexMono-Light", system-ui, monospace;
+    width: 100%;
+    max-width: 600px;
+    text-align: left;
+    font-size: 24px;
+    font-weight: 500;
+    color: #ffffff;
+    /* Changed to white for better visibility */
+    margin: 0 auto;
+    text-transform: lowercase;
+}
+
+/* ── Project Navigator ── */
+.project-navigator {
+    width: 100%;
+    max-width: 600px;
+    height: 100px;
+    border-radius: 16px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-inner {
+    width: 100%;
+    /* background-color: #484848; */
+    border-radius: 12px;
+    padding: 4px;
+    display: flex;
+    gap: 12px;
+    height: 100%;
+}
+
+.project-box {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    background: transparent;
+    border: 1px solid rgba(207, 207, 207, 0.523);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    padding: 8px;
+    position: relative;
+}
+
+.nav-inner img {
+    width: 24px;
+    height: 24px;
+    opacity: 70%;
+}
+
+.project-arrow {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+}
+
+.project-box:hover .project-arrow {
+    transform: rotate(30deg);
+}
+
+
+.project-box span {
+    font-family: "Satoshi", system-ui, sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.2;
+    color: #ffffffd2;
+    pointer-events: none;
+}
+
+.project-box:hover span {
+    color: #7d7d7d;
+}
+
+/* Hover state */
+.project-box:hover {
+    border-color: #7d7d7d;
+}
+
+/* Active Project state */
+.project-box.active {
+    border-color: rgba(255, 171, 25, 0.65);
+}
+
+.project-box.active span {
+    color: #FFAB19;
+    font-weight: 500;
+}
+
+/* ── Footer Bottom (Credits) ── */
+.footer-bottom {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 32px;
+    padding-top: 10%;
+}
+
+.footer-copy,
+.footer-contact a {
+    font-family: "IBM Plex Mono", system-ui, monospace;
+    font-size: 14px;
+    color: #666;
+    text-transform: lowercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-left: 32px;
+}
+
+.footer-contact a:hover {
+    color: #fff;
+}
+
+/* ============================================================
+   HERO TITLE — split spans for GSAP stagger
+   ============================================================ */
+.hero-title {
+    display: inline-block;
+    /* allow h1 to wrap spans inline */
+}
+
+.title-tx,
+.title-dash6 {
+    display: inline-block;
+    background-image: inherit;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+
+
+/* ============================================================
+   MOBILE RESPONSIVE BREAKPOINTS
+   ============================================================ */
+
+/* ── Tablet: 1024px ── */
+@media (max-width: 1024px) {
+    .hero-title {
+        font-size: clamp(80px, 14vw, 180px);
+    }
+
+    .info-desc {
+        width: 90%;
+        font-size: 1rem;
+    }
+
+    .front-text {
+        font-size: 16px;
+        width: 220px;
+    }
+
+    .front-image {
+        width: 55vw;
+    }
+
+    .project-navigator {
+        max-width: 90%;
+    }
+}
+
+/* ── Mobile: 768px ── */
+@media (max-width: 768px) {
+
+    /* Navbar — hide tx6-svg and blender-rhino, keep work + brand */
+    .nav-tx6-svg,
+    .nav-right {
+        display: none;
+    }
+
+    .navbar {
+        height: 64px;
+        padding: 12px 16px;
+        padding-top: 20px;
+    }
+
+    .nav-brand {
+        font-size: 14px;
+    }
+
+    .nav-work-svg {
+        height: 4.5vh;
+    }
+
+    /* Hero Title */
+    .hero-title {
+        font-size: clamp(56px, 18vw, 120px);
+        top: 60px;
+    }
+
+    .hero-image {
+        top: 0%;
+    }
+
+    /* Hero content text — stack vertically, smaller font */
+    .hero-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 16px;
+        padding-bottom: 150px;
+        height: auto;
+        justify-content: flex-end;
+    }
+
+    .hero-text-left,
+    .hero-text-right {
+        width: 100%;
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    .hero-text-right {
+        text-align: left;
+    }
+
+    /* Info section */
+    .info-text-block {
+        padding: 16px;
+    }
+
+    .info-label {
+        font-size: 24px;
+    }
+
+    .info-desc {
+        width: 100%;
+        font-size: 0.9rem;
+        line-height: 22px;
+    }
+
+    /* Front row — stack vertically on mobile */
+    .front-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .front-image-wrap {
+        width: 100%;
+    }
+
+    .front-image {
+        width: 100%;
+    }
+
+    .front-text-wrap {
+        padding-bottom: 0;
+        padding: 24px 16px;
+        justify-content: flex-start;
+    }
+
+    .front-text {
+        font-size: 14px;
+        width: 100%;
+        text-align: left;
+    }
+
+    /* Image Sequence reduction */
+    .seq-section,
+    .seq-canvas {
+        height: 100vh;
+    }
+
+    /* Video section reduction */
+    .video-section {
+        height: 60vh;
+        padding: 40px 16px;
+    }
+
+    .video-title {
+        font-size: 20px;
+        text-align: left;
+    }
+
+    /* Render section reduction */
+    .render-section {
+        height: 60vh;
+        padding: 40px 12px;
+    }
+
+    .render-title {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    /* Footer project navigator — better scaling */
+    .project-navigator {
+        max-width: 100%;
+        height: 74px;
+        padding: 4px;
+    }
+
+    .nav-inner {
+        gap: 4px;
+        padding: 4px;
+    }
+
+    .project-box {
+        padding: 2px;
+    }
+
+    .project-box span {
+        font-size: 12px;
+    }
+
+    /* Footer bottom — stack on mobile */
+    .footer-bottom {
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-start;
+        padding-top: 32px;
+    }
+
+    .footer-copy,
+    .footer-contact a {
+        margin-left: 0;
+        font-size: 10px;
+        opacity: 0.7;
+    }
+
+    .footer-contact {
+        display: flex;
+        gap: 16px;
+    }
+}
+
+/* ── Small mobile: 480px ── */
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: clamp(44px, 16vw, 80px);
+    }
+
+    .hero-image {
+        top: 6%;
+    }
+
+    .renderwrapper {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .renderwrapper img {
+        width: 100%;
+        max-width: 100%;
+        flex: none;
+        border-left: 1px solid #ffffff8d;
+        border-right: 1px solid #ffffff8d;
+        border-bottom: none;
+    }
+
+    .renderwrapper img:last-child {
+        border-bottom: 1px solid #ffffff8d;
+    }
+
+    .render-section {
+        height: auto;
+        padding-bottom: 40px;
+    }
+
+    .site-footer {
+        padding-top: 100px;
+        gap: 60px;
+    }
+}
+
+/* --- New Footer Bottom --- */
+.footer-new {
+    align-items: center;
+    background-color: #000000;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: clip;
+    position: relative;
+    width: 100%;
+    height: 500px;
+    margin-top: 80px;
+}
+
+.footer-new-content {
+    align-items: start;
+    align-self: stretch;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 32px 32px;
+    z-index: 2;
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 100%;
+    height: fit-content;
+    padding-top: 100px;
+
+}
+
+.footer-new-left {
+    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.footer-new-connect {
+    align-items: flex-end;
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+.footer-new-connect svg {
+    filter: invert(1);
+}
+
+.footer-new-connect-title {
+
+    color: #ffffff;
+    font-family: satoshi;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 32px;
+}
+
+.footer-new-link {
+    font-family: satoshi;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    text-decoration: none;
+}
+
+.footer-new-link:hover {
+    text-decoration: underline;
+}
+
+.footer-new-right {
+    align-items: start;
+    display: flex;
+    gap: 64px;
+}
+
+.footer-new-col {
+    align-items: start;
+    display: flex;
+    flex-direction: column;
+    gap: 23px;
+}
+
+.footer-new-title {
+    font-family: satoshi;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.footer-new-title:hover {
+    text-decoration: underline;
+}
+
+.footer-new-list {
+    align-items: start;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.footer-new-list span,
+.footer-new-list a {
+    font-family: satoshi;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    text-decoration: none;
+}
+
+.footer-new-list a:hover {
+    text-decoration: underline;
+}
+
+#footer-shader-container {
+    background-color: #000000;
+    height: 100%;
+    left: 0;
+    mix-blend-mode: difference;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Responsive Footer New */
+@media (max-width: 768px) {
+    .footer-new {
+        height: auto;
+        min-height: 449px;
+    }
+
+    .footer-new-content {
+        flex-direction: column;
+        gap: 40px;
+        align-items: flex-start;
+        padding: 32px 16px;
+    }
+
+    .footer-new-left {
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .footer-new-connect {
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .footer-new-right {
+        flex-direction: column;
+        gap: 32px;
+    }
+}
+
+/* ───────────────────────────────────────────────
+   PAGE LOADER
+─────────────────────────────────────────────── */
+.page-loader {
+    position: fixed;
+    inset: 0;
+    background: #000000;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.page-loader__inner {
+    width: 200px;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.12);
+    position: relative;
+    overflow: hidden;
+}
+
+.page-loader__bar {
+    position: absolute;
+    left: -100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #b5b5b5;
+    animation: loaderSlide 1.1s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+@keyframes loaderSlide {
+    0% {
+        left: -100%;
+    }
+
+    60% {
+        left: 0%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}

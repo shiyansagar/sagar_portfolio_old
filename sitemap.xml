@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://sagarshiyan.vercel.app/</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- About Me -->
+  <url>
+    <loc>https://sagarshiyan.vercel.app/about-me/aboutme.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- UI/UX Case Study — OkCupid Trust Gap -->
+  <url>
+    <loc>https://sagarshiyan.vercel.app/casestudy/ui-ux/casestudy.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Craft Cluster (CRD) -->
+  <url>
+    <loc>https://sagarshiyan.vercel.app/crd/crd.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Branding — Surabhi Bakery Brand Identity -->
+  <url>
+    <loc>https://sagarshiyan.vercel.app/branding/brand.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- IDM — Home Decor -->
+  <url>
+    <loc>https://sagarshiyan.vercel.app/idm/idm.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- TX-6 — Teenage Engineering -->
+  <url>
+    <loc>https://sagarshiyan.vercel.app/tx6/tx6.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Miscellaneous -->
+  <url>
+    <loc>https://sagarshiyan.vercel.app/misc/grid.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>

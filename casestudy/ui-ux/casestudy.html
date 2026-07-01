@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description"
+        content="UI/UX Case Study: Bridging the trust gap in OkCupid's compatibility system through UX research, onboarding redesign, and improved information architecture.">
+    <title>UI/UX Casestudy — OkCupid Trust Gap</title>
+
+    <!-- Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://api.fontshare.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+
+    <!-- Critical CSS (Page Loader) -->
+    <style>
+        .page-loader {
+            position: fixed;
+            inset: 0;
+            background: #ffffff;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .page-loader__inner {
+            width: 200px;
+            height: 1px;
+            background: rgba(0, 0, 0, 0.12);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-loader__bar {
+            position: absolute;
+            left: -100%;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            animation: loaderSlide 1.1s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+        }
+
+        @keyframes loaderSlide {
+            0% {
+                left: -100%;
+            }
+
+            60% {
+                left: 0%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+    </style>
+
+    <link rel="preload" href="https://api.fontshare.com/v2/css?f[]=satoshi@500,400&display=swap" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@500,400&display=swap">
+    </noscript>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+        as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+    </noscript>
+    <link rel="icon" type="image/svg+xml" href="../../fevicon.svg?v=2">
+    <link rel="stylesheet" href="casestudy.css" fetchpriority="high" />
+    <script type="speculationrules">
+        {
+            "prefetch": [
+                {
+                    "source": "document",
+                    "where": {
+                        "and": [
+                            { "href_matches": "/*" }
+                        ]
+                    },
+                    "eagerness": "moderate"
+                }
+            ],
+            "prerender": [
+                {
+                    "source": "document",
+                    "where": {
+                        "and": [
+                            { "href_matches": "/*" }
+                        ]
+                    },
+                    "eagerness": "moderate"
+                }
+            ]
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="page-loader__inner">
+            <div class="page-loader__bar"></div>
+        </div>
+    </div>
+
+    <!-- ROOT FRAME — exact match to Paper "Frame" node (4-0) -->
+    <!-- <div class="root-frame"> -->
+
+    <!-- ===================== HERO GROUP ===================== -->
+    <div class="hero-group">
+
+        <!-- HERO SECTION -->
+        <div class="hero-section">
+
+            <!-- Top Nav bar -->
+            <nav class="global-nav">
+                <a href="../../index.html" class="nav-work">
+                    <span class="nav-arrow">←</span>
+                    <span>Home</span>
+                </a>
+                <div class="nav-project-title">
+                    UI UX<br>Project(01)
+                </div>
+                <a href="#" class="nav-roll nav-desktop-only">
+                    <div class="nav-roll-inner">
+                        <span>About me</span>
+                        <span>About me</span>
+                    </div>
+                </a>
+                <div class="nav-item nav-desktop-only">
+                    <a href="mailto:shiyansagar@gmail.com">shiyansagar@gmail.com</a><br>+91 9526470325
+                </div>
+                <a href="https://www.linkedin.com/in/sagar-shiyan-577423300/" target="_blank"
+                    class="nav-roll nav-desktop-only">
+                    <div class="nav-roll-inner">
+                        <span>Linkedin</span>
+                        <span>Linkedin</span>
+                    </div>
+                </a>
+                <div class="nav-time nav-desktop-only">
+                    time
+                </div>
+                <button class="nav-mobile-toggle">Menu</button>
+                <div class="nav-mobile-menu">
+                    <a href="#">About</a>
+                    <a href="https://linkedin.com" target="_blank">Linkedin</a>
+                    <a href="mailto:Shiyansagar@gmail.com">Contact</a>
+                    <div class="nav-mobile-time">time</div>
+                </div>
+            </nav>
+
+            <div class="hero-inner">
+
+                <!-- Hero text content -->
+                <div class="hero-content">
+                    <div class="hero-heading">Bridging the Trust Gap in OkCupid&#x2019;s Compatibility System</div>
+                    <div class="hero-subheading">Rebuilding confidence through onboarding, transparency, and meaningful
+                        matching</div>
+                </div>
+
+                <!-- Background image (as flex item) -->
+                <div class="hero-bg">
+                    <img src="../web/hero-okcupid.webp" alt="hero_main" fetchpriority="high" width="800" height="600">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- SEAMLESS MARQUEE STRIP -->
+        <div class="marquee-strip">
+            <div class="marquee-inner">
+                <div class="marquee-content">
+                    <img loading="lazy" decoding="async" src="../web/marquee.webp" alt="phone">
+                    <img loading="lazy" decoding="async" src="../web/marquee.webp" alt="phone">
+                </div>
+                <!-- Duplicate for seamless loop -->
+                <div class="marquee-content" aria-hidden="true">
+                    <img loading="lazy" decoding="async" src="../web/marquee.webp" alt="phone">
+                </div>
+            </div>
+        </div>
+
+        <!-- OVERVIEW SECTION -->
+        <div class="overview-outer">
+            <div class="overview-inner">
+
+                <!-- Left: "Overview" label -->
+                <div class="overview-label-col">
+                    <div class="overview-label-text">Overview</div>
+                </div>
+
+                <!-- Right: detail rows -->
+                <div class="overview-rows">
+
+                    <div class="overview-row">
+                        <div class="overview-row-key">Timeline</div>
+                        <div class="overview-row-val">2 week</div>
+                    </div>
+
+                    <div class="overview-row">
+                        <div class="overview-row-key-wrap">
+                            <div class="overview-row-key-abs">Context</div>
+                        </div>
+                        <div class="overview-row-val overview-row-val--wide">The assignment is given by our subject
+                            faculty for our UI/UX deepening to do a UX research on any dating app.</div>
+                    </div>
+
+                    <div class="overview-row">
+                        <div class="overview-row-key overview-row-key--w85">Team</div>
+                        <div class="overview-row-val">Sagar, Vansh, Piyush, Tanush and Kavya</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /hero-group -->
+
+    <!-- ===================== ROLE / SCOPE / PROBLEM GROUP ===================== -->
+    <div class="role-scope-group">
+
+        <!-- Role + Scope cards row -->
+        <div class="role-scope-cards">
+
+            <!-- Role card -->
+            <div class="rs-card">
+                <div class="rs-card-header rs-card-header--purple">
+                    <div class="rs-card-header-text">Role</div>
+                </div>
+                <div class="rs-card-body">UX Research <br />Synthesis <br />Information
+                    Architecture<br />Wireframing<br />Prototyping</div>
+            </div>
+
+            <!-- Scope card -->
+            <div class="rs-card">
+                <div class="rs-card-header rs-card-header--purple">
+                    <div class="rs-card-header-text">Scope</div>
+                </div>
+                <div class="rs-card-body">Onboarding<br />Compatibility System<br />Trust Signal</div>
+            </div>
+
+        </div>
+
+        <!-- Problem Statement row -->
+        <div class="problem-row">
+            <div class="problem-label-col">
+                <div class="problem-label-text">Problem Statement</div>
+            </div>
+            <div class="problem-text-col">
+                <div class="problem-text">Users do not trust the app&#x2019;s profile Match Score. This creates a
+                    fundamental Trust Gap, as they do not believe the score is a genuine or accurate reflection of
+                    compatibility.</div>
+            </div>
+        </div>
+
+    </div><!-- /role-scope-group -->
+    <div class="researchmethod-group">
+        <div class="researchmethod-title">Research Methodology</div>
+        <div class="methodwrapper">
+            <!-- Row 1: 4 Cards -->
+            <div class="rm-card">
+                <div class="rm-card-header">
+                    <div class="rm-card-header-text">App Journey Analysis</div>
+                </div>
+                <div class="rm-card-body">Existing Flows<br />User Testing<br />Key thoughts</div>
+            </div>
+            <div class="rm-card">
+                <div class="rm-card-header">
+                    <div class="rm-card-header-text">Primary Research</div>
+                </div>
+                <div class="rm-card-body">Intent Questions<br />Interview Questions<br />User Interviews<br />Key
+                    Findings</div>
+            </div>
+            <div class="rm-card">
+                <div class="rm-card-header">
+                    <div class="rm-card-header-text">Secondary Research</div>
+                </div>
+                <div class="rm-card-body">Customer Reviews<br />Platform Analysis &amp; Competitive Landscape</div>
+            </div>
+            <div class="rm-card">
+                <div class="rm-card-header">
+                    <div class="rm-card-header-text">Data Synthesis</div>
+                </div>
+                <div class="rm-card-body">Affinity Mapping<br />Problem Statement<br />Empathy Mapping</div>
+            </div>
+
+            <!-- Row 2: 3 Cards -->
+            <div class="rm-card">
+                <div class="rm-card-header">
+                    <div class="rm-card-header-text">Journey mapping</div>
+                </div>
+                <div class="rm-card-body">User Journey Map (existing)<br />Real World Map Of Dating<br />New OkCupid
+                    Maps</div>
+            </div>
+            <div class="rm-card">
+                <div class="rm-card-header">
+                    <div class="rm-card-header-text">Information Architecture</div>
+                </div>
+                <div class="rm-card-body">Existing Architecture<br />New Information Architecture</div>
+            </div>
+            <div class="rm-card">
+                <div class="rm-card-header">
+                    <div class="rm-card-header-text">Wireframing and prototyping</div>
+                </div>
+                <div class="rm-card-body">Task Journey Wireframing<br />High Fidelity wiremframes</div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ===================== INSIGHTS / LEARNING GROUP ===================== -->
+    <div class="insights-group">
+
+        <!-- Heading block -->
+        <div class="insights-heading-block">
+            <div class="insights-heading-inner">
+                <div class="insights-title">Insights/Learning</div>
+            </div>
+            <div class="insights-subtitle-block">
+                <div class="insights-subtitle">User testing /<br> App journey analyzsis</div>
+            </div>
+        </div>
+
+        <!-- Large image -->
+        <div class="insights-main-img">
+            <img src="../web/user_testing.webp" alt="user testing analysis" loading="lazy" decoding="async" width="1024"
+                height="646">
+        </div>
+
+        <!-- Bullet list of findings -->
+        <div class="insights-bullets-wrap">
+            <div class="insights-bullets">
+
+                <div class="bullet-row">
+                    <div class="bullet-arrow">→</div>
+                    <div class="bullet-text">Limited control over profile actions (delete/edit not intuitive)</div>
+                </div>
+                <div class="bullet-row bullet-row--center">
+                    <div class="bullet-arrow">→</div>
+                    <div class="bullet-text">Editing flow creates confusion (unexpected caption prompt)</div>
+                </div>
+                <div class="bullet-row">
+                    <div class="bullet-arrow bullet-arrow--fixed">→</div>
+                    <div class="bullet-text">Paywalls interrupt core interactions and break flow</div>
+                </div>
+                <div class="bullet-row">
+                    <div class="bullet-arrow">→</div>
+                    <div class="bullet-text">No flexibility users must complete flows or lose progress</div>
+                </div>
+                <div class="bullet-row">
+                    <div class="bullet-arrow">→</div>
+                    <div class="bullet-text">Hidden system behavior (profile invisibility not communicated)</div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Primary Research sub-heading -->
+        <div class="primary-research-block">
+            <div class="primary-research-block-inner">
+                <div class="primary-research-title-wrap">
+                    <div class="primary-research-title">Primary Research</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Primary research image -->
+        <div class="primary-research-img">
+            <img src="../web/interview.webp" alt="">
+        </div>
+
+        <!-- Research details block -->
+        <div class="research-details-block">
+            <div class="research-left-text">
+                <div class="research-left-text-inner">We spoke to users shortlisted the survey who had actually used
+                    OkCupid to understand what their experience really feels like.<br />This includes chats, calls,
+                    in-person interviews</div>
+            </div>
+            <div class="research-right-block">
+                <div class="research-spacer"></div>
+                <div class="research-learnings-col">
+                    <div class="research-learnings-title">Learnings</div>
+                    <div class="research-learnings-body">After conduction the user interviews via chat, calls, live
+                        session, we arrived at some key insights.&nbsp;&nbsp;We organized these insights into positive
+                        and negative affinity cards, and this section presents the key patterns and themes that emerged
+                        from that analysis.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Affinity BG image (full-width) -->
+        <div class="affinity-bg-img">
+            <img src="../web/secondary.webp" alt="">
+        </div>
+
+        <!-- Affinity Mapping heading -->
+        <div class="affinity-heading-block">
+            <div class="affinity-heading-inner">
+                <div class="affinity-heading-text">Affinity Mapping</div>
+            </div>
+        </div>
+
+        <!-- Affinity photo strip -->
+        <div class="affinity-photos">
+            <div class="affinity-photo affinity-photo-1">
+                <img src="../web/poorUI.webp" alt="">
+            </div>
+            <div class="affinity-photo affinity-photo-2">
+                <img src="../web/monetisation.webp" alt="">
+            </div>
+            <div class="affinity-photo affinity-photo-3">
+                <img src="../web/onboarding.webp" alt="">
+            </div>
+            <div class="affinity-photo affinity-photo-4">
+                <img src="../web/algorithm.webp" alt="">
+            </div>
+            <div class="affinity-photo affinity-photo-5">
+                <img src="../web/lowprofile.webp" alt="">
+            </div>
+        </div>
+
+        <!-- Affinity description -->
+        <div class="affinity-desc-block">
+            <div class="affinity-desc-inner">
+                <div class="affinity-desc-text">We synthesized our interview data by creating an affinity map. This
+                    helped us clearly identify recurring patterns, user behaviors, and pain points, turning scattered
+                    research data into organized themes.</div>
+            </div>
+        </div>
+
+        <!-- Where we focused heading -->
+        <div class="focused-heading-block">
+            <div class="focused-heading-text">Where we focused</div>
+        </div>
+
+        <!-- Focus cards row -->
+        <div class="focus-cards-row">
+
+            <div class="focus-card">
+                <div class="focus-card-header focus-card-header--black">
+                    <div class="focus-card-header-text">Poor App Performance &amp; UI</div>
+                </div>
+                <div class="focus-card-body">Most user had issue with ui of the app Users were getting confused
+                </div>
+            </div>
+
+            <div class="focus-card">
+                <div class="focus-card-header focus-card-header--black">
+                    <div class="focus-card-header-text">Onboarding &amp; Question Relevance</div>
+                </div>
+                <div class="focus-card-body">Most user were expiriencing generic and irrelevant questions. Fails to
+                    align with user intent.</div>
+            </div>
+
+            <div class="focus-card">
+                <div class="focus-card-header focus-card-header--black">
+                    <div class="focus-card-header-text">Low Profile Quality &amp; Trust</div>
+                </div>
+                <div class="focus-card-body">This is the most consistent theme. All users who mentioned it
+                    had a negative experience.</div>
+            </div>
+
+        </div>
+
+        <!-- Pain Points description block -->
+        <div class="pain-points-block">
+            <div class="pain-points-inner">
+                <div class="pain-points-heading-wrap">
+                    <div class="pain-points-heading">Understanding the Experience &amp; Pain Points</div>
+                </div>
+            </div>
+            <div class="pain-points-body-wrap">
+                <div class="pain-points-body-text">We synthesized interview data using affinity mapping, grouping
+                    observations and quotes from chats, calls, and live sessions. This revealed recurring patterns and
+                    key pain points, helping turn scattered insights into clear, actionable themes.</div>
+            </div>
+        </div>
+
+        <!-- Journey map image -->
+        <div class="journey-map-img">
+            <img src="../web/empathy_map.webp" alt="">
+        </div>
+
+        <!-- New Journey block -->
+        <div class="new-journey-block">
+            <div class="new-journey-inner">
+                <div class="new-journey-heading-wrap">
+                    <div class="new-journey-heading">Building the New Journey</div>
+                </div>
+            </div>
+            <div class="new-journey-body">
+                <div class="new-journey-text">After mapping the existing journey, we explored how users would find
+                    partners without apps through surveys and conversations.</div>
+                <div class="new-journey-text">These real-world insights helped shape a
+                    more natural and intuitive user flow.</div>
+                <div class="new-journey-insight-row">
+                    <div class="new-journey-spacer"></div>
+                    <div class="new-journey-insight-text">This insight led us to redesign the journey by making
+                        onboarding more relevant, improving clarity in matching, and creating a more progressive and
+                        trustworthy experience.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Journey flow image -->
+        <div class="journey-flow-img">
+            <img src="../web/new_journey.webp" alt="">
+        </div>
+
+        <!-- Information Architecture block -->
+        <div class="ia-block">
+            <div class="ia-block-inner">
+                <div class="ia-heading-wrap">
+                    <div class="ia-heading">Information Architecture</div>
+                </div>
+            </div>
+            <div class="ia-body-wrap">
+                <div class="ia-body-text">After gathering the insights from the research, we&#x2019;ve ideated
+                    brainstormed the new IA. The goal was the make the app more trustworthy for the user &amp; improve
+                    the onboarding experience.</div>
+            </div>
+        </div>
+
+        <!-- IA image (full-width) -->
+        <div class="ia-img">
+            <img src="../web/info_arch.webp" alt="">
+        </div>
+
+        <!-- Wireframing block -->
+        <div class="wireframe-block">
+            <div class="wireframe-block-inner">
+                <div class="wireframe-heading-wrap">
+                    <div class="wireframe-heading">Wireframing</div>
+                </div>
+            </div>
+            <div class="wireframe-body-wrap">
+                <div class="wireframe-body-text">We translated the new journey and IA into low-fidelity wireframes,
+                </div>
+            </div>
+        </div>
+
+        <!-- Wireframe image (full-width) -->
+        <div class="wireframe-img">
+            <img src="../web/wireframe.webp" alt="">
+        </div>
+
+        <!-- Prototyping heading -->
+        <div class="prototype-heading-block">
+            <div class="prototype-heading-inner">
+                <div class="prototype-heading-text">Prototyping</div>
+            </div>
+        </div>
+
+        <!-- Prototype screens image -->
+        <div class="prototype-screens-img">
+            <img src="../web/high-fidelity.webp" alt="">
+        </div>
+    </div><!-- /insights-group -->
+
+    <!-- sticky scroll push -->
+    <div class="heading-page">
+        <h1 class="text-4xl font-bold">Proposed Solutions</h1>
+    </div>
+
+    <div class="page-grid">
+
+        <!-- PERSISTENT ZERO COLUMN -->
+        <div class="tens-column">
+            <div class="sticky-zero num-style">0</div>
+        </div>
+
+        <!-- SECTION 01 -->
+        <div class="section-unit-cell">
+            <div class="sticky-unit num-style">1</div>
+        </div>
+        <div class="content-cell">
+            <div class="mobile-num">01</div>
+            <h1 class="heading-style">Onboarding<br>Experience</h1>
+            <p class="body-style body-medium mb-12">
+                Structured onboarding with clear sections, supported by splash screens and guidance
+            </p>
+            <div class="arrow-item body-style">
+                <span class="font-medium">AI-assisted bio feature to help users quickly create stronger and more
+                    meaningful profiles.
+            </div>
+            <div class="yellow-card">
+                <img src="ph1.webp" alt="">
+            </div>
+        </div>
+
+        <!-- SECTION 02 -->
+        <div class="section-unit-cell">
+            <div class="sticky-unit num-style">2</div>
+        </div>
+        <div class="content-cell">
+            <div class="mobile-num">02</div>
+            <h1 class="heading-style">Intent & Profile Control</h1>
+            <p class="body-style mb-12">
+                Category-based questions to make it more relevant and meaningful. </p>
+
+            <p class="body-style text-gray-500 mb-12">
+                A final review step allows users to check and edit their profile.
+            </p>
+            <div class="yellow-card">
+                <img src="ph2.webp" alt="">
+            </div>
+        </div>
+
+        <!-- SECTION 03 -->
+        <div class="section-unit-cell">
+            <div class="sticky-unit num-style">3</div>
+        </div>
+        <div class="content-cell">
+            <div class="mobile-num">03</div>
+            <h1 class="heading-style">Match Percentage Score</h1>
+            <p class="body-style mb-8">
+                Added “Why this is a match” alongside the match percentage, visible on profile cards to give the match
+                score more depth and meaning.
+            </p>
+            <div class="yellow-card">
+                <img src="ph3.webp" alt="">
+            </div>
+        </div>
+
+        <!-- SECTION 04 -->
+        <div class="section-unit-cell">
+            <div class="sticky-unit num-style">4</div>
+        </div>
+        <div class="content-cell">
+            <div class="mobile-num">04</div>
+            <h1 class="heading-style">Must Haves</h1>
+            <p class="body-style mb-12">
+                Match relevance was improved by showing how many users share similar preferences and location.
+            </p>
+            <div class="arrow-item body-style">
+                <span class="text-gray-400">A “Must Haves” section allows users to define key partner expectations early
+                    on</span>
+            </div>
+            <div class="yellow-card">
+                <img src="ph4.webp" alt="">
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <!-- ===================== FOOTER IMAGES ===================== -->
+    <div class="mockup-imgs">
+        <div class="mockup-img mockup-img-1">
+            <img src="../web/mockup1.webp" alt="">
+        </div>
+        <div class="mockup-img mockup-img-2">
+            <img src="../web/mockup2.webp" alt="">
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <h2>Projects</h2>
+        <div class="project-navigator">
+            <div class="nav-inner">
+                <a href="#" class="project-box active">
+                    <span>UI UX<br>Case Study</span>
+                </a>
+                <a href="../../crd/crd.html" class="project-box">
+                    <span>Craft<br>Cluster</span>
+                    <img src="arrow_forward.svg" alt="arrow_forward.svg" class="project-arrow">
+                </a>
+                <a href="../../branding/brand.html" class="project-box">
+                    <span>Branding</span>
+                    <img src="arrow_forward.svg" alt="arrow_forward.svg" class="project-arrow">
+                </a>
+                <a href="../../idm/idm.html" class="project-box">
+                    <span>Idm</span>
+                    <img src="arrow_forward.svg" alt="arrow_forward.svg" class="project-arrow">
+                </a>
+                <a href="../../tx6/tx6.html" class="project-box">
+                    <span>Teenage<br>Engineering</span>
+                    <img src="arrow_forward.svg" alt="arrow_forward.svg" class="project-arrow">
+                </a>
+                <a href="../../misc/grid.html" class="project-box">
+                    <span>Misc</span>
+                    <img src="arrow_forward.svg" alt="arrow_forward.svg" class="project-arrow">
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-new">
+            <div class="footer-new-content">
+                <div class="footer-new-left">
+                    <div class="footer-new-connect">
+                        <div class="footer-new-connect-title">Connect With Me</div>
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            style="flex-shrink: 0">
+                            <rect x="12" y="1" width="2" height="13" fill="#000000" />
+                            <rect x="1" y="14" width="2" height="13" transform="rotate(-90 1 14)" fill="#000000" />
+                            <rect y="1.414" width="2" height="17.457" transform="rotate(-45 0 1.414)" fill="#000000" />
+                        </svg>
+                    </div>
+                    <a href="mailto:shiyansagar@gmail.com" class="footer-new-link">shiyansagar@gmail.com</a>
+                    <a href="../../index.html" class="footer-new-link">Home</a>
+                    <a href="https://drive.google.com/drive/folders/15f_C51tl_OvEgSRvTeEGdLZC9Kuj1lyG?usp=drive_link"
+                        class="footer-new-link">CV</a>
+                </div>
+                <div class="footer-new-right">
+                    <div class="footer-new-col">
+                        <a href="casestudy.html" class="footer-new-title">Go Back</a>
+                        <div class="footer-new-list">
+                            <span>Sagar shiyan©</span>
+                            <span>Malappuram, Kerala</span>
+                            <span>NIFT Jodhpur</span>
+                        </div>
+                    </div>
+                    <div class="footer-new-col">
+                        <div class="footer-new-title">Contact</div>
+                        <div class="footer-new-list">
+                            <span>+91 9526470325</span>
+                            <span><a href="https://www.linkedin.com/in/sagar-shiyan-577423300/">Linkedin</a></span>
+                            <span><a href="https://www.are.na/sagar-shiyan/channels">Are. na</a></span>
+                            <span><a href="https://github.com/shiyansagar">Github</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- lenis smooth scroll -->
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
+    <!-- GSAP / ScrollTrigger scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="case.js" defer></script>
+</body>
+
+</html>

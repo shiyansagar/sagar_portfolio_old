@@ -1,0 +1,75 @@
+/* ==================== GLOBAL NAV ==================== */
+.global-nav {
+  display: flex;
+  overflow: hidden;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  padding: 32px 56px; /* Standardize padding */
+  z-index: 1000;
+  font-family: 'IBM Plex Sans', 'Satoshi', sans-serif;
+  font-size: 18px;
+  line-height: 1.25;
+  font-weight: 500;
+  color: #000;
+  box-sizing: border-box;
+}
+
+/* Nav links basic */
+.global-nav a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* 1. Work link & arrow */
+.nav-work {
+  display: flex;
+  align-items: center;
+}
+.nav-arrow {
+  display: inline-block;
+  max-width: 0;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+  overflow: hidden;
+}
+.nav-work:hover .nav-arrow {
+  max-width: 20px;
+  opacity: 1;
+  transform: translateX(0);
+  margin-right: 4px;
+}
+
+/* 2. Roll links (About / Linkedin) */
+.nav-roll {
+  display: inline-flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 1.25em; /* match line height perfectly */
+  vertical-align: top;
+}
+.nav-roll-inner {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-roll-inner span {
+  display: block;
+  height: 1.25em;
+}
+.nav-roll:hover .nav-roll-inner {
+  transform: translateY(-1.25em);
+}
+
+/* Mobile responsive resets */
+@media (max-width: 768px) {
+  .global-nav {
+    flex-direction: column;
+    padding: 16px 24px;
+    gap: 16px;
+    font-size: 16px;
+  }
+}

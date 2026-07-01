@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ffffff">
+    <title>Sagar Shiyan — About Me</title>
+    <meta name="description"
+        content="About Sagar Shiyan — UI/UX designer, Fashion Communication student at NIFT, creative storyteller from Kerala." />
+
+    <!-- Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
+    <!-- Page Entry Transition -->
+    <style>
+        html {
+            overflow-y: hidden;
+        }
+
+        /* Prevents scrollbar during animation */
+        body {
+            animation: slideUpEntrance 0.8s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+        }
+
+        @keyframes slideUpEntrance {
+            0% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .go-back-btn {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f5f5f5;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1000;
+            text-decoration: none;
+            color: #000;
+            transition: all 0.3s ease;
+        }
+
+        .go-back-btn:hover {
+            background: #e0e0e0;
+            transform: scale(1.05);
+        }
+    </style>
+
+    <!-- Fonts & Images -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&display=swap" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="portfolio-image.webp" as="image">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&display=swap" />
+    </noscript>
+
+    <link rel="stylesheet" href="aboutme.CSS" />
+
+    <!-- Speculation Rules for Instant Page Loads -->
+    <script type="speculationrules">
+        {
+            "prefetch": [
+                {
+                    "source": "document",
+                    "where": {
+                        "and": [
+                            { "href_matches": "/*" }
+                        ]
+                    },
+                    "eagerness": "moderate"
+                }
+            ],
+            "prerender": [
+                {
+                    "source": "document",
+                    "where": {
+                        "and": [
+                            { "href_matches": "/*" }
+                        ]
+                    },
+                    "eagerness": "moderate"
+                }
+            ]
+        }
+    </script>
+
+</head>
+
+<body>
+    <!-- Go Back Button -->
+    <a href="../index.html" class="go-back-btn" aria-label="Go back to home">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+    </a>
+
+    <!-- Restore overflow after transition -->
+    <script>
+        setTimeout(() => {
+            document.documentElement.style.overflowY = 'auto';
+            document.body.style.animation = 'none';
+            if (typeof ScrollTrigger !== 'undefined') {
+                ScrollTrigger.refresh();
+            }
+        }, 850);
+    </script>
+
+    <div class="page">
+
+        <!-- ══════════════════════════════════════════
+       SECTION 1 — HERO (photo + name + about)
+  ══════════════════════════════════════════ -->
+        <div class="hero-wrapper">
+
+            <div class="hero-inner">
+
+                <!-- Photo + Name -->
+                <div class="name-row">
+                    <img src="portfolio-image.webp" alt="Sagar Shiyan" class="portfolio-photo reveal" />
+                    <div class="name-text-block reveal">
+                        <div class="hi-row">
+                            <span class="hi-text">Hi,</span>
+                            <span class="i-am-text">I am</span>
+                        </div>
+                        <h1 class="full-name">Sagar Shiyan</h1>
+                    </div>
+                </div>
+
+                <!-- About paragraph — physics string on drag, clean read at rest -->
+                <div class="about-row">
+                    <div class="about-string-container reveal" id="aboutStringContainer"></div>
+                </div>
+
+            </div>
+
+            <!-- "About" floating label -->
+            <div class="about-label reveal">
+                <h2>About</h2>
+            </div>
+
+        </div>
+
+        <!-- ══════════════════════════════════════════
+       SECTION 2 — EXPERIENCE / SKILLS / ONLINE
+  ══════════════════════════════════════════ -->
+        <div class="mid-section">
+
+            <!-- Experience -->
+            <div class="exp-col">
+                <h2 class="col-label">Experience</h2>
+                <div class="exp-list">
+                    <div class="exp-item reveal">
+                        <div class="exp-date">Nov 2024 – Jan 2025</div>
+                        <div class="exp-role">Intern (3D Modelling And Equipment Design)</div>
+                        <div class="exp-company">TISC IITJ</div>
+                        <div class="exp-desc">Designed and modeled 3D representation of a SERS chip and Raman reader to
+                            visualize device structure and support presentation of the system design</div>
+                    </div>
+                    <div class="exp-item reveal">
+                        <div class="exp-date">Jan 2026 – Jan 2026</div>
+                        <div class="exp-role">Product Design</div>
+                        <div class="exp-company">Freelance</div>
+                        <div class="exp-desc">Developed a website for a gold shop that allows the owner to update daily
+                            gold rates and automatically generate a shareable image to post in community groups</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills -->
+            <div class="skills-col">
+                <h2 class="col-label">Skills</h2>
+                <div class="skills-list">
+                    <div class="skills-row">
+                        <div class="pill reveal">Figma</div>
+                        <div class="pill reveal">After Effects</div>
+                        <div class="pill reveal">Photoshop</div>
+                    </div>
+                    <div class="skills-row">
+                        <div class="pill reveal">Illustrator</div>
+                        <div class="pill reveal">Premier Pro</div>
+                        <div class="pill reveal">Blender</div>
+                    </div>
+                    <div class="skills-row">
+                        <div class="pill reveal">Davinci Resolve</div>
+                        <div class="pill reveal">Html, css</div>
+                        <div class="pill reveal">Framer</div>
+                    </div>
+                    <div class="skills-row">
+                        <div class="pill reveal">Antigravity</div>
+                        <div class="pill reveal">Rhino</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Online -->
+            <div class="online-col">
+                <h2 class="col-label">Online</h2>
+                <div class="online-list">
+
+                    <div class="online-row reveal">
+                        <span class="online-name">shiyansagar@gmail.com</span>
+                        <div class="online-line"></div>
+                        <a href="mailto:shiyansagar@gmail.com" class="online-link">
+                            <span>Email</span>
+                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12.816 9.482L6.227 13.286L5.602 12.204L12.191 8.399L7.41 7.118L7.744 5.915L14.574 7.745L12.744 14.575L11.535 14.263L12.816 9.482Z"
+                                    fill="#1D1B20" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <div class="online-row reveal">
+                        <span class="online-name">Twitter</span>
+                        <div class="online-line"></div>
+                        <a href="https://x.com/Sagarshiyan1" class="online-link">
+                            <span>Connect</span>
+                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12.816 9.482L6.227 13.286L5.602 12.204L12.191 8.399L7.41 7.118L7.744 5.915L14.574 7.745L12.744 14.575L11.535 14.263L12.816 9.482Z"
+                                    fill="#1D1B20" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <div class="online-row reveal">
+                        <span class="online-name">Instagram</span>
+                        <div class="online-line"></div>
+                        <a href="https://www.instagram.com/shiyansagar/" class="online-link">
+                            <span>Follow</span>
+                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12.816 9.482L6.227 13.286L5.602 12.204L12.191 8.399L7.41 7.118L7.744 5.915L14.574 7.745L12.744 14.575L11.535 14.263L12.816 9.482Z"
+                                    fill="#1D1B20" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <div class="online-row reveal">
+                        <span class="online-name">Linkedin</span>
+                        <div class="online-line"></div>
+                        <a href="https://www.linkedin.com/in/sagar-shiyan-577423300/" class="online-link">
+                            <span>Follow</span>
+                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12.816 9.482L6.227 13.286L5.602 12.204L12.191 8.399L7.41 7.118L7.744 5.915L14.574 7.745L12.744 14.575L11.535 14.263L12.816 9.482Z"
+                                    fill="#1D1B20" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <div class="online-row reveal">
+                        <span class="online-name">Behance</span>
+                        <div class="online-line"></div>
+                        <a href="https://www.behance.net/sagarshiyan1" class="online-link">
+                            <span>Connect</span>
+                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12.816 9.482L6.227 13.286L5.602 12.204L12.191 8.399L7.41 7.118L7.744 5.915L14.574 7.745L12.744 14.575L11.535 14.263L12.816 9.482Z"
+                                    fill="#1D1B20" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <div class="online-row reveal">
+                        <span class="online-name">Are.na</span>
+                        <div class="online-line"></div>
+                        <a href="https://www.are.na/sagar-shiyan/channels" class="online-link">
+                            <span>Connect</span>
+                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12.816 9.482L6.227 13.286L5.602 12.204L12.191 8.399L7.41 7.118L7.744 5.915L14.574 7.745L12.744 14.575L11.535 14.263L12.816 9.482Z"
+                                    fill="#1D1B20" />
+                            </svg>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div><!-- /mid-section -->
+
+        <!-- ══════════════════════════════════════════
+       SECTION 3 — WHERE AM FROM + EXTRA
+  ══════════════════════════════════════════ -->
+        <div class="bottom-section">
+
+            <div class="where-row reveal">
+                <h2 class="where-label">Where am from…</h2>
+                <div class="gif-container">
+                    <img src="kttpm.gif" class="gif-inner" loading="lazy" alt="Where I'm from map animation">
+                </div>
+            </div>
+
+            <div class="extra-row">
+                <h2 class="extra-label">Extra</h2>
+                <div class="extra-list">
+                    <div class="extra-link-row reveal">
+                        <span class="extra-link-name">Resume</span>
+                        <div class="extra-line"></div>
+                        <a href="#" class="extra-link">
+                            <span>Link</span>
+                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12.816 9.482L6.227 13.286L5.602 12.204L12.191 8.399L7.41 7.118L7.744 5.915L14.574 7.745L12.744 14.575L11.535 14.263L12.816 9.482Z"
+                                    fill="#1D1B20" />
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="extra-link-row reveal">
+                        <span class="extra-link-name">Crd Video</span>
+                        <div class="extra-line"></div>
+                        <a href="https://youtu.be/lIUFNf2fesg" class="extra-link">
+                            <span>Link</span>
+                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12.816 9.482L6.227 13.286L5.602 12.204L12.191 8.399L7.41 7.118L7.744 5.915L14.574 7.745L12.744 14.575L11.535 14.263L12.816 9.482Z"
+                                    fill="#1D1B20" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /bottom-section -->
+
+    </div><!-- /page -->
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js" defer></script>
+    <script type="module" src="aboutme.js"></script>
+</body>
+
+</html>

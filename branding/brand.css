@@ -1,0 +1,941 @@
+/* ============================================================
+   BRAND.CSS — Surabhi Bakery Branding Case Study
+   Vibrant Kettle / Desktop Frame → Pixel-perfect responsive
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Satoshi:wght@400;500;700&display=swap');
+
+/* ==================== GLOBAL NAV ==================== */
+.global-nav {
+    display: flex;
+    overflow: hidden;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    padding: 16px 32px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    font-family: 'IBM Plex Sans', 'Satoshi', sans-serif;
+    font-size: 14px;
+    line-height: 1.25;
+    font-weight: 600;
+    color: #ffffff;
+    mix-blend-mode: difference;
+    box-sizing: border-box;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.global-nav.nav-hidden {
+    transform: translateY(-100%);
+}
+
+.global-nav a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.nav-work {
+    display: flex;
+    align-items: center;
+}
+
+.nav-arrow {
+    display: inline-block;
+    max-width: 0;
+    opacity: 0;
+    transform: translateX(10px);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.nav-work:hover .nav-arrow {
+    max-width: 20px;
+    opacity: 1;
+    transform: translateX(0);
+    margin-right: 4px;
+}
+
+.nav-roll {
+    display: inline-flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 1.25em;
+    vertical-align: top;
+}
+
+.nav-roll-inner {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-roll-inner span {
+    display: block;
+    height: 1.25em;
+}
+
+.nav-roll:hover .nav-roll-inner {
+    transform: translateY(-1.25em);
+}
+
+@media (max-width: 768px) {
+    .global-nav {
+        padding: 16px 24px;
+        color: white;
+    }
+
+    .global-nav .nav-desktop-only {
+        display: none !important;
+    }
+
+    .nav-work {
+        order: 1;
+        flex-shrink: 0;
+    }
+
+    .global-nav .nav-project-title {
+        display: block !important;
+        order: 2;
+        margin-left: 12px;
+        border-left: 1px solid rgba(255, 255, 255, 0.3);
+        padding-left: 12px;
+        white-space: nowrap;
+        font-size: 11px;
+        line-height: 1.1;
+        opacity: 0.9;
+        font-weight: 500;
+    }
+
+    .nav-mobile-toggle {
+        display: block !important;
+        order: 3;
+        margin-left: auto;
+        background: none;
+        border: 1px solid white;
+        padding: 4px 14px;
+        border-radius: 30px;
+        font-family: inherit;
+        font-size: 11px;
+        font-weight: 600;
+        cursor: pointer;
+        color: white;
+    }
+
+    .nav-mobile-menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100svh;
+        background: #000;
+        color: white;
+        padding: 100px 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        transform: translateX(100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 999;
+    }
+
+    .nav-mobile-menu.active {
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-mobile-menu a {
+        font-size: 32px;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        text-decoration: none;
+        color: white;
+    }
+
+    .nav-mobile-time {
+        margin-top: auto;
+        font-size: 14px;
+        opacity: 0.5;
+    }
+}
+
+.nav-mobile-toggle {
+    display: none;
+}
+
+.nav-mobile-menu {
+    display: none;
+}
+
+/* ---- Reset & Base ---------------------------------------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'Satoshi', 'Satoshi Variable', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+
+
+}
+
+.hero-nav {
+    display: flex;
+    justify-content: center;
+    height: clamp(60px, 12.5vw, 100px);
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 10;
+    /* background-color: rgba(255, 255, 255, 0.8); */
+    /* backdrop-filter: blur(10px); */
+    /* filter: invert(1); */
+    /* border-bottom: 1px solid rgba(0, 0, 0, 0.08); */
+}
+
+.hero-nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    /* max-width: 1280px; */
+    padding: clamp(0px, 2.78vw, 40px);
+}
+
+.hero-nav-work {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: "Satoshi", "Satoshi Variable", system-ui, sans-serif;
+    font-size: clamp(16px, 1.67vw, 20px);
+    font-weight: 500;
+    line-height: 1.5;
+    flex: 1;
+}
+
+.hero-nav-work:hover {
+    opacity: 0.6;
+}
+
+.hero-nav-title {
+    color: #ffffff;
+    font-family: "Satoshi", "Satoshi Variable", system-ui, sans-serif;
+    font-size: clamp(20px, 1.67vw, 28px);
+    font-weight: 500;
+    line-height: 1.5;
+    text-align: center;
+    flex: 0 0 auto;
+}
+
+.hero-nav-spacer {
+    flex: 1;
+}
+
+
+
+
+/* ---- Image Helpers --------------------------------------- */
+.img-full {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    image-rendering: auto;
+}
+
+.img-centered {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ============================================================
+   1. HERO IMAGE 
+   ============================================================ */
+.hero-image-wrap {
+    width: 100%;
+}
+
+/* ============================================================
+   2. INFO HEADER — nav-meta + title + tagline
+   ============================================================ */
+.info-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(24px, 2.78vw, 40px);
+}
+
+/* ---- 2a. Meta row ---------------------------------------- */
+.meta-row {
+    display: flex;
+    align-items: flex-start;
+    padding: 16px;
+    gap: 0;
+}
+
+.meta-left {
+    flex: 1;
+}
+
+.meta-right {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 16px;
+    gap: 0px;
+}
+
+.meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.meta-label {
+    font-size: clamp(12px, 1.11vw, 16px);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.5;
+    color: #000000;
+    white-space: nowrap;
+}
+
+.meta-value {
+    font-size: clamp(14px, 1.39vw, 20px);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.5;
+    color: #2F4A9D;
+}
+
+/* ---- 2b. Brand title row --------------------------------- */
+.brand-title-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 16px;
+    min-height: clamp(100px, 12.5vw, 180px);
+}
+
+.brand-name {
+    font-size: clamp(14px, 1.39vw, 20px);
+    font-weight: 700;
+    line-height: 1.5;
+    color: #000000;
+}
+
+.brand-tagline {
+    font-size: clamp(16px, 1.67vw, 24px);
+    font-weight: 700;
+    line-height: 1.5;
+    color: #2F4A9D;
+    text-align: center;
+    max-width: clamp(240px, 50vw, 720px);
+}
+
+/* ---- 2c. Project vision ---------------------------------- */
+.project-vision {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: clamp(24px, 4.17vw, 60px) 16px;
+}
+
+.section-label-center {
+    font-size: clamp(14px, 1.39vw, 20px);
+    font-weight: 700;
+    line-height: 1.5;
+    color: #000000;
+    text-align: center;
+}
+
+.project-body {
+    font-size: clamp(15px, 1.67vw, 24px);
+    font-weight: 400;
+    line-height: 1.5;
+    color: #000000;
+    text-align: center;
+    max-width: clamp(300px, 69.44vw, 1000px);
+}
+
+/* ============================================================
+   3. ICONS STRIP
+   ============================================================ */
+.icons-strip {
+    width: 100%;
+    padding: clamp(24px, 2.78vw, 40px) 0;
+}
+
+/* ============================================================
+   4. GALLERY STACK
+   ============================================================ */
+.gallery-stack {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* ============================================================
+   5. SURABHI ELEMENTS 
+   ============================================================ */
+.surabhi-elements {
+    width: 100%;
+}
+
+/* ============================================================
+   6. RESEARCH & DESIGN PROCESS 
+   ============================================================ */
+.research-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: clamp(60px, 10.42vw, 150px) 16px clamp(24px, 2.78vw, 40px);
+}
+
+/* ============================================================
+   7. RESEARCH PHOTO 
+   ============================================================ */
+.research-photo-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: clamp(24px, 2.78vw, 40px);
+    padding-inline: 16px;
+}
+
+/* ============================================================
+   8. CREATIVE DIRECTION
+   ============================================================ */
+.creative-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: clamp(32px, 3.47vw, 50px) 16px 16px;
+}
+
+/* ============================================================
+   9. CREATIVE COLLAGE 
+   ============================================================ */
+.creative-collage-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-inline: 16px;
+}
+
+/* ============================================================
+   RESPONSIVE OVERRIDES
+   ============================================================ */
+
+/* ---- Tablet (≤ 1024px) ----------------------------------- */
+@media (max-width: 1024px) {
+    .meta-right {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+}
+
+/* ---- Mobile (≤ 768px) ------------------------------------ */
+@media (max-width: 768px) {
+    .meta-row {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .meta-left {
+        display: none;
+    }
+
+    .meta-right {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        padding-inline: 0;
+        width: 100%;
+    }
+
+    .meta-item {
+        gap: 6px;
+    }
+
+    .brand-tagline {
+        max-width: 90vw;
+    }
+
+    .project-body {
+        max-width: 90vw;
+        text-align: left;
+    }
+
+    .section-label-center {
+        text-align: left;
+    }
+
+    .research-section,
+    .creative-section,
+    .project-vision,
+    .brand-title-row {
+        align-items: flex-start;
+    }
+
+    .brand-tagline {
+        text-align: left;
+    }
+
+    /* Footer Mobile Overrides */
+    .site-footer {
+        padding: 1px 1px 1px;
+        gap: 24px;
+    }
+
+    .site-footer h2 {
+        font-size: 14px;
+        max-width: 100%;
+        opacity: 0.8;
+    }
+
+    .project-navigator {
+        max-width: 100%;
+        height: 74px;
+        padding: 4px;
+    }
+
+    .nav-inner {
+        gap: 2px;
+        padding: 4px;
+        background-color: #2a2a2a;
+    }
+
+    .project-box {
+        padding: 2px;
+        border: 1px solid rgba(0, 0, 0, 0.912);
+    }
+
+    .project-box span {
+        font-size: 10px;
+        font-weight: 400;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding-top: 32px;
+    }
+
+    .footer-copy,
+    .footer-contact a {
+        font-size: 10px;
+        margin-left: 0;
+        opacity: 0.7;
+    }
+
+    .footer-contact {
+        display: flex;
+        gap: 16px;
+    }
+}
+
+.next_work_footer {
+    max-width: 1280px;
+    margin: 200px auto 120px;
+    padding: 0 56px;
+}
+
+.next_header h2 {
+    font-size: 48px;
+    font-weight: 500;
+    color: #676767;
+    margin-bottom: 56px;
+    opacity: 0.6;
+}
+
+.works_grid {
+    display: flex;
+    justify-content: flex-start;
+    /* Aligns stacks to the left */
+    align-items: flex-start;
+    gap: 40px;
+    /* Balanced spacing */
+    flex-wrap: wrap;
+    /* Graceful wrap for responsiveness */
+}
+
+.works_grid a {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-decoration: none;
+    color: inherit;
+    width: 200px;
+    /* Fixed width for stacks */
+}
+
+.works_grid a:hover {
+    text-decoration: underline;
+
+}
+
+.square_frame {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.square_frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.works_grid a:hover .square_frame img {
+    transform: scale(1.05);
+}
+
+.work_desc h3 {
+    font-size: 16px;
+    font-weight: 500;
+    color: #515151;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+
+
+/* foooter */
+.site-footer {
+    width: 100%;
+    /* padding: 80px 32px 40px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    /* Reduced from 120px to bring the heading closer */
+}
+
+.site-footer h2 {
+    font-family: "IBM Plex Mono", "IBMPlexMono-Light", system-ui, monospace;
+    width: 100%;
+    max-width: 600px;
+    text-align: left;
+    font-size: 24px;
+    font-weight: 500;
+    color: #333333;
+    margin: 0 auto;
+}
+
+/* ── Project Navigator ── */
+.project-navigator {
+    width: 100%;
+    max-width: 600px;
+    height: 100px;
+    border-radius: 16px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-inner {
+    width: 100%;
+    border-radius: 12px;
+    padding: 4px;
+    display: flex;
+    gap: 12px;
+    height: 100%;
+}
+
+.project-box {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.981);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    padding: 8px;
+    position: relative;
+}
+
+.nav-inner img {
+    width: 24px;
+    height: 24px;
+    opacity: 70%;
+}
+
+.project-arrow {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+}
+
+.project-box:hover .project-arrow {
+    transform: rotate(30deg);
+}
+
+.project-box span {
+    font-family: "Satoshi-Variable", "Satoshi Variable", system-ui, sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.2;
+    color: #000000f8;
+    pointer-events: none;
+}
+
+.project-box:hover span {
+    color: #b2b2b2;
+}
+
+/* Hover state */
+.project-box:hover {
+    border-color: #b2b2b2;
+}
+
+/* Active Project state */
+.project-box.active {
+    border-color: rgba(255, 171, 25, 0.65);
+    background-color: #FFAB19;
+}
+
+.project-box.active span {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+
+/* --- New Footer Bottom --- */
+.footer-new {
+    align-items: center;
+    background-color: #FFFFFF;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: clip;
+    position: relative;
+    width: 100%;
+    height: 500px;
+    margin-top: 80px;
+}
+
+.footer-new-content {
+    align-items: start;
+    align-self: stretch;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 32px 32px;
+    z-index: 2;
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 100%;
+    height: fit-content;
+    padding-top: 100px;
+
+}
+
+.footer-new-left {
+    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.footer-new-connect {
+    align-items: flex-end;
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+.footer-new-connect-title {
+    color: #000000;
+    font-family: inherit;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 32px;
+}
+
+.footer-new-link {
+    color: #000000;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    text-decoration: none;
+}
+
+.footer-new-link:hover {
+    text-decoration: underline;
+}
+
+.footer-new-right {
+    align-items: start;
+    display: flex;
+    gap: 64px;
+}
+
+.footer-new-col {
+    align-items: start;
+    display: flex;
+    flex-direction: column;
+    gap: 23px;
+}
+
+.footer-new-title {
+    color: #000000;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.footer-new-title:hover {
+    text-decoration: underline;
+}
+
+.footer-new-list {
+    align-items: start;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.footer-new-list span,
+.footer-new-list a {
+    color: #000000;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    text-decoration: none;
+}
+
+.footer-new-list a:hover {
+    text-decoration: underline;
+}
+
+#footer-shader-container {
+    background-color: #000000;
+    height: 100%;
+    left: 0;
+    mix-blend-mode: difference;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Responsive Footer New */
+@media (max-width: 768px) {
+    .footer-new {
+        height: auto;
+        min-height: 449px;
+    }
+
+    .footer-new-content {
+        flex-direction: column;
+        gap: 40px;
+        align-items: flex-start;
+        padding: 32px 16px;
+    }
+
+    .footer-new-left {
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .footer-new-connect {
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .footer-new-right {
+        flex-direction: column;
+        gap: 32px;
+    }
+}
+
+/* ───────────────────────────────────────────────
+   PAGE LOADER
+─────────────────────────────────────────────── */
+.page-loader {
+    position: fixed;
+    inset: 0;
+    background: #ffffff;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.page-loader__inner {
+    width: 200px;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.12);
+    position: relative;
+    overflow: hidden;
+}
+
+.page-loader__bar {
+    position: absolute;
+    left: -100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    animation: loaderSlide 1.1s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+@keyframes loaderSlide {
+    0% {
+        left: -100%;
+    }
+
+    60% {
+        left: 0%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
