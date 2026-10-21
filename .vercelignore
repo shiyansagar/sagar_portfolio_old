@@ -1,0 +1,11 @@
+# not part of the website: notes, references, source files, old leftovers
+misc/
+performance-resources/
+wpo-book-resources/
+okcupid/img/
+navbar/index.html
+*.md
+color.png
+logo.png
+Archives.svg
+.claude/

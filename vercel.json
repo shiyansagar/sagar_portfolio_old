@@ -1,0 +1,60 @@
+{
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/casestudy/ui-ux/casestudy.html",
+      "destination": "/okcupid/",
+      "permanent": true
+    },
+    {
+      "source": "/casestudy/:path*",
+      "destination": "/okcupid/",
+      "permanent": true
+    },
+    {
+      "source": "/crd/crd.html",
+      "destination": "/crd/",
+      "permanent": true
+    },
+    {
+      "source": "/branding/brand.html",
+      "destination": "/branding/",
+      "permanent": true
+    },
+    {
+      "source": "/about-me/:path*",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/idm/:path*",
+      "destination": "/archives/",
+      "permanent": false
+    },
+    {
+      "source": "/tx6/:path*",
+      "destination": "/archives/",
+      "permanent": false
+    },
+    {
+      "source": "/misc/:path*",
+      "destination": "/archives/",
+      "permanent": false
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
+  ]
+}

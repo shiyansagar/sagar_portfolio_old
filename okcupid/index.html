@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script>try{sessionStorage.getItem("rt")&&document.documentElement.classList.add("rt-in")}catch(e){}</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OkCupid Case Study — Sagar Shiyan</title>
+  <meta name="description" content="Bridging the Trust Gap in OkCupid’s Compatibility System — a UX case study.">
+  <!-- SEO: canonical, share preview, structured data (head only, nothing visible) -->
+  <link rel="canonical" href="https://sagarshiyan.vercel.app/okcupid/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Sagar Shiyan">
+  <meta property="og:title" content="OkCupid Case Study — Sagar Shiyan">
+  <meta property="og:description" content="Bridging the Trust Gap in OkCupid’s Compatibility System — a UX case study.">
+  <meta property="og:url" content="https://sagarshiyan.vercel.app/okcupid/">
+  <meta property="og:image" content="https://sagarshiyan.vercel.app/work/content/okcupid.webp">
+  <meta property="og:image:width" content="1095">
+  <meta property="og:image:height" content="714">
+  <meta property="og:image:alt" content="OkCupid case study screens">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@Sagarshiyan1">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CreativeWork",
+      "@id": "https://sagarshiyan.vercel.app/okcupid/#work",
+      "name": "OkCupid Case Study",
+      "headline": "OkCupid Case Study",
+      "description": "Bridging the Trust Gap in OkCupid’s Compatibility System — a UX case study.",
+      "url": "https://sagarshiyan.vercel.app/okcupid/",
+      "image": "https://sagarshiyan.vercel.app/work/content/okcupid.webp",
+      "author": {
+        "@id": "https://sagarshiyan.vercel.app/#person"
+      },
+      "creator": {
+        "@id": "https://sagarshiyan.vercel.app/#person"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://sagarshiyan.vercel.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "OkCupid Case Study",
+          "item": "https://sagarshiyan.vercel.app/okcupid/"
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://sagarshiyan.vercel.app/#person",
+      "name": "Sagar Shiyan",
+      "url": "https://sagarshiyan.vercel.app/"
+    }
+  ]
+}
+  </script>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="icon" href="../navbar/assets/favicon-dark.svg">
+  <link rel="preload" href="../navbar/assets/fonts/GoogleSansFlex-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../navbar/navbar.css?v=3" data-site-navbar>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.css">
+  <link rel="stylesheet" href="okcupid.css">
+  <script type="module" src="../navbar/navbar.js?v=6"></script>
+  <script type="module" src="../footer/footer.js?v=3"></script>
+  <script type="module" src="okcupid.js?v=4"></script>
+</head>
+<body>
+  <div class="frame">
+    <site-navbar></site-navbar>
+
+    <main class="page">
+
+      <!-- Hero — Figma 188:2467 -->
+      <section class="hero" id="top">
+        <div class="hero-text">
+          <div class="hero-glow" aria-hidden="true"><img src="content/hero-glow.svg" width="447" height="478.5" alt=""></div>
+          <div class="hero-head">
+            <p class="hero-eyebrow" data-hero>OkCupid Case Study</p>
+            <h1 class="hero-title" data-hero>Bridging the <span class="accent">Trust</span> <span class="accent">Gap</span> in OkCupid’s Compatibility System</h1>
+          </div>
+          <p class="hero-sub" data-hero>Rebuilding confidence through onboarding, transparency, and meaningful matching</p>
+        </div>
+        <div class="hero-phones">
+          <img data-hero src="content/hero-3.webp" width="142" height="286" alt="OkCupid welcome screen">
+          <img data-hero src="content/hero-2.webp" width="142" height="286" alt="Phone number sign-up screen">
+          <div class="hero-phone-tall" data-hero><img src="content/hero-1.webp" width="300" height="1004" alt="Redesigned profile card with “Why is this a Match?” breakdown"></div>
+        </div>
+      </section>
+
+      <!-- Overview — Figma 189:2792 -->
+      <section class="overview">
+        <div class="ov-top">
+          <div class="ov-intro" data-reveal>
+            <p class="label">Overview</p>
+            <div class="ov-copy">
+              <p class="ov-p1">OkCupid is a dating app that uses a question-based matching algorithm to help users find compatible people.</p>
+              <p>As part of a 2-week academic UX design sprint, our team explored how users understand and trust OkCupid’s matching experience. </p>
+              <p>Through <b>research</b> and <b>usability testing</b>, we found that <b>match scores</b> often lacked the context users needed to <b>understand compatibility</b>, leading us to rethink the experience.</p>
+            </div>
+          </div>
+          <div class="ov-meta" data-reveal>
+            <div class="ov-meta-group">
+              <p class="label">My Role</p>
+              <ul><li>UX Research</li><li>Synthesis</li><li>Ideation</li><li>UI Design</li></ul>
+            </div>
+            <div class="ov-meta-group">
+              <p class="label">Team</p>
+              <ul><li>Sagar</li><li>Vansh</li><li>Piyush</li><li>Kavya</li><li>Tanush</li></ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline" data-reveal>
+          <div class="tl-row">
+            <p class="label">Timeline</p>
+            <div class="tl-chart">
+              <div class="tl-ticks">
+                <div class="tl-tick tl-tick-first"><span class="tl-line"><span><img src="content/timeline-line.svg" width="70.2167" height="3.73333" alt=""></span></span><span class="tl-num">1</span></div>
+                <div class="tl-tick"><span class="tl-line"><span><img src="content/timeline-line.svg" width="70.2167" height="3.73333" alt=""></span></span><span class="tl-num">4</span></div>
+                <div class="tl-tick"><span class="tl-line"><span><img src="content/timeline-line.svg" width="70.2167" height="3.73333" alt=""></span></span><span class="tl-num">8</span></div>
+                <div class="tl-tick"><span class="tl-line"><span><img src="content/timeline-line.svg" width="70.2167" height="3.73333" alt=""></span></span><span class="tl-num">12 Days</span></div>
+              </div>
+              <div class="tl-bars" aria-hidden="true">
+                <div class="tl-bars-top"><i style="--w:75px;--c:#cbceef"></i><i style="--w:136px;--c:#efcbdc"></i></div>
+                <div class="tl-bars-mid"><i style="--w:87px;--c:#e6efcb"></i><i style="--w:80px;--c:#efd3cb"></i></div>
+                <i class="tl-bar-low" style="--w:157px;--c:#cbe8ef"></i>
+              </div>
+            </div>
+          </div>
+          <div class="tl-legend">
+            <div class="tl-legend-spacer"></div>
+            <div class="tl-legend-list">
+              <div class="tl-legend-row">
+                <span class="tl-key" style="--c:#cbceef">User Journey Analysis</span>
+                <span class="tl-key" style="--c:#e6efcb">Desk Reasearch</span>
+                <span class="tl-key" style="--c:#cbe8ef">User Research</span>
+                <span class="tl-key" style="--c:#efd3cb">Data Synthesis</span>
+              </div>
+              <div class="tl-legend-row"><span class="tl-key" style="--c:#efcbdc">Concept</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="problem" data-reveal>
+          <p class="label">The Problem</p>
+          <p class="problem-text">Users do not trust the app’s profile <b>Match Score.</b> This creates a fundamental <b>Trust Gap</b>, as they do not believe the score is a genuine or accurate reflection of compatibility.</p>
+        </div>
+      </section>
+
+      <!-- Research framework — Figma 189:2791 -->
+      <section class="framework" id="framework">
+        <div class="fw-inner">
+          <h2 class="fw-title" data-reveal>Our Research Framework</h2>
+          <div class="fw-boxes">
+            <article class="fw-box" style="--bg:linear-gradient(72.53deg, rgba(203, 206, 239, 0.28) 0%, rgba(255, 242, 217, 0.052) 100.19%)">
+              <div class="fw-box-inner">
+                <div class="fw-head"><img src="content/dot-product.svg" width="8" height="8" alt=""><h3 data-fly="product">Product Analysis</h3></div>
+                <p class="fw-body">We analysed OkCupid’s experience from sign-up to matchmaking to understand how the platform works and where friction occurs.</p>
+              </div>
+            </article>
+            <article class="fw-box" style="--bg:linear-gradient(75.04deg, rgba(230, 239, 203, 0.28) 1.0287%, rgba(255, 242, 217, 0.052) 100.19%)">
+              <div class="fw-box-inner">
+                <div class="fw-head"><img src="content/dot-desk.svg" width="8" height="8" alt=""><h3 data-fly="desk">Desk Research</h3></div>
+                <p class="fw-body">We explored customer reviews, Reddit discussions, and competing platforms to understand common experiences and expectations around dating apps.</p>
+              </div>
+            </article>
+            <article class="fw-box" style="--bg:linear-gradient(73.93deg, rgba(203, 232, 239, 0.28) 1.0287%, rgba(255, 242, 217, 0.016) 100.19%)">
+              <div class="fw-box-inner fw-tight">
+                <div class="fw-head"><img src="content/dot-user.svg" width="8" height="8" alt=""><h3 data-fly="user">User Research</h3></div>
+                <p class="fw-body">We conducted user testing and semi-structured interviews through in-person conversations, calls, and text to uncover behaviours, expectations, and pain points.</p>
+              </div>
+            </article>
+            <article class="fw-box" style="--bg:linear-gradient(73.93deg, rgba(239, 203, 220, 0.28) 1.0287%, rgba(255, 242, 217, 0.016) 100.19%)">
+              <div class="fw-box-inner fw-tight">
+                <div class="fw-head"><img src="content/dot-real.svg" width="8" height="8" alt=""><h3>Real-World Exploration</h3></div>
+                <p class="fw-body">We looked beyond the app to understand how people experience dating in real life and how those behaviours compare with digital dating.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Product analysis — Figma 189:2822 -->
+      <section class="product" id="product" data-section="product">
+        <div class="pa-inner">
+          <div class="pa-head" data-reveal>
+            <h2 class="h20">Getting to Know OkCupid</h2>
+            <p class="t16 w548">We went through OkCupid from sign-up to matchmaking to understand how users move through the app, where they lose control, and where the system creates friction.</p>
+          </div>
+
+          <!-- Accordion — component set 25:1873 (Default / Variant2–4) -->
+          <div class="acc" data-reveal>
+            <div class="acc-panel is-open" data-open-w="563" tabindex="0" style="--bg-closed:linear-gradient(75.02deg, rgba(205, 210, 255, 0.4) 0%, rgba(255, 242, 217, 0.012) 93.871%), #f5f5f5; --bg-open:linear-gradient(202.41deg, rgb(205, 210, 255) 0.85307%, rgba(255, 255, 255, 0.03) 91.013%), #f5f5f5; --closed-gap:11px">
+              <span class="acc-num">1</span>
+              <div class="acc-closed"><p>Users must complete flows or lose progress</p></div>
+              <div class="acc-open acc-open-first">
+                <div class="acc-open-copy">
+                  <p class="acc-open-title">Users must complete flows or lose progress</p>
+                  <p class="acc-open-desc">Users can’t easily go back during onboarding, making it difficult to review or change</p>
+                </div>
+                <div class="acc-media acc-media-photo"><img src="content/analysis-1.webp" width="1100" height="825" alt="A user filling in OkCupid’s phone number step" loading="lazy" decoding="async"></div>
+              </div>
+            </div>
+            <div class="acc-panel" data-open-w="575" tabindex="0" style="--bg-open:linear-gradient(212.47deg, rgb(255, 248, 205) 2.693%, rgba(255, 255, 255, 0.03) 97.075%), #f5f5f5">
+              <span class="acc-num">2</span>
+              <div class="acc-closed"><p>Limited control over profile actions</p></div>
+              <div class="acc-open">
+                <div class="acc-open-copy">
+                  <p class="acc-open-title">Limited control over profile actions</p>
+                  <p class="acc-open-desc">Editing isn’t always intuitive. For example, clicking the edit icon on a profile photo opens an option to add a caption instead of changing or deleting the photo.</p>
+                </div>
+                <div class="acc-media acc-media-2"><img src="content/analysis-2.webp" width="1100" height="619" alt="Flow showing the profile photo edit path" loading="lazy" decoding="async"></div>
+              </div>
+            </div>
+            <div class="acc-panel" data-open-w="575" tabindex="0" style="--bg-open:linear-gradient(202.15deg, rgb(239, 255, 205) 1.6453%, rgba(255, 255, 255, 0.03) 104.97%), #f5f5f5">
+              <span class="acc-num">3</span>
+              <div class="acc-closed"><p>Paywalls interrupt core interactions</p></div>
+              <div class="acc-open">
+                <div class="acc-open-copy">
+                  <p class="acc-open-title">Paywalls interrupt core interactions</p>
+                  <p class="acc-open-desc">Premium prompts appear during key interactions, interrupting the flow and making basic actions feel restricted.</p>
+                </div>
+                <div class="acc-media acc-media-3"><img src="content/analysis-3.webp" width="1100" height="749" alt="Flow showing premium prompts interrupting messaging" loading="lazy" decoding="async"></div>
+              </div>
+            </div>
+            <div class="acc-panel" data-open-w="575" tabindex="0" style="--bg-open:linear-gradient(204.99deg, rgb(255, 205, 205) 1.4265%, rgba(255, 255, 255, 0.03) 117.82%), #f5f5f5">
+              <span class="acc-num">4</span>
+              <div class="acc-closed"><p>Hidden system behaviour</p></div>
+              <div class="acc-open acc-open-last">
+                <div class="acc-open-copy">
+                  <p class="acc-open-title">Hidden system behaviour</p>
+                  <p class="acc-open-desc">Users aren’t told that having too few profile photos can affect their visibility, making the system feel unpredictable and unclear.</p>
+                </div>
+                <div class="acc-media acc-media-4"><img src="content/analysis-4.webp" width="1100" height="744" alt="Flow showing how photo count affects visibility" loading="lazy" decoding="async"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Desk research — Figma 189:2482 -->
+      <section class="desk" id="desk" data-section="desk">
+        <div class="desk-head" data-reveal>
+          <h2 class="h20 nowrap">Secondary Research</h2>
+          <p class="t18 w406">We reviewed customer reviews, Reddit discussions, and competing platforms through a comparative study to understand common user experiences, expectations, and pain points.</p>
+        </div>
+        <div class="desk-images">
+          <img data-reveal class="desk-comp" src="content/comp-analysis.webp" width="1600" height="867" alt="Competitive analysis table: Tinder, Hinge, Bumble, Coffee Meets Bagel and OkCupid" loading="lazy" decoding="async">
+          <img data-reveal class="desk-find" src="content/desk-research.webp" width="1600" height="862" alt="Secondary research findings: age, education, employment, income, gender, occupation, geography" loading="lazy" decoding="async">
+        </div>
+      </section>
+
+      <!-- User research — Figma 189:2808 -->
+      <section class="users" id="user" data-section="user">
+        <div class="ur-block">
+          <div class="ur-top">
+            <div class="ur-intro" data-reveal>
+              <div class="ur-title">
+                <p class="eyebrow">Primary research</p>
+                <h2 class="h28">Understanding Users</h2>
+              </div>
+              <div class="ur-copy">
+                <p>We conducted primary research through user testing, semi structured interviews, and survey.</p>
+                <p>Conversations took place in person, over calls, and through chat to understand how people use dating apps, what they expect from matching, and where they face friction.</p>
+              </div>
+            </div>
+            <div class="ur-learn" data-reveal>
+              <h3 class="h20 w264">What We Wanted to Learn</h3>
+              <div class="ur-questions">
+                <p class="chip"><img src="content/dot7-cbe8ef.svg" width="7" height="7" alt="">How do users interpret OkCupid’s matching system?</p>
+                <p class="chip"><img src="content/dot7-e6efcb.svg" width="7" height="7" alt="">What information do users look for before deciding to connect?</p>
+                <p class="chip"><img src="content/dot7-efcbdc.svg" width="7" height="7" alt="">How do users interpret OkCupid’s matching system?</p>
+                <p class="chip"><img src="content/dot7-cbceef.svg" width="7" height="7" alt="">What makes a match feel relevant or trustworthy?</p>
+                <p class="chip"><img src="content/dot7-efeacb.svg" width="7" height="7" alt="">Where do users feel confused, restricted, or frustrated?</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="ur-gallery">
+            <div class="ur-photos">
+              <figure data-reveal><img class="r12" style="aspect-ratio:508/276" src="content/interview-1.webp" width="1024" height="768" alt="Interview session with participants around a table" loading="lazy" decoding="async"><figcaption>Interview 1</figcaption></figure>
+              <figure data-reveal><img class="r12" style="aspect-ratio:454/293" src="content/interview-2.webp" width="1024" height="768" alt="Interview session in a classroom" loading="lazy" decoding="async"><figcaption>Interview 2</figcaption></figure>
+              <figure data-reveal><img class="r12" style="aspect-ratio:453/333" src="content/user-testing.webp" width="1024" height="768" alt="User testing session with a participant using the app" loading="lazy" decoding="async"><figcaption>User Testing</figcaption></figure>
+            </div>
+            <div class="ur-docs">
+              <div class="ur-docs-box" data-reveal>
+                <img class="ur-transcript" src="content/transcript.webp" width="1100" height="586" alt="Interview transcripts" loading="lazy" decoding="async">
+                <div class="ur-iq"><img src="content/interview-questions.webp" width="1258" height="588" alt="Interview questions" loading="lazy" decoding="async"></div>
+              </div>
+              <img data-reveal class="ur-survey" src="content/survey-1.webp" width="1600" height="540" alt="Survey results charts" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+
+        <div class="ur-learned">
+          <div class="ur-learned-copy" data-reveal>
+            <div class="ur-learned-title">
+              <p class="eyebrow">Learning</p>
+              <h3 class="h20">What We Learned</h3>
+            </div>
+            <p class="ur-learned-text">After conduction the user interviews via chat, calls, live session, we arrived at some key insights.  We organized these insights into positive and negative affinity cards, and this section presents the key patterns and themes that emerged from that analysis.</p>
+          </div>
+          <div class="ur-insights" data-reveal><img src="content/insights.webp" width="900" height="1256" alt="Positive and negative affinity cards" loading="lazy" decoding="async"></div>
+        </div>
+      </section>
+
+      <!-- Affinity map — Figma 189:2810 -->
+      <section class="affinity" data-section="user">
+        <div class="af-block">
+          <div class="af-top">
+            <div class="af-col">
+              <div class="af-head" data-reveal>
+                <h2 class="h20">Where we focused</h2>
+                <p class="t16">We synthesized our interview data by creating an affinity map. This helped us clearly identify recurring patterns, user behaviors, and pain points, turning scattered research data into organized themes.</p>
+              </div>
+              <div class="af-cards">
+                <div class="note note-af" data-reveal style="--bg:linear-gradient(161.7deg, rgb(203, 232, 239) 16.031%, rgba(245, 245, 245, 0) 87.467%)">
+                  <div class="note-head"><span class="note-dot"><img src="content/dot7-cbe8ef.svg" width="7" height="7" alt=""></span><p class="af-card-title">Poor App Performance &amp; UI</p></div>
+                  <div class="af-card-body nowrap"><p>Most user had issue with ui of the app.</p><p>Users were getting confused</p></div>
+                </div>
+                <div class="note note-af" data-reveal style="--bg:linear-gradient(197.99deg, rgb(255, 248, 205) 2.693%, rgba(255, 255, 255, 0.03) 97.075%)">
+                  <div class="note-head"><span class="note-dot"><img src="content/dot7-efcbdc.svg" width="7" height="7" alt=""></span><p class="af-card-title">Onboarding &amp; Question Relevance</p></div>
+                  <div class="af-card-body"><p>Most user were expiriencing generic and irrelevant questions. Fails to align with user intent.</p></div>
+                </div>
+                <div class="note note-af" data-reveal style="--bg:linear-gradient(191.74deg, rgb(239, 255, 205) 1.6453%, rgba(255, 255, 255, 0.03) 104.97%)">
+                  <div class="note-head"><span class="note-dot"><img src="content/dot7-b3efbd.svg" width="7" height="7" alt=""></span><p class="af-card-title">Low Profile Quality &amp; Trust</p></div>
+                  <div class="af-card-body"><p>This is the most consistent theme. All users who mentioned it had a negative experience.</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <img data-reveal class="af-map" src="content/affinity-map.webp" width="2800" height="854" alt="Affinity map grouping interview findings into five themes" loading="lazy" decoding="async">
+        </div>
+        <div class="problem" data-reveal>
+          <p class="label">The Problem</p>
+          <p class="problem-text">Users do not trust the app’s profile <b>Match Score.</b> This creates a fundamental <b>Trust Gap</b>, as they do not believe the score is a genuine or accurate reflection of compatibility.</p>
+        </div>
+      </section>
+
+      <!-- Ideation — Figma 189:2811 -->
+      <section class="ideation" id="ideation" data-section="ideation">
+        <div class="id-block">
+          <div class="id-head-wrap" style="--pr:96px">
+            <div class="id-head" data-reveal>
+              <h2 class="h20 nowrap">Mapping the Experience</h2>
+              <p class="t16">We brought the observations together to identify recurring behaviours, frustrations, and expectations. We used empathy mapping and journey mapping to connect what users said and felt with what they actually experienced across the dating journey.</p>
+            </div>
+          </div>
+          <div class="id-maps" data-reveal>
+            <div class="id-empathy"><img src="content/empathy-map.webp" width="900" height="956" alt="Empathy map: says, thinks, does, feels, pain, gain" loading="lazy" decoding="async"></div>
+            <img class="id-journey" src="content/journey-map-existing.webp" width="2400" height="967" alt="Existing OkCupid user journey map" loading="lazy" decoding="async">
+          </div>
+        </div>
+
+        <!-- Real-world exploration strip (2713 wide in Figma) -->
+        <div class="rw">
+          <div class="rw-strip">
+            <div class="rw-intro" data-reveal>
+              <div class="rw-intro-copy">
+                <div class="rw-title">
+                  <p class="eyebrow">Real-World Exploration</p>
+                  <h2 class="h28">How does dating happen outside the app?</h2>
+                </div>
+                <div class="rw-text">
+                  <p>We mapped the real-world dating journey to understand how people notice someone, build interest, learn about them, and eventually decide to meet. </p>
+                  <p>This helped us identify the small signals and decisions that naturally lead from attraction to a first date.</p>
+                </div>
+              </div>
+            </div>
+            <div class="rw-boards">
+              <div class="rw-questions">
+                <div class="rw-qpair" style="gap:32px;width:543px">
+                  <div class="rw-q" style="width:200px;align-items:flex-end">
+                    <p class="rw-qt" style="width:100%">What makes someone interested?</p>
+                    <div class="rw-tags" style="flex-direction:row;gap:6px;align-items:center">
+                      <span class="tag" style="--w:73.289px;--h:36.89px;--r:-10.98deg"><span>Attraction</span></span>
+                      <span class="tag" style="--w:65.675px;--h:28.911px;--r:4.47deg"><span>Curiosity</span></span>
+                    </div>
+                  </div>
+                  <div class="rw-q" style="flex:1 0 0;gap:5px;align-items:flex-end;justify-content:center">
+                    <p class="rw-qt" style="width:100%">Where do people meet?</p>
+                    <div class="rw-tags" style="width:178px;align-items:flex-start;justify-content:center">
+                      <span class="tag" style="--w:133.031px;--h:30.54px;--r:-2.85deg"><span>Cafés / public spaces</span></span>
+                      <div style="display:flex;gap:5px;align-items:center;justify-content:flex-end;width:100%">
+                        <span class="tag" style="--w:57.052px;--h:29.174px;--r:5.51deg"><span>Friends</span></span>
+                        <span class="tag" style="--w:57.877px;--h:26.165px;--r:2.19deg"><span>College</span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="rw-qpair" style="gap:16px;align-items:flex-end">
+                  <div class="rw-q" style="width:207px">
+                    <p class="rw-qt" style="width:114px">What starts the conversation?</p>
+                    <div class="rw-tags" style="width:100%;align-items:flex-end;justify-content:center">
+                      <span class="tag" style="--w:114.7px;--h:34.061px;--r:-5.16deg"><span>Common interest</span></span>
+                      <span class="tag" style="--w:67.622px;--h:28.91px;--r:4.33deg"><span>small talk</span></span>
+                    </div>
+                  </div>
+                  <div class="rw-q" style="width:212px;gap:4px">
+                    <p class="rw-qt" style="width:112px">How does interest grow?</p>
+                    <div class="rw-tags" style="width:100%;align-items:flex-end;justify-content:center">
+                      <span class="tag" style="--w:106.732px;--h:33.342px;--r:-5.16deg"><span>Shared interests</span></span>
+                      <span class="tag" style="--w:63.97px;--h:29.686px;--r:5.36deg"><span>Comfort</span></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="rw-qpair" style="gap:12px">
+                  <div class="rw-q" style="width:199px;align-items:flex-end;justify-content:center">
+                    <p class="rw-qt" style="width:100%">How does connection continue?</p>
+                    <div class="rw-tags" style="width:138px;gap:3px;align-items:flex-end;justify-content:center">
+                      <span class="tag" style="--w:59.745px;--h:25.894px;--r:-1.85deg"><span>Contact</span></span>
+                      <span class="tag" style="--w:90.186px;--h:28.864px;--r:3.16deg"><span>Conversation</span></span>
+                    </div>
+                  </div>
+                  <div class="rw-q" style="width:209px;gap:15px;align-items:flex-end;justify-content:center">
+                    <p class="rw-qt" style="width:100%">When do they meet intentionally?</p>
+                    <div class="rw-tags" style="width:128px;height:48px;align-items:flex-end;justify-content:flex-end;position:relative">
+                      <span class="tag" style="--w:42.446px;--h:26.563px;--r:3.65deg"><span>Walk</span></span>
+                      <span class="tag" style="--w:53.559px;--h:27.597px;--r:-4.03deg;position:absolute;left:29px;top:1px"><span>Coffee</span></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="rw-qpair" style="gap:18px">
+                  <div class="rw-q" style="width:202px;gap:10px;align-items:flex-end;justify-content:center">
+                    <p class="rw-qt" style="width:100%">How do they know it's mutual?</p>
+                    <div class="rw-tags" style="width:137px;height:53px;align-items:flex-end;justify-content:flex-end;position:relative">
+                      <span class="tag" style="--w:66.397px;--h:28.092px;--r:3.65deg"><span>Affection</span></span>
+                      <span class="tag" style="--w:84.482px;--h:29.776px;--r:-4.03deg;position:absolute;left:-7px;top:0"><span>Consistency</span></span>
+                    </div>
+                  </div>
+                  <div class="rw-q" style="width:219px;gap:18px;align-items:flex-end;justify-content:flex-end">
+                    <p class="rw-qt" style="width:100%">The date</p>
+                    <div class="rw-tags" style="width:130px;align-items:flex-start">
+                      <span class="tag" style="--w:48.571px;--h:27.245px;--r:-4.03deg"><span>Travel</span></span>
+                      <span class="tag tag-full" style="--w:100%;--h:32.232px;--r:3.65deg"><span>Commitment</span></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="rw-board">
+                <figure style="width:206.856px;gap:0"><figcaption>Feeling</figcaption><img style="aspect-ratio:1485/4096" src="content/rw-feeling.webp" width="500" height="1379" alt="Feeling — why am I feeling to get a partner?" loading="lazy" decoding="async"></figure>
+                <figure style="width:350.054px"><figcaption>Where and How</figcaption><img style="aspect-ratio:2513/4096" src="content/rw-how.webp" width="760" height="1239" alt="Where and how people meet" loading="lazy" decoding="async"></figure>
+                <figure style="width:214.518px"><figcaption>First Interaction</figcaption><img style="aspect-ratio:1540/4096" src="content/rw-first-interaction.webp" width="500" height="1330" alt="First contact and light interaction" loading="lazy" decoding="async"></figure>
+                <figure style="width:217.861px"><figcaption>Building</figcaption><img style="aspect-ratio:1564/4096" src="content/rw-building.webp" width="500" height="1309" alt="Building familiarity" loading="lazy" decoding="async"></figure>
+                <figure style="width:200.246px"><figcaption>Texting</figcaption><img style="aspect-ratio:1437/4096" src="content/rw-texting.webp" width="500" height="1425" alt="Exchange of contact information" loading="lazy" decoding="async"></figure>
+                <figure style="width:211.314px"><figcaption>First Hangout</figcaption><img style="aspect-ratio:1517/4096" src="content/rw-first-hangout.webp" width="500" height="1350" alt="First hangout" loading="lazy" decoding="async"></figure>
+                <figure style="width:214.239px"><figcaption>Mutual Interest</figcaption><img style="aspect-ratio:1538/4096" src="content/rw-mutual-interest.webp" width="500" height="1332" alt="Transition to dating" loading="lazy" decoding="async"></figure>
+                <figure style="width:212.985px"><figcaption>Date</figcaption><img style="aspect-ratio:1529/4096" src="content/rw-date.webp" width="500" height="1339" alt="Confession, definition and commitment" loading="lazy" decoding="async"></figure>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="id-block">
+          <div class="id-head-wrap" style="--pr:114px">
+            <div class="id-head" data-reveal>
+              <h2 class="h20 nowrap">Building the New Journey</h2>
+              <p class="t16">This insight led us to redesign the journey by making onboarding more relevant, improving clarity in matching, and creating a more progressive and trustworthy experience.</p>
+            </div>
+          </div>
+          <img data-reveal class="id-newmap" src="content/journey-map-new.webp" width="2800" height="1134" alt="New user journey map" loading="lazy" decoding="async">
+        </div>
+      </section>
+
+      <!-- Information architecture — Figma 189:2537 -->
+      <section class="ia" data-section="ideation">
+        <div class="id-head-wrap" style="--pr:102px">
+          <div class="id-head" data-reveal>
+            <h2 class="h20 nowrap">Information Architecture</h2>
+            <div class="t16"><p>After gathering the insights from the research, we’ve ideated brainstormed the new IA. The goal was the make the app more trustworthy for the user &amp; improve the onboarding experience.</p><p>&#8203;</p></div>
+          </div>
+        </div>
+        <div class="ia-box" data-reveal>
+          <img class="ia-2" src="content/ia-flow-2.webp" width="1400" height="605" alt="New information architecture — onboarding" loading="lazy" decoding="async">
+          <div class="ia-1"><img src="content/ia-flow-1.webp" width="1800" height="555" alt="New information architecture — matching and profile" loading="lazy" decoding="async"></div>
+        </div>
+      </section>
+
+      <!-- Final design — Figma 189:2821 -->
+      <section class="final" id="final" data-section="final">
+        <div class="fd-intro" data-reveal>
+          <div class="fd-intro-row">
+            <p class="label nowrap">The Redesigned Experience</p>
+            <p class="t18 w406">A redesigned experience that makes onboarding more relevant, profiles more meaningful, and matches easier to understand.</p>
+          </div>
+        </div>
+
+        <div class="fd-rows">
+          <div class="fd-onboarding">
+            <div class="fd-onb-col">
+              <div class="fd-head" data-reveal>
+                <h3 class="h20">A more organised onboarding</h3>
+                <p class="t16 w406">We restructured onboarding into clear steps so users can build their profile progressively</p>
+              </div>
+              <div class="fd-onb-shots">
+                <div class="fd-onb-phones">
+                  <img data-reveal src="content/onboarding-1.webp" width="182" height="366" alt="Onboarding — welcome and phone number" loading="lazy" decoding="async">
+                  <img data-reveal src="content/onboarding-2.webp" width="182" height="366" alt="Onboarding — tell us about yourself" loading="lazy" decoding="async">
+                  <img data-reveal src="content/onboarding-3.webp" width="181" height="365" alt="Onboarding — where do you call home" loading="lazy" decoding="async">
+                </div>
+                <div class="note w217" data-reveal style="--bg:linear-gradient(198.07deg, rgb(203, 232, 239) 4.0287%, rgba(245, 245, 245, 0) 116.18%)">
+                  <div class="note-head"><span class="note-dot"><img src="content/dot7-cbe8ef.svg" width="7" height="7" alt=""></span><p class="note-text">Eg: About Yourself grouped into one single section </p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="fd-three">
+            <div class="fd-col">
+              <div class="fd-head" data-reveal>
+                <h3 class="h20">Build with guidance</h3>
+                <p class="t16 w406">AI-assisted bio feature to help users quickly create stronger and more meaningful profiles.</p>
+              </div>
+              <img data-reveal src="content/guidance.webp" width="181" height="364" alt="AI-assisted bio screen" loading="lazy" decoding="async">
+            </div>
+            <div class="fd-col">
+              <div class="fd-head" data-reveal>
+                <h3 class="h20">Must Haves</h3>
+                <p class="t16 w406">Match relevance was improved by showing how many users share similar preferences and location.</p>
+              </div>
+              <div class="fd-shot-note">
+                <img data-reveal src="content/must-haves.webp" width="181" height="364" alt="Define your must-haves screen" loading="lazy" decoding="async">
+                <div class="note w217" data-reveal style="--bg:linear-gradient(196.18deg, rgb(255, 248, 205) 2.693%, rgba(255, 255, 255, 0.03) 97.075%)">
+                  <div class="note-head"><span class="note-dot"><img src="content/dot7-cbe8ef.svg" width="7" height="7" alt=""></span><p class="note-text">A “Must Haves” section allows users to define key partner expectations early on</p></div>
+                </div>
+              </div>
+            </div>
+            <div class="fd-col">
+              <div class="fd-head" data-reveal>
+                <h3 class="h20 nowrap">Intent-Based Questions</h3>
+                <p class="t16 w406">Questions adapt to what the user is looking for — long-term relationship, casual dating, friendship, etc.</p>
+              </div>
+              <div class="fd-shot-note">
+                <img data-reveal src="content/intent-based.webp" width="181" height="364" alt="Relationship goal selection screen" loading="lazy" decoding="async">
+                <div class="note w217" data-reveal style="--bg:linear-gradient(206.52deg, rgb(203, 232, 239) 4.0287%, rgba(245, 245, 245, 0) 116.18%)">
+                  <div class="note-head"><span class="note-dot"><img src="content/dot7-fff7ce.svg" width="7" height="7" alt=""></span><p class="note-text">More relevant questions create better matches by focusing on the user’s actual intentions</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="fd-control">
+            <div class="fd-control-row">
+              <div class="fd-head" data-reveal>
+                <h3 class="h20">Profile Control</h3>
+                <p class="t16 w264">A final review step allows users to check and edit their profile.</p>
+              </div>
+              <div class="fd-control-shots">
+                <div class="fd-control-phones">
+                  <img data-reveal src="content/profile-control.webp" width="174" height="487" alt="Profile review step" loading="lazy" decoding="async">
+                  <div data-reveal class="fd-crop" style="width:174px;height:623px"><img style="height:105.43%;top:-0.07%" src="content/profile-edit.webp" width="400" height="1510" alt="Profile preview as others see it" loading="lazy" decoding="async"></div>
+                </div>
+                <div class="note w264" data-reveal style="--bg:linear-gradient(188.6deg, rgb(205, 210, 255) 0.85307%, rgba(255, 255, 255, 0.03) 91.013%)">
+                  <div class="note-head"><span class="note-dot"><img src="content/dot7-cbe8ef.svg" width="7" height="7" alt=""></span><p class="note-text">Review step in which you can see how others see you and can edit everything accordingly.</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="fd-card">
+            <div class="fd-card-row">
+              <div class="fd-card-inner">
+                <div class="fd-card-left">
+                  <div class="fd-card-notes">
+                    <div class="note" data-reveal style="--bg:linear-gradient(186.82deg, rgb(205, 210, 255) 0.85307%, rgba(255, 255, 255, 0.03) 91.013%)">
+                      <div class="note-head"><span class="note-dot"><img src="content/dot7-cbe8ef.svg" width="7" height="7" alt=""></span><p class="note-text">The must have are now visible pinned in the profile card</p></div>
+                    </div>
+                    <div class="note note-pulse" data-reveal style="--bg:linear-gradient(197.25deg, rgb(255, 248, 205) 2.693%, rgba(255, 255, 255, 0.03) 97.075%)">
+                      <div class="note-pulse-head"><img src="content/pulse-icon.svg" width="7" height="13" alt=""><p>Pulse Insight</p></div>
+                      <p class="note-text">It gives users a more personal sense of compatibility before they explore the full “Why this a Match?”</p>
+                    </div>
+                  </div>
+                  <div data-reveal class="fd-crop" style="width:174px;height:738px"><img style="height:112.69%;top:-0.11%" src="content/home-page.webp" width="400" height="1912" alt="Home page profile card with must-haves and Pulse Insight" loading="lazy" decoding="async"></div>
+                </div>
+                <div class="fd-card-right">
+                  <img data-reveal src="content/why-match.webp" width="258" height="324" alt="“Why is this a Match?” breakdown card" loading="lazy" decoding="async">
+                  <div class="note w264" data-reveal style="--bg:linear-gradient(191.93deg, rgb(255, 205, 205) 1.4265%, rgba(255, 255, 255, 0.03) 117.82%)">
+                    <div class="note-head"><span class="note-dot"><img src="content/dot7-cbe8ef.svg" width="7" height="7" alt=""></span><p class="note-text">Added “Why this is a match” alongside the match percentage, giving the match percentage more meaning.</p></div>
+                  </div>
+                </div>
+              </div>
+              <div class="fd-card-head" data-reveal>
+                <h3 class="h20 nowrap">A More Informative Profile Card</h3>
+                <p class="t16">We gave much meaning and definition to the must have and why this a match directly onto the profile card, making compatibility easier to see while browsing. </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Learnings — Figma 189:2816 -->
+      <section class="learnings" id="learnings" data-section="final">
+        <div class="ln-inner" data-reveal>
+          <h2 class="h20 nowrap">Learnings</h2>
+          <p class="t16 w548">Good design starts with understanding people. User research helped us question our assumptions, identify real patterns, and make more informed decisions. We also learned how important it is to connect different research methods, look beyond the product itself, and translate insights into simple, meaningful design changes.</p>
+        </div>
+      </section>
+
+      <!-- Next project nav — Figma 189:2790 -->
+      <nav class="next-nav" aria-label="Page">
+        <a class="btn-icon" href="#top" data-scroll-top aria-label="Back to top"><img src="content/arrow-forward.svg" width="16" height="16" alt=""></a>
+        <a class="btn-next" href="../four/">Next Project <img src="content/arrow-forward.svg" width="16" height="16" alt=""></a>
+      </nav>
+    </main>
+  </div>
+
+  <!-- Global footer — Figma 189:2779 -->
+  <site-footer></site-footer>
+
+  <!-- Sticky section indicator — Figma 189:2480 -->
+  <nav class="indicator" aria-label="Case study sections">
+    <a href="#product" data-target="product">Product Analysis</a>
+    <a href="#desk" data-target="desk">Desk Research</a>
+    <a href="#user" data-target="user">User Research</a>
+    <a href="#ideation" data-target="ideation">Ideation</a>
+    <a href="#final" data-target="final">Final Design</a>
+  </nav>
+</body>
+</html>

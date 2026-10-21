@@ -1,0 +1,297 @@
+/* <site-footer> — Figma: portfolio / footer (189:2779), phone (248:3674) */
+
+site-footer {
+  display: block;
+  position: relative;
+  font-family: "Google Sans Flex", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-variation-settings: "GRAD" 0, "ROND" 0, "wdth" 100;
+  color: #000;
+}
+site-footer *,
+site-footer *::before,
+site-footer *::after {
+  box-sizing: border-box;
+}
+site-footer p,
+site-footer h2 {
+  margin: 0;
+}
+site-footer a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* 20px gutter like the page; 20px under the content (Figma footer ends 20px above the frame bottom) */
+.ft {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 188px;
+  padding: 0 20px 20px;
+  overflow: hidden;
+}
+.ft-top,
+.ft-bottom {
+  position: relative;
+  z-index: 1; /* text sits above the corner photo */
+  display: flex;
+  justify-content: space-between;
+}
+.ft-top {
+  align-items: flex-start;
+}
+.ft-bottom {
+  align-items: flex-end;
+}
+
+/* Left: talk */
+.ft-talk {
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+  align-items: flex-start;
+  width: 333px;
+}
+.ft-title {
+  font-size: 28px;
+  line-height: 35px;
+  font-weight: 500;
+  letter-spacing: -0.56px;
+}
+
+/* Buttons (#f5f5f5, px16 py12, r12) */
+.ft-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #f5f5f5;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.28px;
+  white-space: nowrap;
+  transition: background-color 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.ft-btn-strong {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  letter-spacing: -0.32px;
+}
+.ft-btn:hover {
+  background: #ececec;
+}
+.ft-btn:active {
+  transform: scale(0.96);
+}
+
+/* Right: archives */
+.ft-archives {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  width: 232px;
+}
+.ft-archives-title {
+  font-size: 20px;
+  line-height: 25px;
+  font-weight: 500;
+  letter-spacing: -0.4px;
+}
+/* Artwork box: the scene's viewBox carries --art-pad (13%) of margin each side, so the box grows by
+   that and is pulled back by it on every side — the drawing stays exactly the Figma size (232; phone 145) */
+.ft-archives {
+  --art-w: 232px;
+}
+.ft-archives-art {
+  display: block;
+  width: var(--art-w);
+}
+.ft-archives-art.is-scene {
+  width: calc(var(--art-w) * (1 + 2 * var(--art-pad, 0.13)));
+  margin: calc(var(--art-w) * -1 * var(--art-pad, 0.13));
+  contain: layout paint; /* repaints while pieces move stay inside the artwork */
+}
+.ft-archives-img,
+.ft-archives-art svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.ft-archives-art svg {
+  transform: translateZ(0); /* own compositing layer */
+}
+
+/* Bottom */
+.ft-copy {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 300;
+  letter-spacing: -0.28px;
+  white-space: nowrap;
+}
+.ft-links {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.ft-social {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #f5f5f5;
+}
+.ft-social-link,
+.ft-social-mail {
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.368px;
+  white-space: nowrap;
+}
+.ft-social-link {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 20px;
+  line-height: 20px;
+}
+.ft-social-link img {
+  display: block;
+  width: 10px;
+  height: 10px;
+  margin-bottom: 3px;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.ft-social-link:hover img {
+  transform: translate(2px, -2px);
+}
+.ft-social-link:hover,
+.ft-social-mail:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+site-footer a:focus-visible {
+  outline: 2px solid #7c5cff;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Corner photo — always pinned to the bottom-left corner of the window (Figma 420 × 427) */
+.ft-photo {
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  bottom: 0;
+  width: 420px;
+  height: 427px;
+}
+.ft-photo-img,
+.ft-photo-fx {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+/* Before/without WebGL: an approximation of the gradient map with CSS filters */
+.ft-photo-img {
+  object-fit: cover;
+  object-position: center 0;
+  top: 3.43%;
+  height: 101.1%;
+  filter: invert(1) grayscale(0.3) sepia(0.25) hue-rotate(155deg) saturate(1.6) brightness(1.08);
+  mix-blend-mode: multiply;
+}
+.ft-photo.is-fx .ft-photo-img {
+  visibility: hidden;
+}
+
+/* ---------- iPad (768–1199) ---------- */
+@media (max-width: 1199px) {
+  .ft {
+    gap: 140px;
+    padding: 0 32px 20px;
+  }
+  .ft-photo {
+    width: 300px;
+    height: 305px;
+  }
+}
+
+/* ---------- iPhone (≤767) — Figma 248:3674 ---------- */
+@media (max-width: 767px) {
+  .ft {
+    gap: 20px;
+    padding: 0 16px 16px;
+  }
+  .ft-top {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+  .ft-talk {
+    width: auto;
+    gap: 21px;
+  }
+  .ft-title {
+    font-size: 18px;
+    line-height: 23px;
+    letter-spacing: -0.36px;
+  }
+  .ft-btn {
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: -0.24px;
+  }
+  .ft-btn-strong {
+    font-size: 12px;
+    line-height: 15px;
+  }
+  .ft-archives {
+    align-self: flex-end;
+    align-items: flex-end;
+    width: auto;
+    gap: 36px;
+  }
+  .ft-archives-title {
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: -0.32px;
+  }
+  .ft-archives {
+    --art-w: 145px;
+  }
+  .ft-copy {
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: -0.24px;
+  }
+  .ft-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .ft-social {
+    gap: 8px;
+  }
+  .ft-social-link,
+  .ft-social-mail {
+    font-size: 12px;
+    letter-spacing: -0.24px;
+  }
+  .ft-social-link {
+    height: 13px;
+    line-height: 13px;
+  }
+  .ft-social-link img {
+    margin-bottom: 1px;
+  }
+  .ft-photo {
+    width: 170px;
+    height: 173px;
+  }
+}

@@ -1,0 +1,219 @@
+/* FOUR e-commerce case study — Figma: portfolio / Wireframe 301:2153
+   Desktop: 1400 frame + 20px gutter at 1440; fills the window on wider screens.
+   Sizes, gaps and type are taken from Figma Dev Mode. Same tokens as okcupid.css. */
+
+:root {
+  --font: "Google Sans Flex", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ink: #000;
+  --muted: #838383;
+  --line: #8c8c8c;
+  --hero-sub: #3a3a3a;
+  --accent: #d2d629;
+  --section-gap: 146px;
+  --page: #fff;
+  --btn-bg: #f5f5f5;
+  --btn-hover: #ececec;
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--page);
+  scrollbar-width: none; /* Lenis drives scrolling; keeps both gutters a true 20px */
+}
+html::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--font);
+  font-weight: 400;
+  font-variation-settings: "GRAD" 0, "ROND" 0, "wdth" 100;
+  line-height: normal;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+p, h1 {
+  margin: 0;
+}
+img {
+  display: block;
+  max-width: none;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.frame {
+  padding: 0 20px;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+  /* content at y=220: 20 (nav top) + 42 (nav) + 158 */
+  padding: 220px 0 var(--section-gap);
+}
+
+/* Reveal states only when motion runs (no-JS / reduced motion shows everything) */
+.js-motion [data-hero] {
+  opacity: 0;
+}
+
+/* ---------- Hero — 302:4512 ---------- */
+.hero {
+  display: flex;
+  gap: 42px;
+  align-items: flex-start;
+}
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 527px;
+  flex-shrink: 0;
+}
+/* The animation sits in a 213 canvas with empty space around the lock, so the box is bigger than the
+   visible lock (~40px wide at 80px). Negative margins pull the lock to the text's left edge and keep the gaps. */
+.hero-lock {
+  width: 80px;
+  height: 80px;
+  margin: -24px 0 -24px -20px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.hero-lock svg {
+  display: block;
+}
+.hero-head {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.hero-eyebrow {
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.28px;
+  color: var(--muted);
+}
+.hero-title {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 40px;
+  letter-spacing: -0.64px;
+  color: var(--ink);
+}
+.hero-title .accent {
+  color: var(--accent);
+}
+.hero-sub {
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.32px;
+  color: var(--hero-sub);
+}
+/* Closing line (Figma 306:7479): SemiBold, sits 20px below the paragraphs */
+.hero-sub-strong {
+  font-weight: 600;
+}
+
+/* Video box: 830 × 441 in Figma (same ratio as the 1920 × 1020 recording), 0.5px border, 12px radius */
+.hero-video {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  aspect-ratio: 830 / 441;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+.hero-video video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* 0.5px stroke drawn on top (Chrome rounds real 0.5px borders up to 1px at 1x) */
+.hero-video::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 0.5px var(--line);
+  pointer-events: none;
+}
+
+/* ---------- Next project nav — 302:4513 ---------- */
+.next-nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: flex-end;
+}
+.btn-icon,
+.btn-next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: var(--btn-bg);
+  transition: background-color 0.25s ease;
+}
+.btn-icon {
+  padding: 12px;
+}
+.btn-icon img {
+  transform: rotate(-90deg);
+}
+.btn-next {
+  gap: 10px;
+  padding: 12px 16px;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.28px;
+  color: var(--ink);
+}
+.btn-icon:hover,
+.btn-next:hover {
+  background: var(--btn-hover);
+}
+.btn-icon:focus-visible,
+.btn-next:focus-visible {
+  outline: 2px solid #7c5cff;
+  outline-offset: 2px;
+}
+
+/* ---------- iPad 768–1199 ---------- */
+@media (max-width: 1199px) {
+  :root { --section-gap: 120px; }
+  .frame { padding: 0 32px; }
+  .page { padding-top: 180px; }
+
+  /* Text on top, video full width underneath */
+  .hero { flex-direction: column; gap: 40px; }
+  .hero-text { width: auto; max-width: 527px; }
+  .hero-video { flex: none; width: 100%; }
+}
+
+/* ---------- iPhone ≤767 ---------- */
+@media (max-width: 767px) {
+  :root { --section-gap: 100px; }
+  .frame { padding: 0 16px; }
+  .page { padding-top: 140px; }
+
+  .hero { gap: 32px; }
+  .hero-title { font-size: 28px; line-height: 35px; letter-spacing: -0.56px; }
+  .hero-sub { font-size: 14px; line-height: 18px; letter-spacing: -0.28px; }
+  .next-nav { gap: 12px; }
+}

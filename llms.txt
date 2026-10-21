@@ -1,0 +1,18 @@
+# Sagar Shiyan
+
+> Design portfolio of Sagar Shiyan, a design enthusiast based in Kerala, India, who loves working with digital experience and understanding human behaviour. Studied at the National Institute of Fashion Technology (NIFT), Jodhpur. Work spans UX research, UI design, branding and ethnographic research.
+
+## Case studies
+
+- [OkCupid case study](https://sagarshiyan.vercel.app/okcupid/): Bridging the trust gap in OkCupid's compatibility system. UX research, synthesis, ideation and UI design (2 weeks).
+- [FOUR e-commerce](https://sagarshiyan.vercel.app/four/): Internship project under NDA. Early design of an e-commerce website for FOUR, a technical sailing apparel brand built for women (6 weeks).
+- [Surabhi Bakery](https://sagarshiyan.vercel.app/branding/): Brand identity for a decades-old neighbourhood bakery in the old city of Jodhpur. Logo design, illustration, pattern design.
+- [Khadi Wool of Bikaner](https://sagarshiyan.vercel.app/crd/): A short-term ethnographic study of the khadi wool craft and its community in Bikaner, Rajasthan (3 weeks).
+
+## Contact
+
+- Email: shiyansagar@gmail.com
+- LinkedIn: https://www.linkedin.com/in/sagar-shiyan-577423300/
+- GitHub: https://github.com/shiyansagar
+- X: https://x.com/Sagarshiyan1
+- Are.na: https://www.are.na/sagar-shiyan

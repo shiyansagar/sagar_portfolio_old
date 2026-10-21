@@ -1,0 +1,353 @@
+/* Google Sans Flex — full variable font (google/fonts, OFL) subset to Latin, keeping the
+   opsz (6–144) and wght (300–700) axes. Google Fonts' CSS API drops opsz, which made 14–16px
+   text ~3% narrower than Figma. */
+@font-face {
+  font-family: "Google Sans Flex";
+  src: url("assets/fonts/GoogleSansFlex-latin.woff2") format("woff2-variations"),
+       url("assets/fonts/GoogleSansFlex-latin.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* <site-navbar> — Figma: portfolio / Frame 406 (159:2959) + Frame 404 (111:2645) */
+
+site-navbar {
+  --nav-font: "Google Sans Flex", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --nav-pill-width: 323px;
+  --nav-pill-open-width: 323px;
+  --nav-pill-height: 42px;
+  --nav-pill-open-height: 304px;
+  --nav-pill-radius: 12px;
+  --nav-pill-bg: #f5f5f5;
+  --nav-panel-bg: #000;
+  --nav-panel-fg: #fff;
+  --nav-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --nav-duration: 280ms;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  font-family: var(--nav-font);
+  font-weight: 400;
+  font-variation-settings: "GRAD" 0, "ROND" 0, "wdth" 100;
+  /* Global nav: pinned to the top of the window on every page (20px gutter, Figma Frame 406 at y=20) */
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  z-index: 50;
+  pointer-events: none;
+}
+site-navbar > * {
+  pointer-events: auto;
+}
+
+/* Hide on scroll down, show on scroll up (navbar.js) */
+site-navbar {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+site-navbar.nav-hidden {
+  transform: translateY(calc(-100% - 24px));
+}
+site-navbar.nav-hidden > * {
+  pointer-events: none;
+}
+
+site-navbar *,
+site-navbar *::before,
+site-navbar *::after {
+  box-sizing: border-box;
+}
+
+/* Logo */
+.nav-logo {
+  display: block;
+  width: 110px;
+  height: 24px;
+  flex-shrink: 0;
+}
+/* Logo — assets/logo-portfolio.svg (111.16 × 24.9) in the 110 × 24 slot */
+.nav-logo-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Right group: menu pill */
+.nav-right {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+/* Slot keeps the closed size in the layout; the pill overlays content */
+.nav-pill-slot {
+  position: relative;
+  width: var(--nav-pill-width);
+  height: var(--nav-pill-height);
+  flex-shrink: 0;
+}
+
+/* The pill is always laid out at its open size so opening never triggers
+   layout — only its shape and contents animate. */
+.nav-pill {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: var(--nav-pill-width);
+  height: var(--nav-pill-open-height);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 6px 8px;
+  pointer-events: none;
+  contain: layout style;
+}
+site-navbar[open] .nav-pill {
+  width: var(--nav-pill-open-width);
+}
+
+/* Closed pill background (and the CSS-only open state) */
+.nav-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: var(--nav-pill-width);
+  height: var(--nav-pill-height);
+  border-radius: var(--nav-pill-radius);
+  background: var(--nav-pill-bg);
+  transition:
+    height var(--nav-duration) var(--nav-ease),
+    background var(--nav-duration) var(--nav-ease);
+}
+site-navbar:not(.nav-gsap)[open] .nav-bg {
+  right: 0;
+  width: 100%;
+  height: var(--nav-pill-open-height);
+  background: var(--nav-panel-bg);
+}
+
+/* Liquid shape drawn by GSAP (see navbar-motion.js) */
+.nav-shape {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(var(--nav-pill-open-height) + 48px);
+  overflow: visible;
+  opacity: 0;
+  pointer-events: none;
+}
+.nav-shape path {
+  fill: var(--nav-panel-bg);
+}
+site-navbar:not(.nav-gsap) .nav-shape {
+  display: none;
+}
+
+.nav-pill-top {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  flex-shrink: 0;
+}
+.nav-pill-top > * {
+  pointer-events: auto;
+}
+
+/* Stacked icons that cross-fade between states */
+.nav-swap {
+  position: relative;
+  display: block;
+  flex-shrink: 0;
+}
+.nav-swap img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  transition: opacity var(--nav-duration) var(--nav-ease);
+}
+.nav-swap img:last-child,
+site-navbar[open] .nav-swap img:first-child {
+  opacity: 0;
+}
+site-navbar[open] .nav-swap img:last-child {
+  opacity: 1;
+}
+
+.nav-favicon {
+  width: 30px;
+  height: 30px;
+}
+
+.nav-menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 6px;
+  border: 0;
+  border-radius: 6px;
+  background: #000;
+  cursor: pointer;
+  transition: background-color var(--nav-duration) var(--nav-ease);
+}
+site-navbar[open] .nav-menu-btn {
+  background: #fff;
+}
+.nav-menu-icon {
+  width: 18.0025px;
+  height: 18px;
+  transition: transform var(--nav-duration) var(--nav-ease);
+}
+site-navbar[open] .nav-menu-icon {
+  transform: rotate(-45deg);
+}
+
+/* Open panel content */
+.nav-panel {
+  position: relative;
+  flex: 1 0 0;
+  min-height: 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  visibility: hidden;
+  opacity: 0;
+  contain: layout style;
+  transition:
+    opacity 180ms var(--nav-ease),
+    visibility 0s linear 180ms;
+}
+site-navbar[open] .nav-panel {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transition:
+    opacity var(--nav-duration) var(--nav-ease) 90ms,
+    visibility 0s;
+}
+
+.nav-links {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.nav-links a,
+.nav-talk {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  color: var(--nav-panel-fg);
+  font-size: 18px;
+  line-height: normal;
+  letter-spacing: -0.414px;
+  text-decoration: none;
+  border-radius: 4px;
+}
+.nav-links a:hover,
+.nav-talk:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.nav-ext {
+  display: block;
+  width: 10px;
+  height: 10px;
+  margin-bottom: 3px;
+}
+
+.nav-talk-row {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+.nav-talk {
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.368px;
+}
+
+/* Hover highlight that glides between links (GSAP only) */
+.nav-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  opacity: 0;
+  pointer-events: none;
+}
+
+site-navbar.nav-preload *,
+site-navbar.nav-preload *::before {
+  transition: none !important;
+}
+
+/* GSAP drives these when loaded */
+site-navbar.nav-gsap :is(.nav-bg, .nav-panel, .nav-menu-btn, .nav-menu-icon, .nav-swap img) {
+  transition: none;
+}
+site-navbar.nav-gsap .nav-links a:hover,
+site-navbar.nav-gsap .nav-talk:hover {
+  text-decoration: none;
+}
+
+/* Focus */
+site-navbar a:focus-visible,
+site-navbar button:focus-visible {
+  outline: 2px solid #7c5cff;
+  outline-offset: 2px;
+}
+
+/* iPad (768–1199): same layout, 32px edges to match the page gutter */
+@media (max-width: 1199px) {
+  site-navbar {
+    left: 32px;
+    right: 32px;
+  }
+}
+
+/* iPhone (≤767) — Figma 245:2454: no wordmark; the pill spans the width and its "S" acts as the logo */
+@media (max-width: 767px) {
+  site-navbar {
+    top: 16px;
+    left: 16px;
+    right: 16px;
+    --nav-pill-width: calc(100vw - 32px);
+    --nav-pill-open-width: calc(100vw - 32px);
+  }
+  site-navbar .nav-logo {
+    display: none;
+  }
+  site-navbar .nav-right {
+    flex: 1 1 auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  site-navbar {
+    --nav-duration: 0ms;
+  }
+}
+
+
+/* page transition (transition/ripple.js): a page reached through the ripple starts white until the reveal */
+html.rt-in::after { content: ""; position: fixed; inset: 0; z-index: 2147483646; background: #fff; }

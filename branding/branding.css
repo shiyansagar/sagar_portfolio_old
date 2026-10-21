@@ -1,0 +1,392 @@
+/* Surabhi Bakery — Brand Identity. Figma: portfolio / Desktop - 10 (159:2581)
+   Desktop: 1400 frame + 20px gutter at 1440. Image columns are % of the 1400 frame (Figma width / 1400),
+   so 1440 is pixel-exact and wider windows scale the same way. Text columns keep their Figma widths.
+   Phone layout comes later; the media queries at the end are a simple stacked fallback. */
+
+:root {
+  --font: "Google Sans Flex", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ink: #000;
+  --text: #464646;
+  --muted: #838383;
+  --brand: #2e489d;            /* French Blue — body copy on this page */
+  --page: #fff;
+  --btn-bg: #f5f5f5;
+  --btn-hover: #ececec;
+  --section-gap: 105px;        /* every section in this Figma frame is 105 apart */
+  --stick-top: 82px;           /* sticky side labels sit below the navbar: 20 + 42 + 20 */
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--page);
+  scrollbar-width: none; /* Lenis drives scrolling; keeps both gutters a true 20px */
+}
+html::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--font);
+  font-weight: 400;
+  font-variation-settings: "GRAD" 0, "ROND" 0, "wdth" 100;
+  line-height: normal;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+p, h1, h2, h3, dl, dd, figure {
+  margin: 0;
+}
+img {
+  display: block;
+  max-width: none;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.frame {
+  padding: 0 20px;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+  /* hero title at y=167 in Figma (navbar 20 + 42, then 105) */
+  /* bottom = 168, same space above the footer as OkCupid */
+  padding: 167px 0 168px;
+}
+
+/* ---------- Type ---------- */
+.h20 {
+  font-size: 20px;
+  line-height: 25px;
+  font-weight: 400;
+  letter-spacing: -0.2px;
+  color: var(--ink);
+}
+/* Section label: 22.916 Medium, cap-trimmed box (16px tall in Figma) */
+.sec-label {
+  font-size: 22.916px;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: -0.4583px;
+  color: var(--ink);
+  white-space: nowrap;
+  text-box: trim-both cap alphabetic;
+}
+.w406 { width: 406px; }
+.w407 { width: 407px; }
+.r12 { border-radius: 12px; }
+.medium { font-weight: 500; }
+
+/* ---------- Media boxes: image fills its Figma-sized box; the box clips the reveal zoom ---------- */
+.m {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  flex-shrink: 0;
+}
+.m img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Paired images (Figma: two equal columns, gap 20) */
+.pair {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  width: 100%;
+}
+.pair > .m {
+  flex: 1 1 0;
+  min-width: 0;
+}
+.pair-flush {
+  gap: 0;
+}
+
+/* ---------- Split rows: side label column + image column, label sticks through the row ---------- */
+.split {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.side {
+  align-self: stretch; /* full row height, so the sticky label travels the whole section */
+  flex-shrink: 0;
+}
+.stick {
+  position: sticky;
+  top: var(--stick-top);
+}
+.side-155 { width: 155px; }
+.side-264 { width: 264px; }
+.side-263 { width: 263px; }
+.col-1116 { width: 79.7143%; }   /* 1116 / 1400 */
+.col-1117 { width: 79.7857%; }   /* 1117 / 1400 */
+.col-1114 { width: 79.5714%; }   /* 1114 / 1400 */
+
+.side-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.side-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.32px;
+  color: var(--brand);
+}
+
+/* ---------- Hero — 207:3312 ---------- */
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.hero-top {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.hero-title {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  letter-spacing: -0.32px;
+  color: var(--ink);
+}
+.hero-img {
+  aspect-ratio: 4096 / 2346;
+}
+.hero-img img {
+  transform-origin: 50% 100%;
+}
+.hero-meta-wrap {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 10px;
+}
+.hero-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 832px;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.28px;
+  white-space: nowrap;
+}
+.hero-meta > div {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.hero-meta dt {
+  font-weight: 500;
+  color: var(--muted);
+}
+.hero-meta dd {
+  padding-top: 18px;
+  color: var(--text);
+}
+
+/* ---------- Project vision — 207:3315 ---------- */
+.vision {
+  padding: 10px 0 10px 142px;
+}
+.vision-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.vision-copy {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  letter-spacing: -0.32px;
+  color: var(--brand);
+}
+
+/* ---------- Logo overview — 207:3317 ---------- */
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ---------- Packaging — 207:3324 ---------- */
+.pk-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 78px;
+  width: 92.3571%;              /* 1293 / 1400 */
+}
+.pk-a {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 86.3109%;              /* 1116 / 1293 */
+}
+.pk-b {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+/* Frame 248: two loose product shots placed by hand in a 1116 × 496.345 box */
+.pk-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1116 / 496.345;
+}
+.pk-stage .m {
+  position: absolute;
+}
+.pk-stage .pk-full {
+  left: 3.1967%;
+  top: 5.3674%;
+  width: 52.4670%;
+  height: 90.8285%;
+}
+.pk-stage .pk-side {
+  left: 57.4010%;
+  top: 1.5625%;
+  width: 42.5990%;
+  height: 98.4373%;
+}
+
+/* ---------- Full-width brand boards — 207:3325 / 207:3328 (p10, right-aligned) ---------- */
+.wide {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+.wide-8 .m { width: 88.6232%; }  /* 1223 / 1380 */
+.wide-9 .m { width: 91.0870%; }  /* 1257 / 1380 */
+
+/* ---------- Research — 207:3329 ---------- */
+.research {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+
+/* ---------- Next project nav — 198:3008 ---------- */
+.next-nav {
+  margin-top: 63px; /* 105 gap + 63 = 168 above, like OkCupid */
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: flex-end;
+}
+.btn-icon,
+.btn-next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: var(--btn-bg);
+  transition: background-color 0.25s ease;
+}
+.btn-icon {
+  padding: 12px;
+}
+.btn-icon img {
+  transform: rotate(-90deg);
+}
+.btn-next {
+  gap: 10px;
+  padding: 12px 16px;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.28px;
+  color: var(--ink);
+}
+.btn-icon:hover,
+.btn-next:hover {
+  background: var(--btn-hover);
+}
+.btn-icon:focus-visible,
+.btn-next:focus-visible {
+  outline: 2px solid #7c5cff;
+  outline-offset: 2px;
+}
+
+/* ---------- Motion: hidden until JS animates in (visible without JS / with reduced motion) ---------- */
+.js-motion [data-reveal],
+.js-motion [data-hero],
+.js-motion [data-media] {
+  opacity: 0;
+}
+.js-motion [data-media] img,
+.js-motion .hero-img img {
+  will-change: transform;
+}
+
+
+/* =====================================================================================
+   RESPONSIVE — placeholder until the phone design pass: gutters + simple stacking
+   ===================================================================================== */
+
+/* ---------- iPad + iPhone (< 1200) ---------- */
+@media (max-width: 1199px) {
+  :root { --section-gap: 96px; }
+  .frame { padding: 0 32px; }
+  .page { padding-top: 140px; }
+
+  .split { flex-direction: column; gap: 32px; }
+  .side, .side-155, .side-264, .side-263 { width: auto; max-width: 406px; align-self: flex-start; }
+  .stick { position: static; }
+  .col-1116, .col-1117, .col-1114, .pk-col, .pk-a { width: 100%; }
+  .wide { padding: 0; }
+  .wide .m { width: 100% !important; }
+
+  .vision { padding: 0; }
+  .vision-copy { flex-wrap: wrap; }
+  .w406, .w407 { width: auto; flex: 1 1 280px; max-width: 406px; }
+
+  .hero-meta-wrap { padding: 0; }
+  .hero-meta { width: 100%; max-width: 832px; }
+}
+
+/* ---------- iPhone (≤ 767) ---------- */
+@media (max-width: 767px) {
+  :root { --section-gap: 80px; }
+  .frame { padding: 0 16px; }
+  .page { padding-top: 110px; }
+
+  .sec-label { font-size: 18px; letter-spacing: -0.36px; }
+  .h20 { font-size: 16px; line-height: 20px; letter-spacing: -0.32px; }
+  .side-text, .vision-copy { font-size: 14px; line-height: 18px; letter-spacing: -0.28px; }
+
+  .hero-meta { flex-wrap: wrap; gap: 16px 24px; justify-content: flex-start; font-size: 12px; line-height: 15px; }
+  .hero-meta dd { padding-top: 15px; }
+  .hero-meta > div { gap: 10px; }
+
+  .pair, .pk-a, .pk-b, .research { gap: 10px; }
+  .pk-col { gap: 40px; }
+  .research { gap: 64px; }
+  .r12 { border-radius: 8px; }
+  .next-nav { gap: 12px; }
+}

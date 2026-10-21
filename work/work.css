@@ -1,0 +1,425 @@
+/* Work page — Figma: portfolio / Desktop - 2, 3, 4, 6 (171:24979, 307:7505, 308:7612, 324:435)
+   One 100vh frame. The centre images run through the glass portal (WebGL, see work.js);
+   text is plain DOM on top, so the portal only bends images and the archives SVG. */
+
+:root {
+  --font: "Google Sans Flex", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ink: #000;
+  --muted: #838383;
+  --body: #454545;
+  --dial-on: #414141;
+  --dial-off: #e8e8e8;
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #fff;
+}
+body {
+  font-family: var(--font);
+  font-variation-settings: "GRAD" 0, "ROND" 0, "wdth" 100;
+  -webkit-font-smoothing: antialiased;
+}
+.frame {
+  position: relative;
+  z-index: 5;
+}
+
+.work {
+  position: fixed;
+  inset: 0;
+}
+.work-stage {
+  position: absolute;
+  inset: 0;
+}
+.work-stage canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  user-select: none;
+}
+
+/* ---------- Left: dial ---------- */
+.work-dial {
+  position: absolute;
+  left: 20px;
+  top: calc(50% + 0.5px);
+  height: 0;
+  pointer-events: none;
+}
+.work-dial a {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 20px;
+  line-height: 25px;
+  font-weight: 500;
+  letter-spacing: -0.4px;
+  white-space: nowrap;
+  color: var(--dial-off);
+  text-decoration: none;
+  transform-origin: 0 50%; /* work.js rotates each label on its arc (clock face) */
+  will-change: transform, opacity;
+  pointer-events: auto;
+}
+
+/* ---------- Right: details ---------- */
+.work-info {
+  position: absolute;
+  left: calc(80% + 4px);
+  top: calc(50% + 0.5px);
+  transform: translateY(-50%);
+  width: 210px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-wrap: break-word;
+}
+.work-info p {
+  margin: 0;
+}
+.wi-eyebrow,
+.wi-label,
+.wi-meta {
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.24px;
+  color: var(--muted);
+}
+.wi-eyebrow,
+.wi-label {
+  font-weight: 500;
+}
+.wi-eyebrow {
+  white-space: nowrap;
+}
+.wi-meta {
+  font-weight: 400;
+}
+.wi-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.wi-group.h99 {
+  height: 99px;
+}
+.wi-title {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  letter-spacing: -0.32px;
+  color: var(--ink);
+}
+.wi-title a {
+  color: inherit;
+  text-decoration: none;
+}
+.wi-text {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 300;
+  letter-spacing: -0.28px;
+  color: var(--body);
+}
+
+/* ---------- Hover cursor over the centre image (work.js moves it) ---------- */
+.work-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  will-change: transform;
+}
+.work-cursor.is-on {
+  opacity: 1;
+}
+.work-cursor img {
+  display: block;
+  margin: -1.5px 0 0 -14px; /* fingertip on the pointer (30x30 hand) */
+}
+.work-cursor span {
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 500;
+  letter-spacing: -0.24px;
+  color: var(--ink);
+  white-space: nowrap;
+}
+body.cursor-work .work-stage canvas,
+body.cursor-work .work-archives {
+  cursor: none;
+}
+
+/* ---------- Archives live overlay (footer hover scene, see footer/archives-scene.js) ---------- */
+.work-archives {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--art-w);
+  height: var(--art-h);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.work-archives.is-live {
+  opacity: 1;
+}
+.work-archives .ft-archives-art {
+  display: block;
+  width: var(--art-w);
+}
+.work-archives .ft-archives-art.is-scene {
+  width: calc(var(--art-w) * (1 + 2 * var(--art-pad, 0.13)));
+  margin: calc(var(--art-w) * -1 * var(--art-pad, 0.13));
+}
+.work-archives svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  transform: translateZ(0);
+}
+
+/* ---------- Load animation (work/loader.js) — only while html.is-loading ---------- */
+.loader {
+  display: none;
+}
+html.is-loading .loader {
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  overflow: hidden;
+}
+.ld-bg {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+}
+.ld-logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--ld-w, 110px);
+  translate: -50% -50%;
+  color: #151515;
+  opacity: 0;
+}
+.ld-logo svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.ld-logo path:not(.ld-cls-1) {
+  fill: currentColor;
+}
+
+/* ---------- Intro (Figma 328:1008) — home opens on this; the first scroll swaps it for the work ----------
+   Outer divs carry the Figma positions; inner [data-intro] elements animate with `translate`, which
+   composes with the centring transforms, so no JS animation library has to touch them. */
+.intro {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+.intro p {
+  margin: 0;
+}
+/* the jellyfish layer (work/jellies.js): behind the intro text, never takes the pointer */
+.intro-jellies {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  transition: opacity 1s ease;
+}
+html.intro-pre .intro-jellies,
+html.is-work .intro-jellies {
+  opacity: 0;
+}
+html.is-work .intro-jellies {
+  transition-duration: 0.5s; /* gone quickly on the first scroll */
+}
+.intro-pill {
+  position: absolute;
+  left: 23px;
+  top: calc(50% + 0.5px);
+  transform: translateY(-50%);
+}
+.intro-pill p {
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: #f5f5f5;
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 400;
+  letter-spacing: -0.24px;
+  color: #000;
+  white-space: nowrap;
+}
+.intro-text {
+  position: absolute;
+  left: calc(50% - 193px);
+  top: calc(50% - 20px);
+  width: 387px;
+  text-align: center;
+}
+.intro-text p,
+.intro-hint span {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  letter-spacing: -0.32px;
+  color: #4a4a4a;
+}
+.intro-hint {
+  position: absolute;
+  left: 50%;
+  top: calc(100% - 122px); /* Figma: y 902 of 1024 */
+  transform: translateX(-50%);
+}
+.intro-hint button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 136px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+  pointer-events: auto;
+}
+.intro-hint img {
+  display: block;
+}
+
+/* motion: the words travel up the screen and fade out while the work travels up from below into place,
+   so the two pass each other (same distance, same ease) */
+.intro [data-intro],
+.work-dial,
+.work-info {
+  transition: opacity 0.7s cubic-bezier(0.65, 0, 0.35, 1), translate 0.85s cubic-bezier(0.65, 0, 0.35, 1);
+}
+html.is-work .intro [data-intro] {
+  transition-duration: 0.55s, 0.85s; /* gone before it reaches the top */
+}
+.intro-pill p { transition-delay: 0s; }
+.intro-text p { transition-delay: 0.06s; }
+.intro-hint button { transition-delay: 0.12s; }
+html.intro-pre .intro-pill p,
+html.intro-pre .intro-hint button {
+  opacity: 0;
+  translate: 0 12px;
+}
+/* reveal order: the pill, then the sentence word by word, then the scroll hint last
+   (:not(.is-work) so the exit keeps its own short delays) */
+html:not(.is-work) .intro-hint button { transition-delay: 0.6s; }
+/* the sentence: each word rises out of its own mask, staggered (work.js wraps the words) */
+.intro-text .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.15em; /* room for descenders inside the mask */
+  margin-bottom: -0.15em;
+}
+.intro-text .w > span {
+  display: inline-block;
+  transition: translate 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(0.08s + var(--i) * 0.03s);
+}
+html.intro-pre .intro-text .w > span {
+  translate: 0 110%;
+}
+html.is-work .intro [data-intro] {
+  opacity: 0;
+  translate: 0 -30vh;
+  pointer-events: none;
+}
+html.is-intro .work-dial,
+html.is-intro .work-info {
+  opacity: 0;
+  translate: 0 30vh;
+}
+/* the work waits until the intro words have mostly left (WORK_DELAY in work.js is the same 0.3s) */
+html.is-work .work-dial { transition-delay: 0.3s; }
+html.is-work .work-info { transition-delay: 0.36s; }
+@media (prefers-reduced-motion: reduce) {
+  .intro [data-intro],
+  .intro-text .w > span,
+  .work-dial,
+  .work-info {
+    transition: none;
+  }
+}
+
+/* iPad + phone (no Figma frames for these yet): the dial hides, cards scale to the width (work.js K),
+   and the details sit just under the card (work.js sets --card-end) */
+@media (max-width: 1199px) {
+  .work-dial {
+    display: none;
+  }
+  .work-info {
+    left: calc(50% - var(--card-w, 548px) / 2);   /* lined up with the card's edges */
+    top: calc(var(--card-end, 70%) + 28px);
+    transform: none;
+    width: var(--card-w, 548px);
+    gap: 12px;
+  }
+  .work-info .wi-role {
+    display: none;
+  }
+}
+@media (max-width: 767px) {
+  site-navbar {
+    left: 14px;
+    right: 14px;
+    --nav-pill-width: calc(100vw - 28px);
+    --nav-pill-open-width: calc(100vw - 28px);
+  }
+  .work-info {
+    gap: 10px;
+  }
+  .work-info .wi-desc {
+    display: none;
+  }
+  .intro-text {
+    left: 14px;
+    width: calc(100% - 28px);
+  }
+  .intro-pill {
+    left: 14px;
+    top: calc(50% - 44px);
+  }
+}
+/* short screens (iPad / phone in landscape): less text under the card so it stays on screen */
+@media (max-width: 1199px) and (max-height: 860px) {
+  .work-info .wi-desc { display: none; }
+}
+@media (max-width: 1199px) and (max-height: 500px) {
+  .work-info { top: calc(var(--card-end, 70%) + 14px); }
+  .work-info .wi-eyebrow, .work-info .wi-meta { display: none; }
+}

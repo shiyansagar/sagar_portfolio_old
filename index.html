@@ -1,231 +1,136 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#ffffff">
-    <title>Sagar Shiyan </title>
-    <meta name="description"
-        content="Portfolio of Sagar Shiyan, a Design student from NIFT who loves working with digital experiences and understanding human behaviour.">
-    <meta name="author" content="Sagar Shiyan">
-    <meta name="keywords" content="Sagar Shiyan, Design, NIFT, Human Behaviour, Digital Experiences">
-
-    <meta property="og:title" content="Sagar Shiyan | Portfolio">
-    <meta property="og:description"
-        content="I’m a design student from NIFT who loves working with digital experiences and understanding human behaviour.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://sagarshiyan.vercel.app">
-    <meta property="og:image" content="https://sagarshiyan.vercel.app/preview.png">
-    <meta property="og:site_name" content="Sagar Shiyan">
-
-    <!-- Resource Hints -->
-    <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <link rel="dns-prefetch" href="https://api.fontshare.com">
-    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-
-    <!-- Critical CSS (Page Loader) -->
-    <style>
-        .page-loader {
-            position: fixed;
-            inset: 0;
-            background: #ffffff;
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            pointer-events: none;
-        }
-
-        .page-loader__inner {
-            width: 200px;
-            height: 1px;
-            background: rgba(0, 0, 0, 0.12);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .page-loader__bar {
-            position: absolute;
-            left: -100%;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: #000;
-            animation: loaderSlide 1.1s cubic-bezier(0.76, 0, 0.24, 1) forwards;
-        }
-
-        @keyframes loaderSlide {
-            0% {
-                left: -100%;
-            }
-
-            60% {
-                left: 0%;
-            }
-
-            100% {
-                left: 100%;
-            }
-        }
-    </style>
-
-    <!-- Fonts -->
-    <link rel="preload" href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,300,400&display=swap" as="style"
-        onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,300,400&display=swap">
-    </noscript>
-
-    <link rel="icon" type="image/svg+xml" href="fevicon.svg?v=2">
-    <link rel="stylesheet" href="style.css">
-    <!-- Speculation Rules for Instant Page Loads -->
-    <script type="speculationrules">
-        {
-            "prefetch": [
-                {
-                    "source": "document",
-                    "where": {
-                        "and": [
-                            { "href_matches": "/*" }
-                        ]
-                    },
-                    "eagerness": "moderate"
-                }
-            ],
-            "prerender": [
-                {
-                    "source": "document",
-                    "where": {
-                        "and": [
-                            { "href_matches": "/*" }
-                        ]
-                    },
-                    "eagerness": "moderate"
-                }
-            ]
-        }
-    </script>
-
-    <!-- Google Site Name Structured Data -->
-    <script type="application/ld+json">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sagar Shiyan — Design Portfolio</title>
+  <meta name="description" content="Sagar Shiyan, a design enthusiast based in Kerala, India. Selected work: OkCupid, FOUR, Surabhi Bakery, Archives and Khadi Wool.">
+  <!-- SEO: canonical, share preview, structured data (head only, nothing visible) -->
+  <link rel="canonical" href="https://sagarshiyan.vercel.app/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sagar Shiyan">
+  <meta property="og:title" content="Sagar Shiyan — Design Portfolio">
+  <meta property="og:description" content="Sagar Shiyan, a design enthusiast based in Kerala, India. Selected work: OkCupid, FOUR, Surabhi Bakery, Archives and Khadi Wool.">
+  <meta property="og:url" content="https://sagarshiyan.vercel.app/">
+  <meta property="og:image" content="https://sagarshiyan.vercel.app/work/content/okcupid.webp">
+  <meta property="og:image:width" content="1095">
+  <meta property="og:image:height" content="714">
+  <meta property="og:image:alt" content="OkCupid case study screens">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@Sagarshiyan1">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
+      "@type": "Person",
+      "@id": "https://sagarshiyan.vercel.app/#person",
       "name": "Sagar Shiyan",
-      "url": "https://sagarshiyan.vercel.app/"
+      "url": "https://sagarshiyan.vercel.app/",
+      "description": "Design enthusiast who loves working with digital experience and understanding human behaviour.",
+      "image": "https://sagarshiyan.vercel.app/footer/assets/photo.webp",
+      "email": "mailto:shiyansagar@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "Kerala",
+        "addressCountry": "IN"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "National Institute of Fashion Technology, Jodhpur"
+      },
+      "sameAs": [
+        "https://github.com/shiyansagar",
+        "https://x.com/Sagarshiyan1",
+        "https://www.are.na/sagar-shiyan",
+        "https://www.linkedin.com/in/sagar-shiyan-577423300/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://sagarshiyan.vercel.app/#website",
+      "url": "https://sagarshiyan.vercel.app/",
+      "name": "Sagar Shiyan",
+      "description": "Sagar Shiyan, a design enthusiast based in Kerala, India. Selected work: OkCupid, FOUR, Surabhi Bakery, Archives and Khadi Wool.",
+      "publisher": {
+        "@id": "https://sagarshiyan.vercel.app/#person"
+      },
+      "inLanguage": "en"
     }
-    </script>
+  ]
+}
+  </script>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="icon" href="navbar/assets/favicon-dark.svg">
+  <link rel="preload" href="navbar/assets/fonts/GoogleSansFlex-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="navbar/navbar.css?v=3" data-site-navbar>
+  <link rel="stylesheet" href="work/work.css?v=6">
+  <!-- before first paint (JS only): intro words hidden until the font is ready, work hidden until the first scroll.
+       is-loading = play the load animation (work/loader.js): once per tab, never with reduced motion or ?work;
+       ?loader forces it (testing) -->
+  <script>
+    (function () {
+      var d = document.documentElement, q = location.search;
+      d.classList.add("intro-pre", "is-intro");
+      try { if (sessionStorage.getItem("rt")) d.classList.add("rt-in"); } catch (e) {}
+      try {
+        if (q.indexOf("work") < 0 && !matchMedia("(prefers-reduced-motion: reduce)").matches &&
+            (q.indexOf("loader") >= 0 || !sessionStorage.getItem("sg-loaded"))) d.classList.add("is-loading");
+      } catch (e) {}
+    })();
+  </script>
+  <script type="module" src="navbar/navbar.js?v=6"></script>
+  <script type="module" src="work/work.js?v=10"></script>
+  <script type="module" src="work/loader.js"></script>
+  <script type="module" src="work/jellies.js?v=48"></script>
 </head>
-
 <body>
-    <!-- Page Loader -->
-    <div class="page-loader" id="pageLoader">
-        <div class="page-loader__inner">
-            <div class="page-loader__bar"></div>
-        </div>
+  <!-- load animation (work/loader.js); only shown while html.is-loading -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="ld-bg"></div>
+    <div class="ld-logo"></div>
+  </div>
+
+  <!-- Home = intro (Figma 328:1008) + work (171:24979 / 307:7505 / 308:7612 / 324:435) on one 100vh page.
+       The first scroll lifts the intro away and the work rises in (work/work.js). -->
+  <div class="frame">
+    <site-navbar></site-navbar>
+  </div>
+
+  <main class="work">
+    <!-- the cards + glass portal are drawn here (WebGL) -->
+    <div class="work-stage" id="stage"></div>
+
+    <!-- Archives card, live: overlays the canvas while Archives is centred, for the footer's hover scene -->
+    <a class="work-archives" id="archives" href="#" aria-label="Archives" hidden>
+      <span class="ft-archives-art"></span>
+    </a>
+
+    <!-- left: project dial (Figma 173:25024), turns like a clock with the cards -->
+    <nav class="work-dial" id="dial" aria-label="Projects"></nav>
+
+    <!-- hover cursor over the centre image (Figma 327:1006) -->
+    <div class="work-cursor" id="cursor" aria-hidden="true">
+      <img src="work/content/cursor-hand.webp" width="30" height="30" alt="">
+      <span>See the work</span>
     </div>
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
-    <section>
-        <div class="hero-section">
-            <div class="hero-text">
-                <div class="name-text">
-                    <h1>Sagar Shiyan</h1>
-                    <h2 class="dynamic-title">
-                        <span class="static-word">Design</span>
-                        <div class="words-wrapper">
-                            <span class="word">Student</span>
-                            <span class="word">Enthusiast</span>
-                            <span class="word">Everything</span>
-                            <span class="word">Everywhere</span>
-                            <span class="word">Student</span>
-                        </div>
-                    </h2>
-                    <h2>Based in Kerala, India</h2>
-                </div>
-                <div class="rightnav">
-                    <a href="https://drive.google.com/drive/folders/15f_C51tl_OvEgSRvTeEGdLZC9Kuj1lyG?usp=drive_link"
-                        target="_blank" class="nav-roll">
-                        <div class="nav-roll-inner">
-                            <span>CV</span>
-                            <span>CV</span>
-                        </div>
-                    </a>
-                    <div class="aboutme">
-                        <a href="about-me/aboutme.html">About Me</a>
-                    </div>
-                    <div class="contactwrap">
-                        <div class="contactme">
-                            <img src="contactme.svg" alt="" loading="lazy" decoding="async" width="16" height="16">
-                            Get in touch
-                        </div>
-                        <div class="contacts">
-                            <div class="email">
-                                <a href="mailto:shiyansagar@gmail.com">shiyansagar@gmail.com</a>
-                            </div>
-                            <div class="number">
-                                +91 9526470325
-                            </div>
-                            <div class="linkedin">
-                                <a href="https://www.linkedin.com/in/sagar-shiyan-577423300/">linkedin</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="title-text">
-                <div class="imgher">
-                    <h4 id="description-text"><span class="text-content">I’m a design student from NIFT who loves
-                            working with digital experiences and understanding human behaviour.</span></h4>
-                </div>
-                <div class="heremy">
-                    <h4>here's my</h4>
-                    <div class="works">
-                        works <h4>below</h4>
-                        <!-- <img src="arrow1.svg" alt="svg" loading="lazy" width="24" height="24"> -->
-                    </div>
-                </div>
-            </div>
-            <div class="gallery">
-                <div class="wrapper">
-                    <div class="item-1" data-description="UX research ok cupid" data-number="1">
-                        <a href="casestudy/ui-ux/casestudy.html"><img src="okcupidd.webp" alt=""
-                                fetchpriority="high"></a>
-                        <span class="mobile-text">UX research ok cupid</span>
-                    </div>
-                    <div class="item-2" data-description="craft cluster" data-number="2">
-                        <a href="crd/crd.html"><img src="clustermain.webp" alt="" fetchpriority="high"></a>
-                        <span class="mobile-text">craft cluster</span>
-                    </div>
-                    <div class="item-1" data-description="branding" data-number="3">
-                        <a href="branding/brand.html"><img src="branding1.webp" alt="" fetchpriority="high"></a>
-                        <span class="mobile-text">branding</span>
-                    </div>
-                    <div class="item-2" data-description="Home Decor" data-number="4">
-                        <a href="idm/idm.html"><img src="idm.webp" alt="idmimage" fetchpriority="high"></a>
-                        <span class="mobile-text">idm</span>
-                    </div>
-                    <div class="item-1" data-description="teenage enginereeing" data-number="5">
-                        <a href="tx6/tx6.html"><img src="teenage.webp" alt="" fetchpriority="high"></a>
-                        <span class="mobile-text">teenage enginereeing</span>
-                    </div>
-                    <div class="item-2" data-description="Experimental" data-number="6.Experimental">
-                        <a href="misc/grid.html"><img src="misc.webp" alt="" fetchpriority="high"></a>
-                        <span class="mobile-text">Experimental</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+    <!-- right: project details (Figma 173:25036), swapped per card -->
+    <section class="work-info" id="info" aria-live="polite"></section>
+
+    <!-- intro (Figma 328:1008). Outer divs position, inner [data-intro] elements animate -->
+    <section class="intro" id="intro" aria-label="Introduction">
+      <!-- three faint ASCII jellyfish drifting behind the intro text (work/jellies.js) -->
+      <canvas class="intro-jellies" aria-hidden="true"></canvas>
+      <div class="intro-pill"><p data-intro>Based in Kerala, India</p></div>
+      <div class="intro-text"><p data-intro>I’m a Design Enthusiast who loves working with digital experience and understanding human behaviour</p></div>
+      <div class="intro-hint">
+        <button type="button" id="introHint" data-intro>
+          <span>(Scroll to see work)</span>
+          <img src="work/content/scroll-mouse.svg" width="22" height="29" alt="">
+        </button>
+      </div>
     </section>
-
-    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/TextPlugin.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrambleTextPlugin.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/SplitText.min.js" defer></script>
-    <script src="script.js" defer></script>
+  </main>
 </body>
-
 </html>

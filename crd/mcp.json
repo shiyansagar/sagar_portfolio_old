@@ -1,8 +1,0 @@
-{
-  "servers": {
-    "paper": {
-      "type": "http",
-      "url": "http://[IP_ADDRESS]/mcp"
-    }
-  }
-}

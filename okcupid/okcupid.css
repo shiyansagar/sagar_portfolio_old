@@ -1,0 +1,1940 @@
+/* OkCupid case study — Figma: portfolio / Wireframe - 1 (2:4581)
+   Desktop only. 1400 frame + 20px gutter at 1440; fills the window on wider screens.
+   All sizes, gaps, paddings and type values are taken from Figma Dev Mode. */
+
+:root {
+  --font: "Google Sans Flex", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ink: #000;
+  --text: #464646;
+  --muted: #838383;
+  --muted-2: #8c8c8c;
+  --surface: #f5f5f5;
+  --line: #8c8c8c;
+  --section-gap: 168px;
+  --page: #fff;
+  --stroke: #d4d4d4;
+  --hero-sub: #3a3a3a;
+  --idle: #adadad;
+  --btn-bg: #f5f5f5;
+  --btn-hover: #ececec;
+  --btn-stroke: transparent;
+  --badge-bg: #000;
+  --badge-fg: #fff;
+  color-scheme: light;
+}
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--page);
+  /* Hide the native scrollbar (Lenis drives scrolling). On Windows it reserves ~15px on the right,
+     which made the right gutter look wider than the left 20px. */
+  scrollbar-width: none;
+}
+html::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--font);
+  font-weight: 400;
+  font-variation-settings: "GRAD" 0, "ROND" 0, "wdth" 100;
+  line-height: normal;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+p, h1, h2, h3, ul, figure {
+  margin: 0;
+}
+ul {
+  padding: 0;
+  list-style: none;
+}
+img {
+  display: block;
+  max-width: none;
+}
+b {
+  font-weight: 500;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Frame: side padding matches the fixed navbar — 20px desktop, 32px iPad, 16px iPhone (end of file) */
+.frame {
+  padding: 0 20px;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+  /* hero at y=220: 20 (nav top) + 42 (nav) + 158 */
+  padding: 220px 0 var(--section-gap);
+}
+
+/* ---------- Type helpers (Figma text styles) ---------- */
+.label {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 500;
+  letter-spacing: -0.28px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.eyebrow {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 500;
+  letter-spacing: -0.28px;
+  color: var(--muted-2);
+}
+.h20 {
+  font-size: 20px;
+  line-height: 25px;
+  font-weight: 500;
+  letter-spacing: -0.4px;
+  color: var(--ink);
+}
+.h28 {
+  font-size: 28px;
+  line-height: 35px;
+  font-weight: 500;
+  letter-spacing: -0.56px;
+  color: var(--ink);
+}
+.t16 {
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.32px;
+  color: var(--text);
+}
+.t18 {
+  font-size: 18px;
+  line-height: 23px;
+  letter-spacing: -0.36px;
+  color: var(--text);
+}
+.nowrap { white-space: nowrap; }
+.w264 { width: 264px; }
+.w406 { width: 406px; }
+.w548 { width: 548px; }
+.w217 { width: 217px; }
+.r12 { border-radius: 12px; }
+
+/* Note cards (gradient over #f5f5f5, px10 py16 r12) */
+.note {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 10px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg), var(--surface);
+  flex-shrink: 0;
+}
+.note-head {
+  display: flex;
+  gap: 4px;
+  align-items: stretch;
+}
+.note-dot {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 6px;
+  flex-shrink: 0;
+}
+.note-text {
+  flex: 1 0 0;
+  min-width: 1px;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 300;
+  letter-spacing: -0.28px;
+  color: var(--text);
+}
+
+/* Images sized by aspect-ratio in CSS must not keep their height attribute */
+.desk-images img,
+.ur-transcript,
+.ur-survey,
+.ia-2 {
+  height: auto;
+}
+
+/* Cropped image boxes (Figma "fill" crops) */
+.fd-crop {
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.fd-crop img {
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+
+/* ---------- Hero — 188:2467 ---------- */
+.hero {
+  display: flex;
+  gap: 180px;
+  align-items: flex-start;
+  justify-content: center;
+}
+.hero-text {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 498px;
+  flex-shrink: 0;
+}
+/* Ellipse 9 sits at frame x=140, y=-18 (text column starts at 141.5) */
+.hero-glow {
+  position: absolute;
+  left: -1.5px;
+  top: -18px;
+  width: 251px;
+  height: 282.5px;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-glow img {
+  position: absolute;
+  inset: -34.69% -39.04%;
+  width: auto;
+  height: auto;
+}
+.hero-head {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.hero-eyebrow {
+  font-size: 14px;
+  line-height: 1.231;
+  letter-spacing: -0.28px;
+  color: var(--subtext-color, #838383);
+}
+.hero-title {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 40px;
+  letter-spacing: -0.64px;
+  color: var(--ink);
+}
+.hero-title .accent {
+  color: #748eff;
+}
+.hero-sub {
+  position: relative;
+  width: 332px;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.32px;
+  color: var(--hero-sub);
+}
+.hero-phones {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.hero-phones > img {
+  width: 142px;
+  height: 286px;
+  object-fit: cover;
+}
+.hero-phone-tall {
+  position: relative;
+  width: 139px;
+  height: 476px;
+  overflow: hidden;
+}
+.hero-phone-tall img {
+  position: absolute;
+  top: 0;
+  left: -0.09%;
+  width: 102.33%;
+  height: 100%;
+}
+
+/* ---------- Overview — 189:2792 ---------- */
+.overview {
+  display: flex;
+  flex-direction: column;
+  gap: 128px;
+  align-items: center;
+  justify-content: center;
+}
+.ov-top {
+  display: flex;
+  gap: 224px;
+  align-items: flex-start;
+}
+.ov-intro {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.ov-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 406px;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.32px;
+  color: var(--text);
+}
+.ov-p1 {
+  height: 46px;
+}
+.ov-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 402px;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.28px;
+  white-space: nowrap;
+}
+.ov-meta-group {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.ov-meta-group ul {
+  color: var(--text);
+}
+
+/* Timeline */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: flex-start;
+}
+.tl-row {
+  display: flex;
+  gap: 22px;
+  align-items: flex-start;
+  width: 100%;
+}
+.tl-chart {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: flex-end;
+  width: 443px;
+}
+.tl-ticks {
+  display: flex;
+  gap: 125px;
+  align-items: center;
+  width: 443px;
+}
+.tl-tick {
+  display: flex;
+  gap: 3px;
+  align-items: flex-start;
+  justify-content: center;
+}
+.tl-tick-first {
+  gap: 0;
+  justify-content: space-between;
+  width: 9px;
+}
+.tl-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 0;
+  height: 68px;
+  flex-shrink: 0;
+}
+.tl-line > span {
+  position: relative;
+  flex: none;
+  width: 68px;
+  height: 0;
+  transform: rotate(90deg);
+}
+.tl-line img {
+  position: absolute;
+  inset: -1.87px -0.51% -1.87px -2.75%;
+  width: auto;
+  height: auto;
+}
+.tl-num,
+.tl-key {
+  font-size: 10px;
+  line-height: 13px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.tl-bars {
+  position: absolute;
+  left: 0;
+  top: 24px;
+  width: 405px;
+  height: 44px;
+}
+.tl-bars i {
+  display: block;
+  width: var(--w);
+  height: 12px;
+  border-radius: 6px;
+  background: var(--c);
+  flex-shrink: 0;
+}
+.tl-bars-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.tl-bars-mid {
+  position: absolute;
+  left: 47px;
+  top: 16px;
+  display: flex;
+  gap: 55px;
+  align-items: center;
+}
+.tl-bars .tl-bar-low {
+  position: absolute;
+  left: 112px;
+  top: 32px;
+}
+.tl-legend {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  width: 468px;
+}
+.tl-legend-spacer {
+  width: 67px;
+  height: 24px;
+  flex-shrink: 0;
+}
+.tl-legend-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 391px;
+}
+.tl-legend-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.tl-key {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
+.tl-key::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 26px;
+  background: var(--c);
+}
+
+/* The Problem (used in Overview + Affinity) */
+.problem {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.problem-text {
+  width: 406px;
+  font-size: 18px;
+  line-height: 23px;
+  letter-spacing: -0.36px;
+  color: var(--text);
+}
+
+/* ---------- Research framework — 189:2791 ---------- */
+.framework {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+.fw-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 552px;
+}
+.fw-title {
+  font-size: 28px;
+  line-height: 35px;
+  font-weight: 500;
+  letter-spacing: -0.56px;
+  color: var(--ink);
+}
+.fw-boxes {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-end;
+}
+.fw-box {
+  position: relative;
+  width: 100%;
+  padding: 16.5px; /* 16 + 0.5 stroke, as in Figma (content at 16.5) */
+  border-radius: 16px;
+  overflow: hidden;
+  /* 0.5px stroke as an inset shadow — Chrome rounds 0.5px borders up to 1px at 1x */
+  box-shadow: inset 0 0 0 0.5px var(--stroke), 0 0 14.8px 0 rgba(41, 41, 41, 0.08);
+  background: var(--bg), var(--surface);
+}
+.fw-box:nth-child(1) { z-index: 4; }
+.fw-box:nth-child(2) { z-index: 3; }
+.fw-box:nth-child(3) { z-index: 2; }
+.fw-box:nth-child(4) { z-index: 1; }
+.fw-box-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.fw-box-inner.fw-tight {
+  gap: 3px;
+}
+.fw-head {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.fw-head h3 {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  letter-spacing: -0.32px;
+  color: var(--text);
+  white-space: nowrap;
+}
+.fw-body {
+  padding-left: 15px;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.32px;
+  color: var(--text);
+}
+
+/* ---------- Product analysis — 189:2822 ---------- */
+.product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+.pa-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 68px;
+  align-items: flex-start;
+}
+.pa-head {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 101px;
+  padding-left: 142px;
+  width: 100%;
+}
+
+/* Accordion — component set 25:1873. One panel open at a time; it stays on the last hovered panel. */
+.acc {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  width: 1114px;
+  height: 500px;
+}
+.acc-panel {
+  --open-w: 563px;
+  --closed-gap: 14px;
+  position: relative;
+  flex: none;
+  width: 163.667px;
+  height: 500px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--surface);
+  cursor: pointer;
+  outline: none;
+  contain: layout paint;
+}
+.acc-panel::before,
+.acc-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.acc-panel::before {
+  background: var(--bg-closed, var(--surface));
+}
+.acc-panel::after {
+  background: var(--bg-open);
+  opacity: 0;
+}
+.acc-panel.is-open {
+  width: var(--open-w);
+  cursor: default;
+}
+.acc-panel.is-open .acc-open {
+  opacity: 1;
+  visibility: visible;
+}
+.acc-panel.is-open .acc-closed {
+  opacity: 0;
+  visibility: hidden;
+}
+.acc-panel.is-open::after {
+  opacity: 1;
+}
+.acc-panel:focus-visible {
+  box-shadow: inset 0 0 0 2px #7c5cff;
+}
+.acc-num {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 6px;
+  border-radius: 6px;
+  background: var(--badge-bg);
+  color: var(--badge-fg);
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 500;
+  letter-spacing: -0.24px;
+  white-space: nowrap;
+  transform: translate(16px, 26px);
+  will-change: transform;
+}
+.acc-panel:first-child .acc-num,
+.acc-panel.is-open .acc-num {
+  transform: translate(16px, 16px);
+}
+.acc-closed,
+.acc-open {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
+/* Closed: number on top, title below (px16 py26 / gap 14 — panel 1: p20 / gap 11) */
+.acc-closed {
+  width: 163.667px;
+  padding: 26px 16px;
+}
+.acc-closed p {
+  margin-top: calc(28px + var(--closed-gap));
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  letter-spacing: -0.32px;
+  color: var(--text);
+}
+.acc-panel:first-child .acc-closed {
+  padding: 20px;
+}
+/* Open: fixed open width so nothing reflows while the panel grows */
+.acc-open {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: var(--open-w);
+  height: 100%;
+  padding: 16px;
+  opacity: 0;
+  visibility: hidden;
+}
+.acc-panel[data-open-w="575"] {
+  --open-w: 575px;
+}
+.acc-open-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 400px;
+}
+.acc-open-title {
+  display: flex;
+  align-items: flex-end;
+  min-height: 28px;
+  padding-left: 42px;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  letter-spacing: -0.32px;
+  color: var(--text);
+  white-space: nowrap;
+}
+.acc-open-desc {
+  padding: 0 12px 0 42px;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.32px;
+  color: var(--text);
+}
+/* Panel 1 open (Default variant): header w379 gap 11, title beside number (gap 12), desc pl40 py10 */
+.acc-open-first .acc-open-copy {
+  gap: 11px;
+  width: 379px;
+}
+.acc-open-first .acc-open-title {
+  display: block;
+  width: 286px;
+  padding-left: 40px;
+  white-space: normal;
+}
+.acc-open-first .acc-open-desc {
+  padding: 10px 0 10px 40px;
+}
+.acc-media {
+  position: relative;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.acc-media img {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.acc-media-photo {
+  height: 294px;
+}
+.acc-media-2,
+.acc-media-3,
+.acc-media-4 {
+  border: 0.5px solid var(--line);
+}
+.acc-media-2 {
+  aspect-ratio: 4096 / 2304;
+}
+.acc-media-3 {
+  aspect-ratio: 535 / 341;
+}
+.acc-media-3 img {
+  left: -0.12%;
+  top: -6.74%;
+  height: 106.87%;
+  object-fit: fill;
+}
+.acc-open-last {
+  justify-content: flex-start;
+  gap: 10px;
+}
+.acc-media-4 {
+  flex: 1 0 0;
+  min-height: 1px;
+}
+.acc-media-4 img {
+  top: -1.55%;
+  height: 112.95%;
+  object-fit: fill;
+}
+
+/* ---------- Desk research — 189:2482 ---------- */
+.desk {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  align-items: center;
+}
+.desk-head {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  height: 130px;
+}
+.desk-head .t18 {
+  height: 100%;
+}
+.desk-images {
+  display: flex;
+  gap: 10.126px;
+  align-items: flex-end;
+  width: 100%;
+}
+.desk-comp,
+.desk-find {
+  border-radius: 20px;
+}
+.desk-comp {
+  flex: 696.103 1 0;
+  min-width: 0;
+  aspect-ratio: 696.103 / 377.229;
+  object-fit: cover;
+}
+.desk-find {
+  flex: 694.346 1 0;
+  min-width: 0;
+  aspect-ratio: 694.346 / 374.28;
+  object-fit: cover;
+}
+
+/* ---------- User research — 189:2808 ---------- */
+.users {
+  display: flex;
+  flex-direction: column;
+  gap: 173px;
+  align-items: center;
+}
+.ur-block {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  align-items: center;
+  width: 100%;
+}
+.ur-top {
+  display: flex;
+  flex-direction: column;
+  gap: 63px;
+  align-items: flex-end;
+  width: 832px;
+}
+.ur-intro {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  width: 100%;
+}
+.ur-title {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 264px;
+  flex-shrink: 0;
+}
+.ur-copy {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding-top: 36px;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.32px;
+  color: var(--text);
+}
+.ur-copy p {
+  width: 264px;
+}
+.ur-learn {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.ur-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 264px;
+  padding-top: 24px;
+}
+.chip {
+  display: flex;
+  gap: 4px;
+  align-items: flex-start;
+  padding: 8px;
+  border-radius: 12px;
+  background: var(--surface);
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.28px;
+  color: var(--text);
+}
+.chip img {
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+.ur-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+.ur-photos {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  width: 100%;
+}
+.ur-photos figure {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.ur-photos img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: bottom;
+}
+.ur-photos figcaption,
+.rw-board figcaption {
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.32px;
+  color: var(--text);
+}
+.ur-photos figcaption {
+  width: 264px;
+}
+.ur-docs {
+  display: flex;
+  gap: 20px;
+  align-items: flex-end;
+  width: 100%;
+}
+.ur-docs-box {
+  flex: 740 1 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  border: 0.5px solid var(--stroke);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.ur-transcript {
+  flex: 406 1 0;
+  min-width: 0;
+  aspect-ratio: 406 / 216;
+  object-fit: cover;
+}
+.ur-iq {
+  flex: 333 1 0;
+  min-width: 0;
+  position: relative;
+  aspect-ratio: 333 / 216;
+  overflow: hidden;
+}
+.ur-iq img {
+  position: absolute;
+  left: -40.12%;
+  top: -0.49%;
+  width: 138.92%;
+  height: 100.06%;
+}
+.ur-survey {
+  flex: 640 1 0;
+  min-width: 0;
+  aspect-ratio: 640 / 216;
+  object-fit: cover;
+}
+.ur-learned {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.ur-learned-copy {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.ur-learned-title {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 159px;
+}
+.ur-learned-text {
+  width: 264px;
+  margin-top: 28px;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.32px;
+  color: var(--text);
+  white-space: pre-wrap;
+}
+.ur-insights {
+  position: relative;
+  width: 369px;
+  height: 424px;
+  border: 0.5px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.ur-insights img {
+  position: absolute;
+  left: -5.46%;
+  top: -11.79%;
+  width: 110.1%;
+  height: 133.45%;
+}
+
+/* ---------- Affinity map — 189:2810 ---------- */
+.affinity {
+  display: flex;
+  flex-direction: column;
+  gap: 150px;
+  align-items: center;
+}
+.af-block {
+  display: flex;
+  flex-direction: column;
+  gap: 112px;
+  align-items: center;
+  width: 100%;
+}
+.af-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 144px;
+  width: 100%;
+}
+.af-col {
+  display: flex;
+  flex-direction: column;
+  gap: 62px;
+  width: 974px;
+}
+.af-head {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 548px;
+  height: 116px;
+}
+.af-cards {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+}
+.note-af {
+  gap: 20px;
+}
+.note-af .note-head {
+  align-items: center;
+}
+.note-af .note-dot {
+  align-self: stretch;
+}
+.af-card-title {
+  width: 253px;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  letter-spacing: -0.32px;
+  color: var(--text);
+}
+.af-card-body {
+  padding-left: 10px;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 300;
+  letter-spacing: -0.28px;
+  color: var(--text);
+}
+.note-af:not(:first-child) .af-card-body {
+  width: 264px;
+}
+.af-map {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4096 / 1249;
+  object-fit: cover;
+}
+
+/* ---------- Ideation — 189:2811 ---------- */
+.ideation {
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+  align-items: center;
+}
+.id-block {
+  display: flex;
+  flex-direction: column;
+  gap: 62px;
+  align-items: center;
+  width: 100%;
+}
+.id-head-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: var(--pr);
+  width: 100%;
+}
+.id-head {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  width: 644px;
+  height: 116px;
+}
+.id-head .t16 {
+  flex: 1 0 0;
+  min-width: 1px;
+  height: 100%;
+}
+.id-maps {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1400 / 410.421;
+  border: 0.5px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.id-empathy {
+  position: absolute;
+  left: -0.5px;
+  top: -0.5px;
+  width: 27.462%;
+  height: 100%;
+  overflow: hidden;
+}
+.id-empathy img {
+  position: absolute;
+  top: 0;
+  left: -0.55%;
+  width: 100.55%;
+  height: 100%;
+}
+.id-journey {
+  position: absolute;
+  left: 27.291%;
+  top: -0.5px;
+  width: 72.731%;
+  height: 100%;
+  object-fit: cover;
+}
+.id-newmap {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4096 / 1659;
+  border: 0.5px solid var(--line);
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* Real-world exploration strip — Figma 49:5036 is 2713 wide inside a 1400 frame; it scrolls sideways */
+.rw {
+  width: 100%; /* stay inside the 20px gutters; only the strip inside scrolls */
+  height: 900px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+.rw::-webkit-scrollbar {
+  display: none;
+}
+.rw {
+  cursor: grab;
+  user-select: none;
+}
+.rw.is-dragging {
+  cursor: grabbing;
+}
+/* With motion on, the strip is pinned and moved by scroll at every width (okcupid.js → horizontal) */
+.js-motion .rw {
+  overflow: hidden;
+  cursor: auto;
+  user-select: auto;
+}
+.js-motion .rw-strip {
+  will-change: transform;
+}
+.rw img {
+  -webkit-user-drag: none;
+}
+.rw-strip {
+  display: flex;
+  gap: 125px;
+  align-items: center;
+  width: 2713px;
+  height: 900px;
+  padding: 5px 27px 5px 283px;
+  background: var(--page);
+}
+.rw-intro {
+  flex: 1 0 0;
+  min-width: 1px;
+  height: 718px;
+}
+.rw-intro-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.rw-title {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.rw-text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 264px;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.32px;
+  color: var(--text);
+}
+.rw-boards {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 1880px;
+  flex-shrink: 0;
+}
+.rw-questions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.rw-qpair {
+  display: flex;
+  align-items: flex-start;
+}
+.rw-q {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.rw-qt {
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.28px;
+  color: var(--text);
+}
+.rw-tags {
+  display: flex;
+  flex-direction: column;
+}
+.tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--w);
+  height: var(--h);
+  flex-shrink: 0;
+}
+.tag > span {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 6px;
+  border: 0.5px solid var(--line);
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.24px;
+  color: var(--text);
+  white-space: nowrap;
+  transform: rotate(var(--r));
+}
+.tag-full > span {
+  width: 100%;
+}
+.rw-board {
+  display: flex;
+  gap: 6px;
+  align-items: flex-end;
+  width: 100%;
+  padding: 6px 12px;
+  border: 0.5px solid var(--line);
+  border-radius: 12px;
+}
+.rw-board figure {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  /* Figma's columns add up to 1895 inside a 1880 frame (Figma lets it overflow); shrink them
+     proportionally (<1%) so nothing pokes out of the frame's border */
+  flex-shrink: 1;
+  min-width: 0;
+}
+.rw-board figcaption {
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.28px;
+}
+.rw-board img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* ---------- Information architecture — 189:2537 ---------- */
+.ia {
+  display: flex;
+  flex-direction: column;
+  gap: 62px;
+  align-items: center;
+}
+.ia .id-head .t16 p:last-child {
+  min-height: 1lh;
+}
+.ia-box {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 0.5px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.ia-2 {
+  flex: 605.35 1 0;
+  min-width: 0;
+  aspect-ratio: 605.35 / 261.737;
+  object-fit: cover;
+}
+.ia-1 {
+  flex: 794.65 1 0;
+  min-width: 0;
+  position: relative;
+  aspect-ratio: 794.65 / 261.772;
+  overflow: hidden;
+}
+.ia-1 img {
+  position: absolute;
+  top: 0;
+  left: -6.92%;
+  width: 106.92%;
+  height: 100%;
+}
+
+/* ---------- Final design — 189:2821 ---------- */
+.final {
+  display: flex;
+  flex-direction: column;
+  gap: 128px;
+  align-items: flex-start;
+}
+.fd-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+}
+.fd-intro-row {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding-right: 60px;
+}
+.fd-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 200px;
+  width: 100%;
+}
+.fd-head {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 116px;
+  align-items: flex-start;
+}
+.fd-onboarding {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 10px 10px 156px;
+}
+.fd-onb-col {
+  display: flex;
+  flex-direction: column;
+  gap: 43px;
+  align-items: flex-end;
+  justify-content: center;
+  width: 974px;
+}
+.fd-onb-col > .fd-head {
+  width: 100%;
+}
+.fd-onb-shots {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+.fd-onb-phones {
+  display: flex;
+  gap: 75px;
+  align-items: flex-start;
+}
+.fd-onb-phones img,
+.fd-col > img,
+.fd-shot-note > img,
+.fd-control-phones > img,
+.fd-card-right > img {
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.fd-onb-phones img:nth-child(1),
+.fd-onb-phones img:nth-child(2) { width: 182px; height: 366px; }
+.fd-onb-phones img:nth-child(3) { width: 181px; height: 365px; }
+.fd-three {
+  display: flex;
+  gap: 0; /* Figma gap 91 = the leftover space at 1400; space-between keeps it exact there and lets it flex */
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.fd-col {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  flex: 0 1 406px;
+  min-width: 0;
+}
+.fd-col .w406 {
+  width: auto;
+  max-width: 406px;
+}
+.fd-shot-note .note {
+  flex: 0 1 217px;
+  min-width: 0;
+}
+.fd-col .fd-head {
+  width: 100%;
+}
+.fd-col > img,
+.fd-shot-note > img {
+  width: 181px;
+  height: 364px;
+}
+.fd-shot-note {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  width: 100%;
+}
+.fd-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0 10px 142px;
+}
+.fd-control-row {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.fd-control-shots {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+.fd-control-phones {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+}
+.fd-control-phones > img {
+  width: 174px;
+  height: 487px;
+}
+.fd-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 10px 0;
+}
+.fd-card-row {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  width: min(1258px, 100%);
+}
+.fd-card-inner {
+  flex: 1 0 0;
+  min-width: 1px;
+  display: flex;
+  gap: 82px;
+  align-items: center;
+  padding-left: max(0px, calc(100% - 1116px)); /* 142 at 1258 */
+}
+.fd-card-left {
+  display: flex;
+  gap: 48px;
+  align-items: center;
+}
+.fd-card-notes {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 264px;
+}
+.note-pulse {
+  gap: 8px;
+}
+.note-pulse-head {
+  display: flex;
+  gap: 4px;
+  align-items: flex-start;
+}
+.note-pulse-head p {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 500;
+  letter-spacing: -0.28px;
+  color: var(--text);
+  white-space: nowrap;
+}
+.fd-card-right {
+  display: flex;
+  gap: 26px;
+  align-items: flex-start;
+}
+.fd-card-right > img {
+  width: 258px;
+  height: 324px;
+}
+.fd-card-head {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 116px;
+}
+.fd-card-head .t16 {
+  width: 426px;
+  height: 75px;
+}
+
+/* ---------- Learnings — 189:2816 ---------- */
+.learnings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 294px 10px 10px;
+}
+.ln-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ---------- Next project nav — 189:2790 ---------- */
+.next-nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: flex-end;
+}
+.btn-icon,
+.btn-next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: var(--btn-bg);
+  box-shadow: inset 0 0 0 0.5px var(--btn-stroke);
+  transition: background-color 0.25s ease;
+}
+.btn-icon {
+  padding: 12px;
+}
+.btn-icon img {
+  transform: rotate(-90deg);
+}
+.btn-next {
+  gap: 10px;
+  padding: 12px 16px;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.28px;
+  color: var(--ink);
+}
+.btn-icon:hover,
+.btn-next:hover {
+  background: var(--btn-hover);
+}
+.btn-icon:focus-visible,
+.btn-next:focus-visible,
+.indicator a:focus-visible {
+  outline: 2px solid #7c5cff;
+  outline-offset: 2px;
+}
+
+/* ---------- Sticky section indicator — 189:2480, 20px from the left edge (same as the page gutter) ---------- */
+.indicator {
+  position: fixed;
+  z-index: 40;
+  left: 20px;
+  top: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: -45.5px; /* half of 91 */
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 500;
+  letter-spacing: -0.24px;
+}
+.indicator a {
+  color: var(--idle);
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+.indicator a.is-active {
+  color: var(--ink);
+}
+/* Hidden while a full-width image passes behind it (filter, so it doesn't fight the inline opacity GSAP sets) */
+.indicator {
+  transition: filter 0.3s ease;
+}
+.indicator.is-covered {
+  filter: opacity(0);
+  pointer-events: none;
+}
+/* Flying heading clones (framework → indicator) */
+.fly-clone {
+  position: fixed;
+  z-index: 41;
+  left: 0;
+  top: 0;
+  margin: 0;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  letter-spacing: -0.32px;
+  color: var(--text);
+  white-space: nowrap;
+  transform-origin: 0 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* Reveal: hidden until JS animates it in (kept visible without JS / with reduced motion) */
+.js-motion [data-reveal],
+.js-motion [data-hero] {
+  opacity: 0;
+}
+
+
+
+/* =====================================================================================
+   RESPONSIVE — iPad (768–1199) and iPhone (≤767)
+   Desktop above stays exactly as Figma 2:4581. Phone follows Figma 245:2454 (iPhone 16 Pro, 402)
+   with legibility upgrades: body 14px (Figma 12), timeline labels 10px (Figma 6.7),
+   two-column copy stacked on phone, real-world strip as a native swipe instead of a pin.
+   ===================================================================================== */
+
+/* ---------- iPad + iPhone (< 1200) ---------- */
+@media (max-width: 1199px) {
+  :root { --section-gap: 120px; }
+  .frame { padding: 0 32px; }
+  .page { padding-top: 180px; }
+
+  /* Fixed desktop text widths become caps so lines keep a readable length */
+  .w264 { width: auto; max-width: 264px; }
+  .w406 { width: auto; max-width: 406px; }
+  .w548 { width: auto; max-width: 548px; }
+
+  /* Side progress indicator + heading flight are desktop-only (no side margin to live in) */
+  .indicator,
+  .fly-clone { display: none; }
+
+  /* Hero: text and phones side by side, the gap shrinks with the screen */
+  .hero { gap: clamp(32px, 6vw, 180px); }
+  .hero-text { width: auto; flex: 1 1 0; min-width: 0; max-width: 498px; }
+  /* The three phones scale with the space they get (desktop: 142 / 142 / 139, gap 8) */
+  .hero-phones {
+    flex: 0 1 439px;
+    min-width: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+    gap: 8px;
+  }
+  .hero-phones > img { width: 100%; height: auto; }
+  .hero-phone-tall { width: 100%; height: auto; aspect-ratio: 139 / 476; }
+
+  /* Overview */
+  .overview { gap: 96px; }
+  .ov-top { flex-direction: column; gap: 56px; align-self: stretch; }
+  .ov-intro { width: 100%; }
+  .ov-copy { width: auto; flex: 1 1 0; max-width: 560px; }
+  .ov-p1 { height: auto; }
+  .ov-meta { width: auto; justify-content: flex-start; gap: 96px; padding-left: 83px; }
+
+  /* Product analysis: accordion becomes a vertical tap-to-open list (Figma phone frame) */
+  .pa-inner { width: 100%; gap: 40px; }
+  .pa-head { height: auto; padding-left: 0; }
+  .acc { flex-direction: column; align-items: stretch; width: 100%; height: auto; gap: 10px; }
+  .acc-panel,
+  .acc-panel.is-open { width: auto; height: auto; contain: paint; }
+  .acc-panel .acc-num,
+  .acc-panel:first-child .acc-num,
+  .acc-panel.is-open .acc-num { transform: translate(16px, 16px); }
+  .acc-closed,
+  .acc-panel:first-child .acc-closed { position: relative; width: auto; padding: 16px; }
+  .acc-open { position: relative; width: auto; height: auto; padding: 16px; gap: 32px; justify-content: flex-start; }
+  .acc-panel:not(.is-open) .acc-open { display: none; }
+  .acc-panel.is-open .acc-closed { display: none; }
+  .acc-panel.is-open .acc-open { display: flex; opacity: 1; visibility: visible; }
+  .acc-open-copy,
+  .acc-open-first .acc-open-copy { width: 100%; max-width: 560px; }
+  .acc-open-title { white-space: normal; }
+  .acc-open-first .acc-open-title { width: auto; }
+  .acc-media { max-width: 720px; }
+  .acc-media-photo { height: auto; aspect-ratio: 322 / 233; }
+  .acc-media-4 { flex: none; aspect-ratio: 543 / 358; }
+
+  /* Desk research: the two image boards stack */
+  .desk-head { height: auto; }
+  .desk-images { flex-direction: column; align-items: stretch; gap: 16px; }
+  .desk-comp,
+  .desk-find { flex: none; width: 100%; }
+
+  /* User research */
+  .users { gap: 120px; }
+  .ur-top { width: 100%; max-width: 832px; align-items: stretch; }
+  .ur-learn { justify-content: flex-start; }
+  .ur-questions { width: auto; flex: 1 1 0; min-width: 0; max-width: 560px; }
+  .ur-learned { flex-wrap: wrap; justify-content: center; gap: 32px; }
+
+  /* Affinity */
+  .af-top { padding-left: 0; }
+  .af-col { width: 100%; max-width: 974px; }
+  .af-head { height: auto; width: auto; max-width: 548px; }
+  .af-cards { flex-wrap: wrap; justify-content: center; }
+
+  /* Ideation + IA headers */
+  .id-head-wrap { padding-right: 0; }
+  .id-head { width: 100%; max-width: 644px; height: auto; }
+
+  /* Real-world exploration: still pinned + scrubbed sideways (okcupid.js); side padding trimmed.
+     Without motion it falls back to a native sideways swipe. */
+  .rw {
+    height: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  .rw-strip { width: max-content; height: auto; gap: 72px; padding: 8px 32px; }
+  .rw-intro { flex: none; width: 320px; height: auto; align-self: flex-start; }
+
+  /* Final design */
+  .fd-intro-row { padding-right: 0; }
+  .fd-onboarding { padding: 10px 0; }
+  .fd-onb-col { width: 100%; max-width: 974px; }
+  .fd-three {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 72px 48px;
+  }
+  .fd-col { flex: none; width: auto; }
+  .fd-control { padding: 10px 0; }
+  .fd-control-row { flex-wrap: wrap; justify-content: center; gap: 32px; }
+  .fd-card-row { width: 100%; flex-direction: column; gap: 40px; align-items: center; }
+  .fd-card-head { position: static; align-self: flex-start; height: auto; }
+  .fd-card-head .t16 { width: auto; max-width: 426px; height: auto; }
+  .fd-card-inner { flex: none; flex-wrap: wrap; justify-content: center; padding-left: 0; gap: 48px; }
+
+  /* Learnings */
+  .learnings { padding: 10px 0; }
+  .ln-inner { width: 100%; max-width: 548px; }
+}
+
+/* ---------- iPhone (≤ 767) — Figma 245:2454 ---------- */
+@media (max-width: 767px) {
+  :root { --section-gap: 100px; }
+  .frame { padding: 0 16px; }
+  .page { padding-top: 128px; }
+  .w264, .w406, .w548 { max-width: none; }
+
+  /* Type — Figma phone sizes (12px body) */
+  .label, .eyebrow { font-size: 12px; line-height: 15px; letter-spacing: -0.24px; }
+  .t16, .t18, .ov-copy, .ur-copy, .ur-learned-text, .rw-text, .fw-body, .acc-open-desc, .problem-text { font-size: 12px; line-height: 15px; letter-spacing: -0.24px; }
+  .h20 { font-size: 14px; line-height: 18px; letter-spacing: -0.28px; }
+  .h28, .fw-title { font-size: 18px; line-height: 23px; letter-spacing: -0.36px; }
+  .ur-learn .h20 { font-size: 20px; line-height: 25px; letter-spacing: -0.4px; } /* "What We Wanted to Learn" is 20 in Figma */
+  .af-head .h20, .ur-learned-title .h20 { font-size: 18px; line-height: 23px; letter-spacing: -0.36px; }
+  .fw-head h3, .af-card-title, .acc-closed p, .acc-open-title { font-size: 12px; line-height: 15px; letter-spacing: -0.24px; }
+  .note-text, .af-card-body { font-size: 12px; line-height: 15px; letter-spacing: -0.24px; }
+  .chip { font-size: 14px; line-height: 18px; }
+  .ur-photos figcaption { font-size: 10px; line-height: 13px; }
+  .ur-learned-title .eyebrow { font-size: 10px; line-height: 13px; }
+
+  /* Hero: stacked — text, then the three phones aligned right (Figma: 98 / 98 / 98, gap 8) */
+  .hero { flex-direction: column; gap: 48px; }
+  .hero-text { max-width: none; gap: 16px; }
+  .hero-eyebrow { font-size: 12px; line-height: 15px; }
+  .hero-title { font-size: 18px; line-height: 23px; letter-spacing: -0.36px; }
+  .hero-sub { width: auto; max-width: 332px; font-size: 14px; line-height: 20px; letter-spacing: -0.28px; }
+  .hero-glow { transform: scale(0.75); transform-origin: 0 0; }
+  .hero-phones {
+    align-self: stretch;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 98px));
+    justify-content: end;
+    align-items: start;
+    gap: 8px;
+  }
+  .hero-phones > img { width: 100%; height: auto; }
+  .hero-phone-tall { width: 100%; height: auto; aspect-ratio: 139 / 476; }
+
+  /* Overview */
+  .overview { gap: 64px; align-items: stretch; }
+  .ov-top { gap: 48px; }
+  .ov-intro { gap: 16px; }
+  .ov-meta-group { gap: 20px; }
+  .ov-copy { gap: 16px; max-width: none; }
+  .ov-meta { width: 100%; padding-left: 0; gap: 24px; justify-content: space-between; font-size: 12px; line-height: 15px; }
+  .timeline { gap: 20px; }
+  .tl-row { flex-direction: column; gap: 12px; }
+  .tl-chart { zoom: 0.76; } /* the 443px chart fits a 343px column; its numbers stay readable */
+  .tl-num { font-size: 10px; }
+  .tl-legend { width: auto; }
+  .tl-legend-spacer { display: none; }
+  .tl-legend-list { width: auto; }
+  .tl-legend-row { flex-wrap: wrap; gap: 6px 12px; }
+  .problem { gap: 16px; }
+  .problem-text { width: auto; flex: 1 1 0; }
+
+  /* Framework */
+  .framework { padding: 0; }
+  .fw-inner { width: 100%; gap: 24px; }
+  .fw-boxes { gap: 12px; }
+
+  /* Product analysis accordion (vertical, from the iPad rules) — phone spacing */
+  .product { padding: 0; }
+  .pa-inner { gap: 24px; }
+  .acc-open { gap: 24px; }
+
+  /* Desk research */
+  .desk { gap: 20px; align-items: stretch; }
+  .desk-head { flex-direction: column; gap: 8px; }
+  .desk-images { gap: 10px; }
+  .desk-comp, .desk-find { border-radius: 12px; }
+
+  /* User research */
+  .users { gap: 100px; }
+  .ur-block { gap: 56px; }
+  .ur-top { gap: 48px; }
+  .ur-intro, .ur-copy, .ur-learn { flex-direction: column; }
+  .ur-intro { gap: 16px; }
+  .ur-copy { padding-top: 0; gap: 12px; }
+  .ur-copy p, .ur-title { width: auto; }
+  .ur-learn { gap: 20px; }
+  .ur-questions { width: 100%; max-width: none; flex: none; padding-top: 0; gap: 12px; }
+  .ur-gallery { gap: 16px; }
+  .ur-photos { gap: 10px; }
+  .ur-photos figure { gap: 6px; }
+  .ur-photos img { border-radius: 8px; }
+  .ur-photos figcaption { width: auto; }
+  .ur-docs { flex-direction: column; align-items: stretch; gap: 16px; }
+  .ur-docs-box, .ur-survey { flex: none; width: 100%; }
+  .ur-learned { flex-direction: column; align-items: stretch; gap: 28px; }
+  .ur-learned-copy { flex-direction: column; gap: 10px; }
+  .ur-learned-title { width: auto; }
+  .ur-learned-text { width: auto; margin-top: 0; }
+  .ur-insights { width: 100%; height: auto; aspect-ratio: 374 / 430; }
+
+  /* Affinity */
+  .affinity { gap: 64px; align-items: stretch; }
+  .af-block { gap: 36px; }
+  .af-col { gap: 24px; }
+  .af-head { height: auto; max-width: none; }
+  .af-cards { flex-direction: column; align-items: center; gap: 10px; }
+  .note-af { width: 100%; max-width: 320px; gap: 12px; padding: 12px; }
+  .af-card-title, .note-af:not(:first-child) .af-card-body { width: auto; }
+  .af-card-body.nowrap { white-space: normal; }
+
+  /* Ideation */
+  .ideation { gap: 56px; }
+  .id-block { gap: 32px; }
+  .id-head { flex-direction: column; gap: 12px; }
+  .id-head .t16 { flex: none; }
+  .id-maps { aspect-ratio: auto; display: flex; flex-direction: column; }
+  .id-empathy, .id-journey { position: relative; left: auto; top: auto; width: 100%; height: auto; }
+  .id-empathy { aspect-ratio: 373 / 398; }
+  .id-journey { aspect-ratio: 1018 / 410; }
+  .id-newmap { border-radius: 8px; }
+  .rw-strip { gap: 48px; padding: 8px 16px; }
+  .rw-intro { width: 280px; }
+
+  /* IA */
+  .ia { gap: 24px; }
+  .ia-box { border-radius: 8px; }
+
+  /* Final design */
+  .final { gap: 64px; }
+  .fd-intro { padding: 0; align-items: stretch; }
+  .fd-intro-row { flex-direction: column; gap: 8px; }
+  .fd-rows { gap: 100px; }
+  .fd-head { height: auto; gap: 12px; }
+  .fd-onb-col { gap: 24px; align-items: stretch; }
+  .fd-onb-shots { align-items: stretch; }
+  .fd-onb-phones { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+  .fd-onb-phones img:nth-child(n) { width: 100%; height: auto; }
+  .fd-onb-shots .note { align-self: center; }
+  .fd-three { grid-template-columns: 1fr; gap: 72px; }
+  .fd-col { gap: 16px; }
+  .fd-control-row { flex-direction: column; align-items: stretch; gap: 20px; }
+  .fd-control-shots { flex-direction: column; align-items: stretch; gap: 16px; }
+  .fd-control-phones { gap: 6px; }
+  .fd-control-phones > img,
+  .fd-control-phones .fd-crop { flex: 1 1 0; min-width: 0; width: auto !important; height: auto !important; }
+  .fd-control-phones > img { aspect-ratio: 174 / 487; }
+  .fd-control-phones .fd-crop { aspect-ratio: 174 / 623; }
+  .fd-control-shots .note { align-self: center; }
+  .fd-card-row { gap: 32px; align-items: stretch; }
+  .fd-card-inner { flex-direction: column; align-items: stretch; gap: 48px; }
+  .fd-card-left { gap: 16px; align-items: center; }
+  .fd-card-notes { width: auto; flex: 1 1 0; }
+  .fd-card-left .fd-crop { width: 46% !important; height: auto !important; aspect-ratio: 174 / 738; }
+  .fd-card-right { flex-direction: column; align-items: center; gap: 20px; }
+  .fd-card-right .note { width: 100%; }
+
+  /* Learnings + next nav */
+  .ln-inner { gap: 12px; max-width: none; }
+  .next-nav { gap: 12px; }
+}

@@ -1,5 +1,12 @@
-node_modules/
-.DS_Store
-.vscode/
-*.log
-.gemini/
+# not part of the website: kept local, never pushed
+misc/
+performance-resources/
+wpo-book-resources/
+okcupid/img/
+navbar/index.html
+OkCupid_UX_Case_Study_Extreme_Detailed_Chat_Archive.md
+okcupid_case_study_content.md
+color.png
+logo.png
+Archives.svg
+.claude/

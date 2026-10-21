@@ -1,0 +1,5 @@
+# Everyone may crawl, including AI search crawlers (so the work can be cited in ChatGPT / Claude / Perplexity answers)
+User-agent: *
+Allow: /
+
+Sitemap: https://sagarshiyan.vercel.app/sitemap.xml
